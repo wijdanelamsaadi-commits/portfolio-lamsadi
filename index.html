@@ -676,8 +676,22 @@
         }
 
         .project-card {
+            position: relative;
+            min-height: 100%;
             overflow: hidden;
             transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            right: 1.25rem;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.9;
         }
 
         .project-card:hover {
@@ -686,58 +700,28 @@
             box-shadow: 0 20px 52px var(--accent-glow);
         }
 
-        .project-preview {
-            height: 190px;
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(circle at 72% 28%, rgba(255, 90, 0, 0.52), transparent 28%),
-                linear-gradient(135deg, #181818, #060606);
-        }
-
-        body.light-mode .project-preview {
-            background:
-                radial-gradient(circle at 72% 28%, rgba(255, 90, 0, 0.42), transparent 28%),
-                linear-gradient(135deg, #fff, #eeeeee);
-        }
-
-        .project-preview::before,
-        .project-preview::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 90, 0, 0.3);
-        }
-
-        .project-preview::before {
-            width: 170px;
-            height: 170px;
-            right: -48px;
-            top: 22px;
-        }
-
-        .project-preview::after {
-            width: 92px;
-            height: 92px;
-            left: 24px;
-            bottom: -22px;
-            background: rgba(255, 90, 0, 0.12);
-        }
-
         .project-body {
-            padding: 1.2rem;
+            min-height: 100%;
+            padding: 1.55rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-body h3 {
-            font-size: 1.08rem;
-            margin-bottom: 0.32rem;
+            font-family: "Playfair Display", serif;
+            font-size: 1.34rem;
+            line-height: 1.18;
+            margin-bottom: 0.55rem;
         }
 
         .orange-sub {
             color: var(--accent);
-            font-size: 0.86rem;
+            font-family: "DM Mono", monospace;
+            font-size: 0.74rem;
             font-weight: 800;
-            margin-bottom: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.85rem;
         }
 
         .tag-row {
@@ -758,12 +742,19 @@
 
         .card-actions {
             display: flex;
+            flex-wrap: wrap;
             gap: 0.6rem;
+            margin-top: auto;
+            padding-top: 1.1rem;
+        }
+
+        .project-body .tag-row {
+            margin-bottom: 1.1rem;
             margin-top: 1.1rem;
         }
 
         .icon-btn {
-            flex: 1;
+            flex: 1 1 115px;
             min-height: 40px;
             display: inline-flex;
             align-items: center;
@@ -1186,43 +1177,74 @@
                 </div>
                 <div class="projects-grid">
                     <article class="project-card card reveal">
-                        <div class="project-preview"></div>
                         <div class="project-body">
-                            <h3>TrustGuard</h3>
-                            <p class="orange-sub">AI Fraud Detection</p>
-                            <p class="soft-copy">A smart detection platform that flags suspicious activity with machine learning insights.</p>
-                            <div class="tag-row"><span class="tag">Python</span><span class="tag">AI</span><span class="tag">Dashboard</span></div>
-                            <div class="card-actions"><a class="icon-btn" href="#">Live Demo</a><a class="icon-btn" href="#">GitHub</a></div>
+                            <p class="orange-sub">Stage Professionnel</p>
+                            <h3>Application GMAO — OCP</h3>
+                            <p class="soft-copy">Application de gestion de maintenance assistée par ordinateur pour la digitalisation de la maintenance industrielle chez OCP Jorf Lasfar, avec dashboard Power BI pour le suivi des KPIs.</p>
+                            <div class="tag-row"><span class="tag">Architecture Logicielle</span><span class="tag">POO</span><span class="tag">Power BI</span><span class="tag">SQL</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1XLDrKxaqd6K6-YOUYC0dbON_nocurx0E/view?usp=sharing" target="_blank" rel="noreferrer">Rapport</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
-                        <div class="project-preview"></div>
                         <div class="project-body">
-                            <h3>Pneumonia AI</h3>
-                            <p class="orange-sub">Medical Image Classification</p>
-                            <p class="soft-copy">A deep learning model for assisting medical image review through classification.</p>
-                            <div class="tag-row"><span class="tag">CNN</span><span class="tag">Python</span><span class="tag">Vision</span></div>
-                            <div class="card-actions"><a class="icon-btn" href="#">Live Demo</a><a class="icon-btn" href="#">GitHub</a></div>
+                            <p class="orange-sub">Deep Learning</p>
+                            <h3>Détection de Pneumonie par IA</h3>
+                            <p class="soft-copy">Modèle de Deep Learning pour le diagnostic médical par analyse d'images radiologiques utilisant des réseaux de neurones convolutifs (CNN) pour la détection automatique de pneumonie.</p>
+                            <div class="tag-row"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">CNN</span><span class="tag">Computer Vision</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/pneumonia-detection-fastapi" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1fSyvkiYc2_BZfAKoxbcct3L-TlA2UdVo/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
-                        <div class="project-preview"></div>
                         <div class="project-body">
-                            <h3>Smart Attendance</h3>
-                            <p class="orange-sub">ENSA Attendance System</p>
-                            <p class="soft-copy">A structured attendance system for tracking students, sessions, and records.</p>
-                            <div class="tag-row"><span class="tag">Angular</span><span class="tag">API</span><span class="tag">SQL</span></div>
-                            <div class="card-actions"><a class="icon-btn" href="#">Live Demo</a><a class="icon-btn" href="#">GitHub</a></div>
+                            <p class="orange-sub">Intelligence Artificielle</p>
+                            <h3>Chatbot IA pour Étudiants</h3>
+                            <p class="soft-copy">Assistant intelligent utilisant RAG (Retrieval-Augmented Generation), Fine-tuning et Agentic AI pour aider les étudiants dans leurs recherches et apprentissage.</p>
+                            <div class="tag-row"><span class="tag">Streamlit</span><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">Agentic AI</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/ensaj-chatbot-streamlit" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/12O5l9v-diK8XuqVKi_gwjP3ip6WHjSLF/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
-                        <div class="project-preview"></div>
                         <div class="project-body">
-                            <h3>Dar Atlas</h3>
+                            <p class="orange-sub">Application Desktop</p>
+                            <h3>Gestion d'École Primaire</h3>
+                            <p class="soft-copy">Solution complète de gestion scolaire avec emploi du temps, suivi des absences et notes, génération automatique de bulletins PDF et notifications WhatsApp aux parents.</p>
+                            <div class="tag-row"><span class="tag">C#</span><span class="tag">SQL Server</span><span class="tag">PDF</span><span class="tag">WhatsApp API</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1_YXSxmoAH3RUI5SOoElzN14DLaKenLkp/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
+                        </div>
+                    </article>
+                    <article class="project-card card reveal">
+                        <div class="project-body">
+                            <p class="orange-sub">Plateforme Web</p>
+                            <h3>Plateforme Gestion des Demandes de Besoins</h3>
+                            <p class="soft-copy">Plateforme web avec workflow multi-niveaux pour la gestion des demandes d'expression de besoins, incluant des notifications automatiques et un système de validation hiérarchique.</p>
+                            <div class="tag-row"><span class="tag">PHP POO</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/gestion-besoins" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1yTzwmc_ZSLplXdR6RGMYz1VhGdD5l64A/view?usp=sharing" target="_blank" rel="noreferrer">Démo Demandeur</a><a class="icon-btn" href="https://drive.google.com/file/d/1GU6lW2h1H2KOZzn2PAq-3rK1zm9IZRQG/view?usp=sharing" target="_blank" rel="noreferrer">Démo Admin</a></div>
+                        </div>
+                    </article>
+                    <article class="project-card card reveal">
+                        <div class="project-body">
+                            <p class="orange-sub">Application Mobile</p>
+                            <h3>Vaccination Reminder App</h3>
+                            <p class="soft-copy">Application mobile Flutter de suivi vaccinal multi-profils avec système de rappels automatisés pour ne jamais manquer une vaccination importante.</p>
+                            <div class="tag-row"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Notifications</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/vaccination_reminder_app_version_modifi-" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/10Iw8hHgM0xkwG6ug6lFL_m1N5G3ph8r9/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
+                        </div>
+                    </article>
+                    <article class="project-card card reveal">
+                        <div class="project-body">
+                            <p class="orange-sub">Application Mobile</p>
+                            <h3>Waqt Al Khayr</h3>
+                            <p class="soft-copy">Application mobile React Native dédiée aux services communautaires, facilitant la mise en relation des bénévoles avec les associations et les actions solidaires.</p>
+                            <div class="tag-row"><span class="tag">React Native</span><span class="tag">Redux</span><span class="tag">JavaScript</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/WA9T_LKHIR" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1UxTK4FIhu9L6l_QqKBIaz-rWJSLVID3w/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
+                        </div>
+                    </article>
+                    <article class="project-card card reveal">
+                        <div class="project-body">
                             <p class="orange-sub">Moroccan E-commerce</p>
-                            <p class="soft-copy">A clean shopping experience inspired by Moroccan craft, culture, and digital commerce.</p>
-                            <div class="tag-row"><span class="tag">React</span><span class="tag">Node</span><span class="tag">MongoDB</span></div>
-                            <div class="card-actions"><a class="icon-btn" href="#">Live Demo</a><a class="icon-btn" href="#">GitHub</a></div>
+                            <h3>Dar Atlas</h3>
+                            <p class="soft-copy">Application e-commerce marocaine pensée pour présenter et vendre des produits inspirés de l'artisanat local, avec une expérience claire, moderne et adaptée aux parcours d'achat en ligne.</p>
+                            <div class="tag-row"><span class="tag">E-commerce</span><span class="tag">Web Development</span><span class="tag">UI Design</span></div>
                         </div>
                     </article>
                 </div>
