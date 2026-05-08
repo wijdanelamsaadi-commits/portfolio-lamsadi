@@ -718,10 +718,28 @@
             box-shadow: inset 0 0 40px rgba(255, 90, 0, 0.08);
         }
 
+        .project-video-preview::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(180deg, transparent 52%, rgba(3, 3, 3, 0.7)),
+                radial-gradient(circle at 50% 50%, transparent 58%, rgba(255, 90, 0, 0.16));
+            opacity: 0.78;
+            transition: opacity 0.3s ease;
+        }
+
         body.light-mode .project-video-preview {
             background:
                 radial-gradient(circle at 72% 28%, rgba(255, 90, 0, 0.2), transparent 32%),
                 linear-gradient(135deg, #ffffff, #eeeeee);
+        }
+
+        body.light-mode .project-video-preview::after {
+            background:
+                linear-gradient(180deg, transparent 54%, rgba(255, 255, 255, 0.72)),
+                radial-gradient(circle at 50% 50%, transparent 58%, rgba(255, 90, 0, 0.14));
         }
 
         .project-video-preview video {
@@ -740,10 +758,15 @@
             filter: saturate(1.18) contrast(1.08);
         }
 
+        .project-card:hover .project-video-preview::after {
+            opacity: 0.42;
+        }
+
         .video-badge {
             position: absolute;
             left: 0.85rem;
             bottom: 0.85rem;
+            z-index: 2;
             padding: 0.45rem 0.7rem;
             border: 1px solid rgba(255, 90, 0, 0.42);
             border-radius: 999px;
@@ -758,6 +781,36 @@
 
         .project-card:hover .video-badge {
             box-shadow: 0 0 24px var(--accent-glow);
+        }
+
+        .video-play-mark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 2;
+            width: 54px;
+            height: 54px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 90, 0, 0.6);
+            background: rgba(3, 3, 3, 0.58);
+            color: #fff;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 32px rgba(255, 90, 0, 0.28);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .video-play-mark svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transform: translateX(2px);
+        }
+
+        .project-card:hover .video-play-mark {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1.12);
         }
 
         .project-body {
@@ -1241,6 +1294,7 @@
                             <video muted loop playsinline preload="metadata">
                                 <source src="./streamlitFraudShield.mp4" type="video/mp4">
                             </video>
+                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
                             <span class="video-badge">Hover Preview</span>
                         </div>
                         <div class="project-body">
@@ -1248,6 +1302,7 @@
                             <h3>FraudShield</h3>
                             <p class="soft-copy">Intelligent fraud detection platform using AI models and real-time transaction analysis with modern dashboard visualization.</p>
                             <div class="tag-row"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">FastAPI</span><span class="tag">Deep Learning</span></div>
+                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./streamlitFraudShield.mp4" target="_blank" rel="noreferrer">Demo</a></div>
                         </div>
                     </article>
                     <article class="project-card video-project card reveal">
@@ -1255,6 +1310,7 @@
                             <video muted loop playsinline preload="metadata">
                                 <source src="./smartAttendance.mp4" type="video/mp4">
                             </video>
+                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
                             <span class="video-badge">Hover Preview</span>
                         </div>
                         <div class="project-body">
@@ -1262,6 +1318,7 @@
                             <h3>Smart Attendance</h3>
                             <p class="soft-copy">Smart attendance management application with QR code scanning, absence tracking, and student management.</p>
                             <div class="tag-row"><span class="tag">Android</span><span class="tag">Java</span><span class="tag">Firebase</span></div>
+                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./smartAttendance.mp4" target="_blank" rel="noreferrer">Demo</a></div>
                         </div>
                     </article>
                     <article class="project-card video-project card reveal">
@@ -1269,6 +1326,7 @@
                             <video muted loop playsinline preload="metadata">
                                 <source src="./movieApp.mp4" type="video/mp4">
                             </video>
+                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
                             <span class="video-badge">Hover Preview</span>
                         </div>
                         <div class="project-body">
@@ -1276,6 +1334,23 @@
                             <h3>MovieApp</h3>
                             <p class="soft-copy">Movie browsing mobile app with modern UI, authentication, and dynamic movie content.</p>
                             <div class="tag-row"><span class="tag">Java</span><span class="tag">Android Studio</span><span class="tag">API</span></div>
+                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./movieApp.mp4" target="_blank" rel="noreferrer">Demo</a></div>
+                        </div>
+                    </article>
+                    <article class="project-card video-project card reveal">
+                        <div class="project-video-preview">
+                            <video muted loop playsinline preload="metadata">
+                                <source src="./permiApp.mp4" type="video/mp4">
+                            </video>
+                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+                            <span class="video-badge">Hover Preview</span>
+                        </div>
+                        <div class="project-body">
+                            <p class="orange-sub">Mobile Application</p>
+                            <h3>PermiApp</h3>
+                            <p class="soft-copy">Mobile application for driving license learning with quizzes, lessons, videos, and a modern interactive interface.</p>
+                            <div class="tag-row"><span class="tag">Android Studio</span><span class="tag">Java</span><span class="tag">UI Design</span></div>
+                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./permiApp.mp4" target="_blank" rel="noreferrer">Demo</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
@@ -1346,6 +1421,7 @@
                             <video muted loop playsinline preload="metadata">
                                 <source src="./darAtlas.mp4" type="video/mp4">
                             </video>
+                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
                             <span class="video-badge">Hover Preview</span>
                         </div>
                         <div class="project-body">
@@ -1353,6 +1429,7 @@
                             <h3>Dar Atlas</h3>
                             <p class="soft-copy">Moroccan-inspired e-commerce platform with product management and modern shopping experience.</p>
                             <div class="tag-row"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">JavaScript</span></div>
+                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./darAtlas.mp4" target="_blank" rel="noreferrer">Demo</a></div>
                         </div>
                     </article>
                 </div>
