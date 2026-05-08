@@ -1202,7 +1202,9 @@
         }
 
         .field input,
-        .field textarea {
+        .field textarea,
+        .contact-form > input:not([type="hidden"]),
+        .contact-form > textarea {
             width: 100%;
             border: 1px solid var(--line-soft);
             border-radius: 16px;
@@ -1214,77 +1216,18 @@
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .field textarea {
+        .field textarea,
+        .contact-form > textarea {
             min-height: 150px;
             resize: vertical;
         }
 
         .field input:focus,
-        .field textarea:focus {
+        .field textarea:focus,
+        .contact-form > input:not([type="hidden"]):focus,
+        .contact-form > textarea:focus {
             border-color: var(--accent);
             box-shadow: 0 0 0 4px var(--accent-soft);
-        }
-
-        .form-status {
-            display: none;
-            margin-top: 0.95rem;
-            padding: 0.85rem 1rem;
-            border-radius: 16px;
-            font-weight: 800;
-            line-height: 1.45;
-        }
-
-        .form-status.visible {
-            display: block;
-        }
-
-        .form-status.success {
-            border: 1px solid rgba(54, 211, 153, 0.42);
-            background: rgba(54, 211, 153, 0.12);
-            color: #7cf0c6;
-        }
-
-        body.light-mode .form-status.success {
-            color: #0b7f59;
-        }
-
-        .form-status.error {
-            border: 1px solid rgba(255, 90, 0, 0.44);
-            background: rgba(255, 90, 0, 0.12);
-            color: #ffb080;
-        }
-
-        .form-status.sending {
-            border: 1px solid rgba(255, 90, 0, 0.36);
-            background: rgba(255, 90, 0, 0.1);
-            color: var(--text);
-        }
-
-        body.light-mode .form-status.error {
-            color: #a43b00;
-        }
-
-        .submit-spinner {
-            display: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(255, 255, 255, 0.35);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.75s linear infinite;
-        }
-
-        .contact-form.is-sending .submit-spinner {
-            display: inline-block;
-        }
-
-        .contact-form.is-sending .submit-label {
-            opacity: 0.78;
-        }
-
-        .contact-form button[disabled] {
-            cursor: wait;
-            opacity: 0.82;
         }
 
         .contact-side {
@@ -1823,16 +1766,17 @@
                         </div>
                         <p class="contact-note">Open to PFA Internship opportunities — July/August 2026</p>
                     </div>
-                    <form class="contact-form card reveal" id="contactForm" action="https://formsubmit.co/wijdanelamsaadi@gmail.com" method="POST">
+                    <form class="contact-form card reveal" action="https://formsubmit.co/wijdanelamsaadi@gmail.com" method="POST">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_subject" value="New portfolio contact message">
-                        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
-                        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
-                        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-                        <div class="field"><label for="subject">Subject</label><input id="subject" name="subject" type="text" required></div>
-                        <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
-                        <button class="primary-btn" type="submit" style="width:100%;"><span class="submit-label">Send Message</span><span class="submit-spinner" aria-hidden="true"></span></button>
+                        <input type="hidden" name="_subject" value="New Portfolio Message">
+                        <input type="hidden" name="_next" value="https://wijdanelamsaadi-commits.github.io/portfolio-lamsadi/">
+
+                        <input type="text" name="name" required placeholder="Your Name">
+                        <input type="email" name="email" required placeholder="Your Email">
+                        <textarea name="message" required placeholder="Your Message"></textarea>
+
+                        <button class="primary-btn" type="submit" style="width:100%;">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1960,15 +1904,6 @@
         projectSort.addEventListener('change', updateProjectCards);
         updateProjectCards();
 
-        const contactForm = document.getElementById('contactForm');
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const submitLabel = submitButton.querySelector('.submit-label');
-
-        contactForm.addEventListener('submit', () => {
-            contactForm.classList.add('is-sending');
-            submitButton.disabled = true;
-            submitLabel.textContent = 'Sending...';
-        });
     </script>
 </body>
 </html>
