@@ -1120,14 +1120,47 @@
 
         .contact-layout {
             display: grid;
-            grid-template-columns: 0.85fr 1.05fr 0.85fr;
-            gap: 1.2rem;
-            align-items: start;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 1.4rem;
+            align-items: stretch;
         }
 
         .contact-stack {
             display: grid;
             gap: 0.9rem;
+        }
+
+        .contact-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.95rem;
+            align-items: center;
+            min-height: 92px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 90, 0, 0.035));
+            backdrop-filter: blur(18px);
+        }
+
+        body.light-mode .contact-card,
+        body.light-mode .contact-form {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(18px);
+        }
+
+        .contact-icon {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 90, 0, 0.38);
+            background: rgba(255, 90, 0, 0.08);
+            color: var(--accent);
+            box-shadow: 0 0 22px rgba(255, 90, 0, 0.14);
+        }
+
+        .contact-icon iconify-icon {
+            width: 1.35rem;
+            height: 1.35rem;
         }
 
         .contact-card a {
@@ -1136,8 +1169,24 @@
             overflow-wrap: anywhere;
         }
 
+        .contact-card span {
+            color: var(--muted);
+        }
+
+        .contact-note {
+            padding: 1.1rem 1.2rem;
+            border: 1px solid rgba(255, 90, 0, 0.34);
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(255, 90, 0, 0.14), rgba(255, 255, 255, 0.025));
+            color: var(--text);
+            font-weight: 800;
+            box-shadow: 0 0 26px rgba(255, 90, 0, 0.14);
+        }
+
         .contact-form {
-            padding: 1.3rem;
+            padding: 1.45rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 90, 0, 0.035));
+            backdrop-filter: blur(18px);
         }
 
         .field {
@@ -1174,6 +1223,68 @@
         .field textarea:focus {
             border-color: var(--accent);
             box-shadow: 0 0 0 4px var(--accent-soft);
+        }
+
+        .form-status {
+            display: none;
+            margin-top: 0.95rem;
+            padding: 0.85rem 1rem;
+            border-radius: 16px;
+            font-weight: 800;
+            line-height: 1.45;
+        }
+
+        .form-status.visible {
+            display: block;
+        }
+
+        .form-status.success {
+            border: 1px solid rgba(54, 211, 153, 0.42);
+            background: rgba(54, 211, 153, 0.12);
+            color: #7cf0c6;
+        }
+
+        body.light-mode .form-status.success {
+            color: #0b7f59;
+        }
+
+        .form-status.error {
+            border: 1px solid rgba(255, 90, 0, 0.44);
+            background: rgba(255, 90, 0, 0.12);
+            color: #ffb080;
+        }
+
+        .form-status.sending {
+            border: 1px solid rgba(255, 90, 0, 0.36);
+            background: rgba(255, 90, 0, 0.1);
+            color: var(--text);
+        }
+
+        body.light-mode .form-status.error {
+            color: #a43b00;
+        }
+
+        .submit-spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.75s linear infinite;
+        }
+
+        .contact-form.is-sending .submit-spinner {
+            display: inline-block;
+        }
+
+        .contact-form.is-sending .submit-label {
+            opacity: 0.78;
+        }
+
+        .contact-form button[disabled] {
+            cursor: wait;
+            opacity: 0.82;
         }
 
         .contact-side {
@@ -1288,6 +1399,10 @@
         @keyframes projectCardIn {
             from { opacity: 0; transform: translateY(18px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         @media (max-width: 1100px) {
@@ -1690,36 +1805,35 @@
                 </div>
                 <div class="contact-layout">
                     <div class="contact-stack reveal">
-                        <div class="contact-card"><strong>Email</strong><a href="mailto:wijdanelamsaadi@gmail.com">wijdanelamsaadi@gmail.com</a></div>
-                        <div class="contact-card"><strong>Phone</strong><a href="tel:+212630853382">+212 630853382</a></div>
-                        <div class="contact-card"><strong>Location</strong><span>El Jadida, Morocco</span></div>
-                        <div class="contact-card"><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/lamsadi-wijdane-a236bb257" target="_blank" rel="noreferrer">linkedin.com/in/lamsadi-wijdane-a236bb257</a></div>
-                        <div class="contact-card"><strong>GitHub</strong><a href="https://github.com/wijdanelamsaadi-commits" target="_blank" rel="noreferrer">github.com/wijdanelamsaadi-commits</a></div>
+                        <div class="contact-card">
+                            <span class="contact-icon"><iconify-icon icon="material-symbols:mail"></iconify-icon></span>
+                            <div><strong>Email</strong><a href="mailto:wijdanelamsaadi@gmail.com">wijdanelamsaadi@gmail.com</a></div>
+                        </div>
+                        <div class="contact-card">
+                            <span class="contact-icon"><iconify-icon icon="logos:linkedin-icon"></iconify-icon></span>
+                            <div><strong>LinkedIn</strong><a href="https://linkedin.com/in/lamsadi-wijdane-a236bb257" target="_blank" rel="noopener noreferrer">linkedin.com/in/lamsadi-wijdane-a236bb257</a></div>
+                        </div>
+                        <div class="contact-card">
+                            <span class="contact-icon"><iconify-icon icon="mdi:github"></iconify-icon></span>
+                            <div><strong>GitHub</strong><a href="https://github.com/wijdanelamsaadi-commits" target="_blank" rel="noopener noreferrer">github.com/wijdanelamsaadi-commits</a></div>
+                        </div>
+                        <div class="contact-card">
+                            <span class="contact-icon"><iconify-icon icon="material-symbols:location-on"></iconify-icon></span>
+                            <div><strong>Location</strong><span>El Jadida, Morocco</span></div>
+                        </div>
+                        <p class="contact-note">Open to PFA Internship opportunities — July/August 2026</p>
                     </div>
-                    <form class="contact-form card reveal" id="contactForm">
-                        <div class="field"><label for="name">Your Name</label><input id="name" name="name" type="text" required></div>
-                        <div class="field"><label for="email">Your Email</label><input id="email" name="email" type="email" required></div>
+                    <form class="contact-form card reveal" id="contactForm" action="https://formsubmit.co/ajax/wijdanelamsaadi@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+                        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+                        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
                         <div class="field"><label for="subject">Subject</label><input id="subject" name="subject" type="text" required></div>
                         <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
-                        <button class="primary-btn" type="submit" style="width:100%;">Send Message</button>
+                        <button class="primary-btn" type="submit" style="width:100%;"><span class="submit-label">Send Message</span><span class="submit-spinner" aria-hidden="true"></span></button>
+                        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
                     </form>
-                    <div class="contact-side reveal">
-                        <div class="contact-portrait-wrap">
-                            <img class="contact-portrait" src="./wijdane-profile.png" alt="Wijdane Lamsadi portrait">
-                        </div>
-                        <div class="available-card card">
-                            <h3>Available For</h3>
-                            <div class="check-list">
-                                <span>Freelance Projects</span>
-                                <span>Full-time Opportunities</span>
-                                <span>Collaborations</span>
-                            </div>
-                        </div>
-                        <div class="available-card card">
-                            <h3>Response Time</h3>
-                            <p class="soft-copy">Usually respond within 24 hours</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1846,16 +1960,50 @@
         projectSort.addEventListener('change', updateProjectCards);
         updateProjectCards();
 
-        document.getElementById('contactForm').addEventListener('submit', (event) => {
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const submitLabel = submitButton.querySelector('.submit-label');
+
+        function showFormStatus(type, message) {
+            formStatus.textContent = message;
+            formStatus.className = 'form-status visible ' + type;
+        }
+
+        contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const form = new FormData(event.currentTarget);
-            const subject = encodeURIComponent(form.get('subject') || 'Portfolio Contact');
-            const body = encodeURIComponent(
-                'Name: ' + form.get('name') + '\n' +
-                'Email: ' + form.get('email') + '\n\n' +
-                form.get('message')
-            );
-            window.location.href = 'mailto:wijdanelamsaadi@gmail.com?subject=' + subject + '&body=' + body;
+            const formData = new FormData(contactForm);
+
+            if (formData.get('_honey')) return;
+
+            formData.append('_subject', 'Portfolio Contact: ' + (formData.get('subject') || 'New message'));
+
+            contactForm.classList.add('is-sending');
+            submitButton.disabled = true;
+            submitLabel.textContent = 'Sending...';
+            showFormStatus('sending', 'Sending your message...');
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                const result = await response.json().catch(() => ({}));
+
+                if (!response.ok || result.success === false || result.success === 'false') {
+                    throw new Error(result.message || 'Form submission failed');
+                }
+
+                contactForm.reset();
+                showFormStatus('success', 'Message sent successfully. Thank you for reaching out!');
+            } catch (error) {
+                showFormStatus('error', error.message || 'Something went wrong. Please try again or email me directly at wijdanelamsaadi@gmail.com.');
+            } finally {
+                contactForm.classList.remove('is-sending');
+                submitButton.disabled = false;
+                submitLabel.textContent = 'Send Message';
+            }
         });
     </script>
 </body>
