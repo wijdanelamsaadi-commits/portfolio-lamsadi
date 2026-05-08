@@ -384,6 +384,29 @@
             font-weight: 800;
         }
 
+        .hero-badge {
+            width: fit-content;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.62rem 0.95rem;
+            border: 1px solid rgba(255, 107, 0, 0.45);
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(255, 90, 0, 0.13), rgba(255, 255, 255, 0.025));
+            color: var(--text);
+            font-family: "DM Mono", monospace;
+            font-size: 0.82rem;
+            font-weight: 800;
+            box-shadow: 0 0 24px rgba(255, 90, 0, 0.16);
+        }
+
+        .hero-badge iconify-icon {
+            color: var(--accent);
+            font-size: 1.05rem;
+            filter: drop-shadow(0 0 8px rgba(255, 107, 0, 0.35));
+        }
+
         .hero-desc {
             max-width: 590px;
             margin-top: 1rem;
@@ -641,6 +664,18 @@
             color: var(--accent);
         }
 
+        .mini-card {
+            min-height: 142px;
+        }
+
+        .mini-card iconify-icon {
+            width: 1.35rem;
+            height: 1.35rem;
+            color: var(--accent);
+            margin-bottom: 0.7rem;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.25));
+        }
+
         .projects-top {
             align-items: center;
         }
@@ -805,7 +840,7 @@
         }
 
         .project-body .soft-copy {
-            min-height: 7.2em;
+            min-height: 8.5em;
         }
 
         .project-body h3 {
@@ -1039,7 +1074,7 @@
 
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
         }
 
@@ -1293,11 +1328,12 @@
                     <div class="bg-word">WIJDANE LAMSADI</div>
                     <div class="eyebrow">Portfolio</div>
                     <h1 class="hero-title">Wijdane Lamsadi</h1>
-                    <p class="hero-subtitle">Software Engineering Student</p>
+                    <p class="hero-subtitle">Software Engineering Student — Full-Stack, AI, Data & Cloud</p>
+                    <div class="hero-badge"><iconify-icon icon="material-symbols:work-history"></iconify-icon><span>Looking for PFA Internship — July/August 2026</span></div>
                     <p class="hero-desc">I build modern web applications and intelligent systems that solve real world problems.</p>
                     <div class="button-row">
                         <a class="primary-btn" href="#projects">View My Work</a>
-                        <a class="secondary-btn" href="https://drive.google.com/file/d/1Urc0dxr0m1ZaLsfQzs6aoDMq3j5nztHI/view?usp=sharing" target="_blank" rel="noreferrer">Download CV</a>
+                        <a class="secondary-btn" href="https://drive.google.com/file/d/1yobQ5SAPqNdj_gK6dJYQPTF2CFENGQ7k/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download CV</a>
                     </div>
                     <div class="social-row" aria-label="Social links">
                         <a class="social-link" href="https://github.com/wijdanelamsaadi-commits" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
@@ -1329,21 +1365,39 @@
                     <div class="about-copy reveal">
                         <div class="eyebrow">ABOUT ME</div>
                         <h2 class="about-title">Wijdane <span class="accent">Lamsadi</span></h2>
-                        <p class="about-subtitle">Software Engineering Student at ENSA El Jadida</p>
-                        <p class="soft-copy">I'm passionate about software engineering, artificial intelligence, and modern web technologies. I love turning ideas into real solutions through clean code and thoughtful design.</p>
-                        <p class="soft-copy" style="margin-top:1rem;">Always curious, always learning, and always building the future.</p>
+                        <p class="about-subtitle">ENSA El Jadida — ISIC Engineering</p>
+                        <p class="soft-copy">Software engineering student focused on full-stack development, artificial intelligence, data engineering, cloud technologies, and mobile development. I design practical systems that connect clean interfaces, reliable APIs, intelligent models, and useful dashboards.</p>
+                        <p class="soft-copy" style="margin-top:1rem;">I enjoy building production-minded solutions with modern web stacks, AI/deep learning workflows, AWS-ready cloud thinking, and data-driven decision support.</p>
                         <div class="mini-grid">
                             <div class="mini-card">
+                                <iconify-icon icon="material-symbols:school"></iconify-icon>
                                 <strong>Education</strong>
-                                <span>ENSA El Jadida</span>
+                                <span>ENSA El Jadida — ISIC Engineering</span>
                             </div>
                             <div class="mini-card">
-                                <strong>Projects</strong>
-                                <span>10+</span>
+                                <iconify-icon icon="material-symbols:code-blocks"></iconify-icon>
+                                <strong>Full-Stack Development</strong>
+                                <span>Angular, React, Node.js, Spring Boot</span>
                             </div>
                             <div class="mini-card">
-                                <strong>Technologies</strong>
-                                <span>Java, Angular, Python</span>
+                                <iconify-icon icon="carbon:machine-learning-model"></iconify-icon>
+                                <strong>AI / Deep Learning</strong>
+                                <span>PyTorch, TensorFlow, Computer Vision</span>
+                            </div>
+                            <div class="mini-card">
+                                <iconify-icon icon="material-symbols:database"></iconify-icon>
+                                <strong>Data Engineering</strong>
+                                <span>SQL, Power BI, Pandas, dashboards</span>
+                            </div>
+                            <div class="mini-card">
+                                <iconify-icon icon="logos:aws"></iconify-icon>
+                                <strong>Cloud & AWS</strong>
+                                <span>Cloud-ready APIs, Docker, automation</span>
+                            </div>
+                            <div class="mini-card">
+                                <iconify-icon icon="material-symbols:phone-android"></iconify-icon>
+                                <strong>Mobile Development</strong>
+                                <span>Android, Flutter, React Native</span>
                             </div>
                         </div>
                         <div class="skills-rail about-skills" aria-label="Core skills repeated">
@@ -1387,7 +1441,7 @@
                         <div class="project-body">
                             <p class="orange-sub">AI / Fraud Detection</p>
                             <h3>FraudShield / TrustGuard</h3>
-                            <p class="soft-copy">AI-based financial fraud detection system with multi-layer detection: XGBoost, Autoencoder PyTorch, EasyOCR + ELA for cheque fraud, DeepFace/FaceNet for identity verification, Siamese Network for signature verification, FastAPI backend, Streamlit dashboard, React Native mobile app, Firebase, and n8n alerts.</p>
+                            <p class="soft-copy">Featured AI fraud detection platform combining XGBoost, PyTorch autoencoders, OCR/ELA cheque analysis, identity verification, and signature matching with a FastAPI backend, Streamlit dashboard, React Native mobile app, Firebase, and n8n alert automation.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:python"></iconify-icon><span>Python</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:fastapi"></iconify-icon><span>FastAPI</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:streamlit"></iconify-icon><span>Streamlit</span></span><span class="tech-badge"><iconify-icon icon="logos:pytorch-icon"></iconify-icon><span>PyTorch</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:xgboost"></iconify-icon><span>XGBoost</span></span><span class="tech-badge"><iconify-icon icon="logos:react"></iconify-icon><span>React Native</span></span><span class="tech-badge"><iconify-icon icon="logos:firebase"></iconify-icon><span>Firebase</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:n8n"></iconify-icon><span>n8n</span></span><span class="tech-badge"><iconify-icon icon="mdi:ocr"></iconify-icon><span>OCR</span></span><span class="tech-badge"><iconify-icon icon="carbon:machine-learning-model"></iconify-icon><span>Computer Vision</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/13OHhmXmMHxfjDtr61V1ojt2B5dSv1wxQ/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/FraudShield.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
@@ -1400,7 +1454,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
                             <h3>Smart Attendance</h3>
-                            <p class="soft-copy">Smart attendance management application for ENSA El Jadida with student management, QR code validation, absence tracking, modules, reports, and modern admin/student interfaces.</p>
+                            <p class="soft-copy">QR-based attendance platform for ENSA El Jadida with secure student validation, absence tracking, module management, reports, and polished admin/student mobile interfaces connected to Firebase.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:android-icon"></iconify-icon><span>Android</span></span><span class="tech-badge"><iconify-icon icon="logos:java"></iconify-icon><span>Java</span></span><span class="tech-badge"><iconify-icon icon="logos:firebase"></iconify-icon><span>Firebase</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:qr-code-2-rounded"></iconify-icon><span>QR Code</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:phone-android"></iconify-icon><span>Mobile App</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/129tID2chBt-1D9hCXIgQ0yhpox_KnMt_/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/Smart-Attendance-ENSA-El-Jadida.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
@@ -1413,7 +1467,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
                             <h3>MovieApp / CineAI</h3>
-                            <p class="soft-copy">Movie browsing mobile app with modern UI, authentication, dynamic movie content, home screens, profile, and smooth user experience.</p>
+                            <p class="soft-copy">Mobile movie discovery app with authentication, dynamic API content, profile flows, modern home screens, and a smooth Android UI designed for clean browsing and engagement.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="simple-icons:androidstudio"></iconify-icon><span>Android Studio</span></span><span class="tech-badge"><iconify-icon icon="logos:java"></iconify-icon><span>Java</span></span><span class="tech-badge"><iconify-icon icon="carbon:api-1"></iconify-icon><span>API</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:design-services"></iconify-icon><span>UI Design</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:phone-android"></iconify-icon><span>Mobile App</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1rKmLy86YX0qMUC8HPENR3XWbgdpznV15/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/MovieApp_CineAI.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
@@ -1426,7 +1480,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
                             <h3>PermiApp</h3>
-                            <p class="soft-copy">Driving license learning mobile app with quizzes, lessons, videos, competition mode, AI assistant, profile, and modern interactive interfaces.</p>
+                            <p class="soft-copy">Interactive driving-license learning app with quizzes, lessons, videos, competition mode, AI assistance, profile management, and a modern mobile-first study experience.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="simple-icons:androidstudio"></iconify-icon><span>Android Studio</span></span><span class="tech-badge"><iconify-icon icon="logos:java"></iconify-icon><span>Java</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:design-services"></iconify-icon><span>UI Design</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:quiz"></iconify-icon><span>Quiz App</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:phone-android"></iconify-icon><span>Mobile App</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/12hGWnccZLBvcJPWggJ661h7XnborjonT/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/permis.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
@@ -1439,7 +1493,7 @@
                         <div class="project-body">
                             <p class="orange-sub">E-commerce Platform</p>
                             <h3>Dar Atlas</h3>
-                            <p class="soft-copy">Moroccan-inspired e-commerce platform for artisan, food, and clothing products with premium UI, shopping cart, categories, and product management.</p>
+                            <p class="soft-copy">Moroccan-inspired e-commerce platform for artisan, food, and clothing products with premium UI, category browsing, product management, shopping cart, and a polished storefront experience.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:php"></iconify-icon><span>PHP</span></span><span class="tech-badge"><iconify-icon icon="logos:mysql-icon"></iconify-icon><span>MySQL</span></span><span class="tech-badge"><iconify-icon icon="logos:javascript"></iconify-icon><span>JavaScript</span></span><span class="tech-badge"><iconify-icon icon="logos:html-5"></iconify-icon><span>HTML</span></span><span class="tech-badge"><iconify-icon icon="logos:css-3"></iconify-icon><span>CSS</span></span><span class="tech-badge"><iconify-icon icon="logos:bootstrap"></iconify-icon><span>Bootstrap</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon><span>E-commerce</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1TWyPF1wd9KwaOcO8_ukHop62S45gqD3G/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/dar-atlas.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
@@ -1452,7 +1506,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Stage Professionnel</p>
                             <h3>Application GMAO — OCP</h3>
-                            <p class="soft-copy">Application de gestion de maintenance assistée par ordinateur pour la digitalisation de la maintenance industrielle chez OCP Jorf Lasfar, avec dashboard Power BI pour le suivi des KPIs.</p>
+                            <p class="soft-copy">Industrial maintenance management solution for OCP Jorf Lasfar, digitizing GMAO workflows and connecting operational data to Power BI dashboards for KPI monitoring and decision support.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="carbon:deployment-pattern"></iconify-icon><span>Architecture Logicielle</span></span><span class="tech-badge"><iconify-icon icon="carbon:object-storage"></iconify-icon><span>POO</span></span><span class="tech-badge"><iconify-icon icon="logos:microsoft-power-bi"></iconify-icon><span>Power BI</span></span><span class="tech-badge"><iconify-icon icon="carbon:sql"></iconify-icon><span>SQL</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1XLDrKxaqd6K6-YOUYC0dbON_nocurx0E/view?usp=sharing" target="_blank" rel="noreferrer">Rapport</a></div>
                         </div>
@@ -1465,7 +1519,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Deep Learning</p>
                             <h3>Pneumonia AI</h3>
-                            <p class="soft-copy">Modèle de Deep Learning pour le diagnostic médical par analyse d'images radiologiques utilisant des réseaux de neurones convolutifs (CNN) pour la détection automatique de pneumonie.</p>
+                            <p class="soft-copy">Deep learning medical imaging project using CNN-based computer vision to classify chest X-rays and support pneumonia detection through a practical AI diagnosis workflow.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:python"></iconify-icon><span>Python</span></span><span class="tech-badge"><iconify-icon icon="logos:tensorflow"></iconify-icon><span>TensorFlow</span></span><span class="tech-badge"><iconify-icon icon="carbon:machine-learning-model"></iconify-icon><span>CNN</span></span><span class="tech-badge"><iconify-icon icon="carbon:ai-status"></iconify-icon><span>Computer Vision</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/pneumonia-detection-fastapi" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1fSyvkiYc2_BZfAKoxbcct3L-TlA2UdVo/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
@@ -1478,7 +1532,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Intelligence Artificielle</p>
                             <h3>ENSAJ AI Assistant</h3>
-                            <p class="soft-copy">Assistant intelligent utilisant RAG (Retrieval-Augmented Generation), Fine-tuning et Agentic AI pour aider les étudiants dans leurs recherches et apprentissage.</p>
+                            <p class="soft-copy">RAG-powered student assistant for ENSAJ that combines retrieval, fine-tuning concepts, and agentic AI patterns to answer academic questions and improve learning support.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="simple-icons:streamlit"></iconify-icon><span>Streamlit</span></span><span class="tech-badge"><iconify-icon icon="logos:python"></iconify-icon><span>Python</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:psychology-alt"></iconify-icon><span>RAG</span></span><span class="tech-badge"><iconify-icon icon="carbon:ai-governance-lifecycle"></iconify-icon><span>Agentic AI</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/ensaj-chatbot-streamlit" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/12O5l9v-diK8XuqVKi_gwjP3ip6WHjSLF/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
@@ -1491,7 +1545,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Application Desktop</p>
                             <h3>NOVA Platform</h3>
-                            <p class="soft-copy">Solution complète de gestion scolaire avec emploi du temps, suivi des absences et notes, génération automatique de bulletins PDF et notifications WhatsApp aux parents.</p>
+                            <p class="soft-copy">School management platform with teacher/student administration, attendance, grades, timetable features, PDF report generation, and parent communication through WhatsApp workflows.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="devicon:csharp"></iconify-icon><span>C#</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:microsoftsqlserver"></iconify-icon><span>SQL Server</span></span><span class="tech-badge"><iconify-icon icon="teenyicons:pdf-solid"></iconify-icon><span>PDF</span></span><span class="tech-badge"><iconify-icon icon="logos:whatsapp-icon"></iconify-icon><span>WhatsApp API</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1_YXSxmoAH3RUI5SOoElzN14DLaKenLkp/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
@@ -1504,7 +1558,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Plateforme Web</p>
                             <h3>Gestion des Demandes</h3>
-                            <p class="soft-copy">Plateforme web avec workflow multi-niveaux pour la gestion des demandes d'expression de besoins, incluant des notifications automatiques et un système de validation hiérarchique.</p>
+                            <p class="soft-copy">Workflow web system for needs requests with multi-level validation, role-based processing, automatic notifications, and structured tracking from requester to administrator.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:php"></iconify-icon><span>PHP POO</span></span><span class="tech-badge"><iconify-icon icon="logos:mysql-icon"></iconify-icon><span>MySQL</span></span><span class="tech-badge"><iconify-icon icon="logos:bootstrap"></iconify-icon><span>Bootstrap</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/gestion-besoins" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1yTzwmc_ZSLplXdR6RGMYz1VhGdD5l64A/view?usp=sharing" target="_blank" rel="noreferrer">Démo Demandeur</a><a class="icon-btn" href="https://drive.google.com/file/d/1GU6lW2h1H2KOZzn2PAq-3rK1zm9IZRQG/view?usp=sharing" target="_blank" rel="noreferrer">Démo Admin</a></div>
                         </div>
@@ -1517,7 +1571,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Application Mobile</p>
                             <h3>Vaccination Reminder App</h3>
-                            <p class="soft-copy">Application mobile Flutter de suivi vaccinal multi-profils avec système de rappels automatisés pour ne jamais manquer une vaccination importante.</p>
+                            <p class="soft-copy">Flutter vaccination tracking app supporting multiple profiles, vaccine schedules, reminder notifications, and clear mobile flows for reliable health follow-up.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:flutter"></iconify-icon><span>Flutter</span></span><span class="tech-badge"><iconify-icon icon="logos:dart"></iconify-icon><span>Dart</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:notifications-active"></iconify-icon><span>Notifications</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/vaccination_reminder_app_version_modifi-" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/10Iw8hHgM0xkwG6ug6lFL_m1N5G3ph8r9/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
@@ -1530,7 +1584,7 @@
                         <div class="project-body">
                             <p class="orange-sub">Application Mobile</p>
                             <h3>Waqt Al Khayr</h3>
-                            <p class="soft-copy">Application mobile React Native dédiée aux services communautaires, facilitant la mise en relation des bénévoles avec les associations et les actions solidaires.</p>
+                            <p class="soft-copy">React Native community service app connecting volunteers, associations, and solidarity actions through organized mobile flows, Redux state management, and accessible UX.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:react"></iconify-icon><span>React Native</span></span><span class="tech-badge"><iconify-icon icon="logos:redux"></iconify-icon><span>Redux</span></span><span class="tech-badge"><iconify-icon icon="logos:javascript"></iconify-icon><span>JavaScript</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/WA9T_LKHIR" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1UxTK4FIhu9L6l_QqKBIaz-rWJSLVID3w/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
@@ -1573,7 +1627,8 @@
                     <div class="tech-card reveal"><h3>Frontend</h3><div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:angular-icon"></iconify-icon><span>Angular</span></span><span class="tech-badge"><iconify-icon icon="logos:html-5"></iconify-icon><span>HTML</span></span><span class="tech-badge"><iconify-icon icon="logos:css-3"></iconify-icon><span>CSS</span></span><span class="tech-badge"><iconify-icon icon="logos:typescript-icon"></iconify-icon><span>TypeScript</span></span><span class="tech-badge"><iconify-icon icon="logos:tailwindcss-icon"></iconify-icon><span>Tailwind CSS</span></span></div></div>
                     <div class="tech-card reveal"><h3>Backend</h3><div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:nodejs-icon"></iconify-icon><span>Node.js</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:express"></iconify-icon><span>Express.js</span></span><span class="tech-badge"><iconify-icon icon="logos:spring-icon"></iconify-icon><span>Spring Boot</span></span><span class="tech-badge"><iconify-icon icon="logos:dotnet"></iconify-icon><span>.NET</span></span><span class="tech-badge"><iconify-icon icon="carbon:api-1"></iconify-icon><span>REST API</span></span></div></div>
                     <div class="tech-card reveal"><h3>Database</h3><div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:mysql-icon"></iconify-icon><span>MySQL</span></span><span class="tech-badge"><iconify-icon icon="logos:mongodb-icon"></iconify-icon><span>MongoDB</span></span><span class="tech-badge"><iconify-icon icon="logos:postgresql"></iconify-icon><span>PostgreSQL</span></span><span class="tech-badge"><iconify-icon icon="logos:firebase"></iconify-icon><span>Firebase</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:microsoftsqlserver"></iconify-icon><span>SQL Server</span></span></div></div>
-                    <div class="tech-card reveal"><h3>Tools & Others</h3><div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:git-icon"></iconify-icon><span>Git</span></span><span class="tech-badge"><iconify-icon icon="mdi:github"></iconify-icon><span>GitHub</span></span><span class="tech-badge"><iconify-icon icon="logos:docker-icon"></iconify-icon><span>Docker</span></span><span class="tech-badge"><iconify-icon icon="logos:figma"></iconify-icon><span>Figma</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:postman"></iconify-icon><span>Postman</span></span></div></div>
+                    <div class="tech-card reveal"><h3>AI & Data</h3><div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:tensorflow"></iconify-icon><span>TensorFlow</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:keras"></iconify-icon><span>Keras</span></span><span class="tech-badge"><iconify-icon icon="logos:pytorch-icon"></iconify-icon><span>PyTorch</span></span><span class="tech-badge"><iconify-icon icon="logos:microsoft-power-bi"></iconify-icon><span>Power BI</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:pandas"></iconify-icon><span>Pandas</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:psychology-alt"></iconify-icon><span>RAG</span></span><span class="tech-badge"><iconify-icon icon="carbon:ai-status"></iconify-icon><span>Computer Vision</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:fastapi"></iconify-icon><span>FastAPI</span></span></div></div>
+                    <div class="tech-card reveal"><h3>Tools</h3><div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:git-icon"></iconify-icon><span>Git</span></span><span class="tech-badge"><iconify-icon icon="mdi:github"></iconify-icon><span>GitHub</span></span><span class="tech-badge"><iconify-icon icon="logos:docker-icon"></iconify-icon><span>Docker</span></span><span class="tech-badge"><iconify-icon icon="logos:figma"></iconify-icon><span>Figma</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:postman"></iconify-icon><span>Postman</span></span><span class="tech-badge"><iconify-icon icon="logos:aws"></iconify-icon><span>AWS</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:n8n"></iconify-icon><span>n8n</span></span></div></div>
                 </div>
                 <div class="cta-card card reveal">
                     <div>
