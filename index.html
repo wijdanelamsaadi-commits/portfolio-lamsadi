@@ -724,7 +724,7 @@
             opacity: 1;
         }
 
-        .drive-preview {
+        .project-media {
             position: relative;
             margin: 1rem 1rem 0;
             aspect-ratio: 16 / 10;
@@ -737,28 +737,49 @@
             box-shadow: inset 0 0 46px rgba(255, 90, 0, 0.1), 0 18px 42px rgba(0, 0, 0, 0.26);
         }
 
-        body.light-mode .drive-preview {
+        body.light-mode .project-media {
             background:
                 radial-gradient(circle at 74% 24%, rgba(255, 90, 0, 0.18), transparent 34%),
                 linear-gradient(135deg, #ffffff, #f3f3f3);
             box-shadow: 0 18px 42px rgba(255, 90, 0, 0.12);
         }
 
-        .drive-preview iframe {
+        .project-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, transparent 62%, rgba(3, 3, 3, 0.54));
+            opacity: 0.72;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-media picture {
             width: 100%;
             height: 100%;
-            border: 0;
             display: block;
+        }
+
+        .project-media img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            object-position: center;
             background: #050505;
-            transition: transform 0.45s ease, filter 0.3s ease;
+            transition: transform 0.48s ease, filter 0.3s ease;
         }
 
-        .featured-project:hover .drive-preview iframe {
-            transform: scale(1.025);
-            filter: saturate(1.12) contrast(1.06);
+        .project-card:hover .project-media img {
+            transform: scale(1.035);
+            filter: saturate(1.14) contrast(1.05);
         }
 
-        .drive-preview-label {
+        .project-card:hover .project-media::after {
+            opacity: 0.44;
+        }
+
+        .project-media-label {
             position: absolute;
             left: 0.85rem;
             bottom: 0.85rem;
@@ -1324,9 +1345,9 @@
                 </div>
                 <div class="projects-grid">
                     <article class="project-card featured-project card reveal">
-                        <div class="drive-preview">
-                            <iframe src="https://drive.google.com/file/d/13OHhmXmMHxfjDtr61V1ojt2B5dSv1wxQ/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="FraudShield / TrustGuard demo video"></iframe>
-                            <span class="drive-preview-label">Demo Video</span>
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/fraudshield.webp" type="image/webp"><img src="assets/images/fraudshield.png" alt="FraudShield project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">AI / Fraud Detection</p>
@@ -1337,9 +1358,9 @@
                         </div>
                     </article>
                     <article class="project-card featured-project card reveal">
-                        <div class="drive-preview">
-                            <iframe src="https://drive.google.com/file/d/129tID2chBt-1D9hCXIgQ0yhpox_KnMt_/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Smart Attendance demo video"></iframe>
-                            <span class="drive-preview-label">Demo Video</span>
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/smart-attendance.webp" type="image/webp"><img src="assets/images/smart-attendance.png" alt="Smart Attendance project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
@@ -1350,9 +1371,9 @@
                         </div>
                     </article>
                     <article class="project-card featured-project card reveal">
-                        <div class="drive-preview">
-                            <iframe src="https://drive.google.com/file/d/1rKmLy86YX0qMUC8HPENR3XWbgdpznV15/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="MovieApp / CineAI demo video"></iframe>
-                            <span class="drive-preview-label">Demo Video</span>
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/movieapp.webp" type="image/webp"><img src="assets/images/movieapp.png" alt="MovieApp CineAI project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
@@ -1363,9 +1384,9 @@
                         </div>
                     </article>
                     <article class="project-card featured-project card reveal">
-                        <div class="drive-preview">
-                            <iframe src="https://drive.google.com/file/d/12hGWnccZLBvcJPWggJ661h7XnborjonT/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="PermiApp demo video"></iframe>
-                            <span class="drive-preview-label">Demo Video</span>
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/permiapp.webp" type="image/webp"><img src="assets/images/permiapp.png" alt="PermiApp project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
@@ -1376,9 +1397,9 @@
                         </div>
                     </article>
                     <article class="project-card featured-project card reveal">
-                        <div class="drive-preview">
-                            <iframe src="https://drive.google.com/file/d/1TWyPF1wd9KwaOcO8_ukHop62S45gqD3G/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Dar Atlas demo video"></iframe>
-                            <span class="drive-preview-label">Demo Video</span>
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/dar-atlas.webp" type="image/webp"><img src="assets/images/dar-atlas.png" alt="Dar Atlas project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">E-commerce Platform</p>
@@ -1389,6 +1410,10 @@
                         </div>
                     </article>
                     <article class="project-card card reveal">
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/GMAO.webp" type="image/webp"><img src="assets/images/GMAO.jfif" alt="Application GMAO OCP project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
+                        </div>
                         <div class="project-body">
                             <p class="orange-sub">Stage Professionnel</p>
                             <h3>Application GMAO — OCP</h3>
@@ -1398,42 +1423,62 @@
                         </div>
                     </article>
                     <article class="project-card card reveal">
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/pneumonia-ai.webp" type="image/webp"><img src="assets/images/pneumonia-ai.png" alt="Pneumonia AI project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
+                        </div>
                         <div class="project-body">
                             <p class="orange-sub">Deep Learning</p>
-                            <h3>Détection de Pneumonie par IA</h3>
+                            <h3>Pneumonia AI</h3>
                             <p class="soft-copy">Modèle de Deep Learning pour le diagnostic médical par analyse d'images radiologiques utilisant des réseaux de neurones convolutifs (CNN) pour la détection automatique de pneumonie.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:python"></iconify-icon><span>Python</span></span><span class="tech-badge"><iconify-icon icon="logos:tensorflow"></iconify-icon><span>TensorFlow</span></span><span class="tech-badge"><iconify-icon icon="carbon:machine-learning-model"></iconify-icon><span>CNN</span></span><span class="tech-badge"><iconify-icon icon="carbon:ai-status"></iconify-icon><span>Computer Vision</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/pneumonia-detection-fastapi" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1fSyvkiYc2_BZfAKoxbcct3L-TlA2UdVo/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/chatbot-ai.webp" type="image/webp"><img src="assets/images/chatbot-ai.png" alt="ENSAJ AI Assistant project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
+                        </div>
                         <div class="project-body">
                             <p class="orange-sub">Intelligence Artificielle</p>
-                            <h3>Chatbot IA pour Étudiants</h3>
+                            <h3>ENSAJ AI Assistant</h3>
                             <p class="soft-copy">Assistant intelligent utilisant RAG (Retrieval-Augmented Generation), Fine-tuning et Agentic AI pour aider les étudiants dans leurs recherches et apprentissage.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="simple-icons:streamlit"></iconify-icon><span>Streamlit</span></span><span class="tech-badge"><iconify-icon icon="logos:python"></iconify-icon><span>Python</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:psychology-alt"></iconify-icon><span>RAG</span></span><span class="tech-badge"><iconify-icon icon="carbon:ai-governance-lifecycle"></iconify-icon><span>Agentic AI</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/ensaj-chatbot-streamlit" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/12O5l9v-diK8XuqVKi_gwjP3ip6WHjSLF/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/NOVA.webp" type="image/webp"><img src="assets/images/NOVA.jfif" alt="NOVA platform project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
+                        </div>
                         <div class="project-body">
                             <p class="orange-sub">Application Desktop</p>
-                            <h3>Gestion d'École Primaire</h3>
+                            <h3>NOVA Platform</h3>
                             <p class="soft-copy">Solution complète de gestion scolaire avec emploi du temps, suivi des absences et notes, génération automatique de bulletins PDF et notifications WhatsApp aux parents.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="devicon:csharp"></iconify-icon><span>C#</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:microsoftsqlserver"></iconify-icon><span>SQL Server</span></span><span class="tech-badge"><iconify-icon icon="teenyicons:pdf-solid"></iconify-icon><span>PDF</span></span><span class="tech-badge"><iconify-icon icon="logos:whatsapp-icon"></iconify-icon><span>WhatsApp API</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1_YXSxmoAH3RUI5SOoElzN14DLaKenLkp/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/gestionBesoin.webp" type="image/webp"><img src="assets/images/gestionBesoin.png" alt="Gestion des Demandes project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
+                        </div>
                         <div class="project-body">
                             <p class="orange-sub">Plateforme Web</p>
-                            <h3>Plateforme Gestion des Demandes de Besoins</h3>
+                            <h3>Gestion des Demandes</h3>
                             <p class="soft-copy">Plateforme web avec workflow multi-niveaux pour la gestion des demandes d'expression de besoins, incluant des notifications automatiques et un système de validation hiérarchique.</p>
                             <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:php"></iconify-icon><span>PHP POO</span></span><span class="tech-badge"><iconify-icon icon="logos:mysql-icon"></iconify-icon><span>MySQL</span></span><span class="tech-badge"><iconify-icon icon="logos:bootstrap"></iconify-icon><span>Bootstrap</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/gestion-besoins" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1yTzwmc_ZSLplXdR6RGMYz1VhGdD5l64A/view?usp=sharing" target="_blank" rel="noreferrer">Démo Demandeur</a><a class="icon-btn" href="https://drive.google.com/file/d/1GU6lW2h1H2KOZzn2PAq-3rK1zm9IZRQG/view?usp=sharing" target="_blank" rel="noreferrer">Démo Admin</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/vaccination-app.webp" type="image/webp"><img src="assets/images/vaccination-app.png" alt="Vaccination Reminder project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
+                        </div>
                         <div class="project-body">
                             <p class="orange-sub">Application Mobile</p>
                             <h3>Vaccination Reminder App</h3>
@@ -1443,6 +1488,10 @@
                         </div>
                     </article>
                     <article class="project-card card reveal">
+                        <div class="project-media">
+                            <picture><source srcset="assets/images/waqt-al-khayr.webp" type="image/webp"><img src="assets/images/waqt-al-khayr.png" alt="Waqt Al Khayr project screenshot" loading="lazy" decoding="async"></picture>
+                            <span class="project-media-label">Screenshot</span>
+                        </div>
                         <div class="project-body">
                             <p class="orange-sub">Application Mobile</p>
                             <h3>Waqt Al Khayr</h3>
