@@ -700,69 +700,60 @@
             box-shadow: 0 20px 52px var(--accent-glow);
         }
 
-        .project-card.video-project {
+        .featured-project {
             display: flex;
             flex-direction: column;
         }
 
-        .project-video-preview {
-            position: relative;
-            margin: 1rem 1rem 0;
-            aspect-ratio: 16 / 10;
-            overflow: hidden;
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            background:
-                radial-gradient(circle at 72% 28%, rgba(255, 90, 0, 0.34), transparent 32%),
-                linear-gradient(135deg, #151515, #060606);
-            box-shadow: inset 0 0 40px rgba(255, 90, 0, 0.08);
-        }
-
-        .project-video-preview::after {
+        .featured-project::after {
             content: "";
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background:
-                linear-gradient(180deg, transparent 52%, rgba(3, 3, 3, 0.7)),
-                radial-gradient(circle at 50% 50%, transparent 58%, rgba(255, 90, 0, 0.16));
-            opacity: 0.78;
+            background: radial-gradient(circle at top right, rgba(255, 90, 0, 0.13), transparent 42%);
+            opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        body.light-mode .project-video-preview {
-            background:
-                radial-gradient(circle at 72% 28%, rgba(255, 90, 0, 0.2), transparent 32%),
-                linear-gradient(135deg, #ffffff, #eeeeee);
+        .featured-project:hover::after {
+            opacity: 1;
         }
 
-        body.light-mode .project-video-preview::after {
+        .drive-preview {
+            position: relative;
+            margin: 1rem 1rem 0;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border: 1px solid rgba(255, 90, 0, 0.28);
+            border-radius: 22px;
             background:
-                linear-gradient(180deg, transparent 54%, rgba(255, 255, 255, 0.72)),
-                radial-gradient(circle at 50% 50%, transparent 58%, rgba(255, 90, 0, 0.14));
+                radial-gradient(circle at 74% 24%, rgba(255, 90, 0, 0.28), transparent 34%),
+                linear-gradient(135deg, #151515, #050505);
+            box-shadow: inset 0 0 46px rgba(255, 90, 0, 0.1), 0 18px 42px rgba(0, 0, 0, 0.26);
         }
 
-        .project-video-preview video {
+        body.light-mode .drive-preview {
+            background:
+                radial-gradient(circle at 74% 24%, rgba(255, 90, 0, 0.18), transparent 34%),
+                linear-gradient(135deg, #ffffff, #f3f3f3);
+            box-shadow: 0 18px 42px rgba(255, 90, 0, 0.12);
+        }
+
+        .drive-preview iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border: 0;
             display: block;
-            opacity: 0.86;
-            transition: opacity 0.3s ease, transform 0.45s ease, filter 0.3s ease;
-            filter: saturate(1.08) contrast(1.02);
+            background: #050505;
+            transition: transform 0.45s ease, filter 0.3s ease;
         }
 
-        .project-card:hover .project-video-preview video {
-            opacity: 1;
-            transform: scale(1.035);
-            filter: saturate(1.18) contrast(1.08);
+        .featured-project:hover .drive-preview iframe {
+            transform: scale(1.025);
+            filter: saturate(1.12) contrast(1.06);
         }
 
-        .project-card:hover .project-video-preview::after {
-            opacity: 0.42;
-        }
-
-        .video-badge {
+        .drive-preview-label {
             position: absolute;
             left: 0.85rem;
             bottom: 0.85rem;
@@ -777,40 +768,7 @@
             letter-spacing: 0.08em;
             text-transform: uppercase;
             backdrop-filter: blur(10px);
-        }
-
-        .project-card:hover .video-badge {
-            box-shadow: 0 0 24px var(--accent-glow);
-        }
-
-        .video-play-mark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 2;
-            width: 54px;
-            height: 54px;
-            display: grid;
-            place-items: center;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 90, 0, 0.6);
-            background: rgba(3, 3, 3, 0.58);
-            color: #fff;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 32px rgba(255, 90, 0, 0.28);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .video-play-mark svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            transform: translateX(2px);
-        }
-
-        .project-card:hover .video-play-mark {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(1.12);
+            pointer-events: none;
         }
 
         .project-body {
@@ -851,6 +809,23 @@
             color: var(--muted);
             font-size: 0.72rem;
             font-family: "DM Mono", monospace;
+        }
+
+        .featured-project .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.32rem;
+            color: var(--text);
+            background: rgba(255, 90, 0, 0.06);
+        }
+
+        .tag-dot {
+            width: 0.42rem;
+            height: 0.42rem;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(255, 90, 0, 0.45);
+            flex: 0 0 auto;
         }
 
         .card-actions {
@@ -1289,68 +1264,69 @@
                     </div>
                 </div>
                 <div class="projects-grid">
-                    <article class="project-card video-project card reveal">
-                        <div class="project-video-preview">
-                            <video muted loop playsinline preload="metadata">
-                                <source src="./streamlitFraudShield.mp4" type="video/mp4">
-                            </video>
-                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
-                            <span class="video-badge">Hover Preview</span>
+                    <article class="project-card featured-project card reveal">
+                        <div class="drive-preview">
+                            <iframe src="https://drive.google.com/file/d/13OHhmXmMHxfjDtr61V1ojt2B5dSv1wxQ/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="FraudShield / TrustGuard demo video"></iframe>
+                            <span class="drive-preview-label">Demo Video</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">AI / Fraud Detection</p>
-                            <h3>FraudShield</h3>
-                            <p class="soft-copy">Intelligent fraud detection platform using AI models and real-time transaction analysis with modern dashboard visualization.</p>
-                            <div class="tag-row"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">FastAPI</span><span class="tag">Deep Learning</span></div>
-                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./streamlitFraudShield.mp4" target="_blank" rel="noreferrer">Demo</a></div>
+                            <h3>FraudShield / TrustGuard</h3>
+                            <p class="soft-copy">AI-based financial fraud detection system with multi-layer detection: XGBoost, Autoencoder PyTorch, EasyOCR + ELA for cheque fraud, DeepFace/FaceNet for identity verification, Siamese Network for signature verification, FastAPI backend, Streamlit dashboard, React Native mobile app, Firebase, and n8n alerts.</p>
+                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>Python</span><span class="tag"><span class="tag-dot"></span>FastAPI</span><span class="tag"><span class="tag-dot"></span>Streamlit</span><span class="tag"><span class="tag-dot"></span>PyTorch</span><span class="tag"><span class="tag-dot"></span>XGBoost</span><span class="tag"><span class="tag-dot"></span>React Native</span><span class="tag"><span class="tag-dot"></span>Firebase</span><span class="tag"><span class="tag-dot"></span>n8n</span><span class="tag"><span class="tag-dot"></span>OCR</span><span class="tag"><span class="tag-dot"></span>Computer Vision</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/13OHhmXmMHxfjDtr61V1ojt2B5dSv1wxQ/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/FraudShield.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
-                    <article class="project-card video-project card reveal">
-                        <div class="project-video-preview">
-                            <video muted loop playsinline preload="metadata">
-                                <source src="./smartAttendance.mp4" type="video/mp4">
-                            </video>
-                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
-                            <span class="video-badge">Hover Preview</span>
+                    <article class="project-card featured-project card reveal">
+                        <div class="drive-preview">
+                            <iframe src="https://drive.google.com/file/d/129tID2chBt-1D9hCXIgQ0yhpox_KnMt_/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Smart Attendance demo video"></iframe>
+                            <span class="drive-preview-label">Demo Video</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
                             <h3>Smart Attendance</h3>
-                            <p class="soft-copy">Smart attendance management application with QR code scanning, absence tracking, and student management.</p>
-                            <div class="tag-row"><span class="tag">Android</span><span class="tag">Java</span><span class="tag">Firebase</span></div>
-                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./smartAttendance.mp4" target="_blank" rel="noreferrer">Demo</a></div>
+                            <p class="soft-copy">Smart attendance management application for ENSA El Jadida with student management, QR code validation, absence tracking, modules, reports, and modern admin/student interfaces.</p>
+                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>Android</span><span class="tag"><span class="tag-dot"></span>Java</span><span class="tag"><span class="tag-dot"></span>Firebase</span><span class="tag"><span class="tag-dot"></span>QR Code</span><span class="tag"><span class="tag-dot"></span>Mobile App</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/129tID2chBt-1D9hCXIgQ0yhpox_KnMt_/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/Smart-Attendance-ENSA-El-Jadida.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
-                    <article class="project-card video-project card reveal">
-                        <div class="project-video-preview">
-                            <video muted loop playsinline preload="metadata">
-                                <source src="./movieApp.mp4" type="video/mp4">
-                            </video>
-                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
-                            <span class="video-badge">Hover Preview</span>
+                    <article class="project-card featured-project card reveal">
+                        <div class="drive-preview">
+                            <iframe src="https://drive.google.com/file/d/1rKmLy86YX0qMUC8HPENR3XWbgdpznV15/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="MovieApp / CineAI demo video"></iframe>
+                            <span class="drive-preview-label">Demo Video</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
-                            <h3>MovieApp</h3>
-                            <p class="soft-copy">Movie browsing mobile app with modern UI, authentication, and dynamic movie content.</p>
-                            <div class="tag-row"><span class="tag">Java</span><span class="tag">Android Studio</span><span class="tag">API</span></div>
-                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./movieApp.mp4" target="_blank" rel="noreferrer">Demo</a></div>
+                            <h3>MovieApp / CineAI</h3>
+                            <p class="soft-copy">Movie browsing mobile app with modern UI, authentication, dynamic movie content, home screens, profile, and smooth user experience.</p>
+                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>Android Studio</span><span class="tag"><span class="tag-dot"></span>Java</span><span class="tag"><span class="tag-dot"></span>API</span><span class="tag"><span class="tag-dot"></span>UI Design</span><span class="tag"><span class="tag-dot"></span>Mobile App</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1rKmLy86YX0qMUC8HPENR3XWbgdpznV15/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/MovieApp_CineAI.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
-                    <article class="project-card video-project card reveal">
-                        <div class="project-video-preview">
-                            <video muted loop playsinline preload="metadata">
-                                <source src="./permiApp.mp4" type="video/mp4">
-                            </video>
-                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
-                            <span class="video-badge">Hover Preview</span>
+                    <article class="project-card featured-project card reveal">
+                        <div class="drive-preview">
+                            <iframe src="https://drive.google.com/file/d/12hGWnccZLBvcJPWggJ661h7XnborjonT/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="PermiApp demo video"></iframe>
+                            <span class="drive-preview-label">Demo Video</span>
                         </div>
                         <div class="project-body">
                             <p class="orange-sub">Mobile Application</p>
                             <h3>PermiApp</h3>
-                            <p class="soft-copy">Mobile application for driving license learning with quizzes, lessons, videos, and a modern interactive interface.</p>
-                            <div class="tag-row"><span class="tag">Android Studio</span><span class="tag">Java</span><span class="tag">UI Design</span></div>
-                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./permiApp.mp4" target="_blank" rel="noreferrer">Demo</a></div>
+                            <p class="soft-copy">Driving license learning mobile app with quizzes, lessons, videos, competition mode, AI assistant, profile, and modern interactive interfaces.</p>
+                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>Android Studio</span><span class="tag"><span class="tag-dot"></span>Java</span><span class="tag"><span class="tag-dot"></span>UI Design</span><span class="tag"><span class="tag-dot"></span>Quiz App</span><span class="tag"><span class="tag-dot"></span>Mobile App</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/12hGWnccZLBvcJPWggJ661h7XnborjonT/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/permis.git" target="_blank" rel="noreferrer">GitHub</a></div>
+                        </div>
+                    </article>
+                    <article class="project-card featured-project card reveal">
+                        <div class="drive-preview">
+                            <iframe src="https://drive.google.com/file/d/1TWyPF1wd9KwaOcO8_ukHop62S45gqD3G/preview" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Dar Atlas demo video"></iframe>
+                            <span class="drive-preview-label">Demo Video</span>
+                        </div>
+                        <div class="project-body">
+                            <p class="orange-sub">E-commerce Platform</p>
+                            <h3>Dar Atlas</h3>
+                            <p class="soft-copy">Moroccan-inspired e-commerce platform for artisan, food, and clothing products with premium UI, shopping cart, categories, and product management.</p>
+                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>PHP</span><span class="tag"><span class="tag-dot"></span>MySQL</span><span class="tag"><span class="tag-dot"></span>JavaScript</span><span class="tag"><span class="tag-dot"></span>HTML</span><span class="tag"><span class="tag-dot"></span>CSS</span><span class="tag"><span class="tag-dot"></span>Bootstrap</span><span class="tag"><span class="tag-dot"></span>E-commerce</span></div>
+                            <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1TWyPF1wd9KwaOcO8_ukHop62S45gqD3G/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/dar-atlas.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
                     <article class="project-card card reveal">
@@ -1414,22 +1390,6 @@
                             <p class="soft-copy">Application mobile React Native dédiée aux services communautaires, facilitant la mise en relation des bénévoles avec les associations et les actions solidaires.</p>
                             <div class="tag-row"><span class="tag">React Native</span><span class="tag">Redux</span><span class="tag">JavaScript</span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/WA9T_LKHIR" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1UxTK4FIhu9L6l_QqKBIaz-rWJSLVID3w/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
-                        </div>
-                    </article>
-                    <article class="project-card video-project card reveal">
-                        <div class="project-video-preview">
-                            <video muted loop playsinline preload="metadata">
-                                <source src="./darAtlas.mp4" type="video/mp4">
-                            </video>
-                            <span class="video-play-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
-                            <span class="video-badge">Hover Preview</span>
-                        </div>
-                        <div class="project-body">
-                            <p class="orange-sub">E-commerce Platform</p>
-                            <h3>Dar Atlas</h3>
-                            <p class="soft-copy">Moroccan-inspired e-commerce platform with product management and modern shopping experience.</p>
-                            <div class="tag-row"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">JavaScript</span></div>
-                            <div class="card-actions"><a class="icon-btn demo-video-link" href="./darAtlas.mp4" target="_blank" rel="noreferrer">Demo</a></div>
                         </div>
                     </article>
                 </div>
@@ -1574,17 +1534,6 @@
         }, { threshold: 0.14 });
 
         document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
-
-        document.querySelectorAll('.project-video-preview video').forEach((video) => {
-            const card = video.closest('.project-card');
-            card.addEventListener('mouseenter', () => {
-                video.play().catch(() => {});
-            });
-            card.addEventListener('mouseleave', () => {
-                video.pause();
-                video.currentTime = 0;
-            });
-        });
 
         document.getElementById('contactForm').addEventListener('submit', (event) => {
             event.preventDefault();
