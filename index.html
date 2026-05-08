@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wijdane Lamsadi - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
     <style>
         :root {
             color-scheme: dark;
@@ -672,6 +673,8 @@
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 1fr;
+            align-items: stretch;
             gap: 1rem;
         }
 
@@ -679,6 +682,8 @@
             position: relative;
             min-height: 100%;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
             transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
         }
 
@@ -772,10 +777,14 @@
         }
 
         .project-body {
-            min-height: 100%;
+            flex: 1;
             padding: 1.55rem;
             display: flex;
             flex-direction: column;
+        }
+
+        .project-body .soft-copy {
+            min-height: 7.2em;
         }
 
         .project-body h3 {
@@ -800,6 +809,7 @@
             flex-wrap: wrap;
             gap: 0.45rem;
             margin-top: 1rem;
+            min-width: 0;
         }
 
         .tag {
@@ -811,21 +821,70 @@
             font-family: "DM Mono", monospace;
         }
 
-        .featured-project .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.32rem;
-            color: var(--text);
-            background: rgba(255, 90, 0, 0.06);
+        .project-card .tag-row {
+            gap: 0.58rem;
+            align-items: flex-start;
         }
 
-        .tag-dot {
-            width: 0.42rem;
-            height: 0.42rem;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 12px rgba(255, 90, 0, 0.45);
+        .project-card .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            max-width: 100%;
+            min-height: 36px;
+            padding: 0.48rem 0.72rem;
+            border: 1px solid rgba(255, 107, 0, 0.42);
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.96), rgba(5, 5, 5, 0.9));
+            color: var(--text);
+            font-size: 0.72rem;
+            font-family: "DM Mono", monospace;
+            font-weight: 800;
+            line-height: 1;
+            white-space: nowrap;
+            box-shadow: inset 0 0 18px rgba(255, 90, 0, 0.04);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-mode .project-card .tech-badge {
+            background: linear-gradient(135deg, #ffffff, #fff7f1);
+            color: #111;
+        }
+
+        .project-card .tech-badge iconify-icon {
+            width: 1.08rem;
+            height: 1.08rem;
+            color: var(--accent);
             flex: 0 0 auto;
+            filter: drop-shadow(0 0 8px rgba(255, 107, 0, 0.25));
+        }
+
+        .project-card .tech-badge span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .project-card .tech-badge:hover {
+            border-color: #ff6b00;
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.35);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 520px) {
+            .project-card .tag-row {
+                gap: 0.48rem;
+            }
+
+            .project-card .tech-badge {
+                min-height: 34px;
+                padding: 0.44rem 0.62rem;
+                font-size: 0.68rem;
+            }
+
+            .project-card .tech-badge iconify-icon {
+                width: 1rem;
+                height: 1rem;
+            }
         }
 
         .card-actions {
@@ -1273,7 +1332,7 @@
                             <p class="orange-sub">AI / Fraud Detection</p>
                             <h3>FraudShield / TrustGuard</h3>
                             <p class="soft-copy">AI-based financial fraud detection system with multi-layer detection: XGBoost, Autoencoder PyTorch, EasyOCR + ELA for cheque fraud, DeepFace/FaceNet for identity verification, Siamese Network for signature verification, FastAPI backend, Streamlit dashboard, React Native mobile app, Firebase, and n8n alerts.</p>
-                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>Python</span><span class="tag"><span class="tag-dot"></span>FastAPI</span><span class="tag"><span class="tag-dot"></span>Streamlit</span><span class="tag"><span class="tag-dot"></span>PyTorch</span><span class="tag"><span class="tag-dot"></span>XGBoost</span><span class="tag"><span class="tag-dot"></span>React Native</span><span class="tag"><span class="tag-dot"></span>Firebase</span><span class="tag"><span class="tag-dot"></span>n8n</span><span class="tag"><span class="tag-dot"></span>OCR</span><span class="tag"><span class="tag-dot"></span>Computer Vision</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:python"></iconify-icon><span>Python</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:fastapi"></iconify-icon><span>FastAPI</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:streamlit"></iconify-icon><span>Streamlit</span></span><span class="tech-badge"><iconify-icon icon="logos:pytorch-icon"></iconify-icon><span>PyTorch</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:xgboost"></iconify-icon><span>XGBoost</span></span><span class="tech-badge"><iconify-icon icon="logos:react"></iconify-icon><span>React Native</span></span><span class="tech-badge"><iconify-icon icon="logos:firebase"></iconify-icon><span>Firebase</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:n8n"></iconify-icon><span>n8n</span></span><span class="tech-badge"><iconify-icon icon="mdi:ocr"></iconify-icon><span>OCR</span></span><span class="tech-badge"><iconify-icon icon="carbon:machine-learning-model"></iconify-icon><span>Computer Vision</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/13OHhmXmMHxfjDtr61V1ojt2B5dSv1wxQ/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/FraudShield.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
@@ -1286,7 +1345,7 @@
                             <p class="orange-sub">Mobile Application</p>
                             <h3>Smart Attendance</h3>
                             <p class="soft-copy">Smart attendance management application for ENSA El Jadida with student management, QR code validation, absence tracking, modules, reports, and modern admin/student interfaces.</p>
-                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>Android</span><span class="tag"><span class="tag-dot"></span>Java</span><span class="tag"><span class="tag-dot"></span>Firebase</span><span class="tag"><span class="tag-dot"></span>QR Code</span><span class="tag"><span class="tag-dot"></span>Mobile App</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:android-icon"></iconify-icon><span>Android</span></span><span class="tech-badge"><iconify-icon icon="logos:java"></iconify-icon><span>Java</span></span><span class="tech-badge"><iconify-icon icon="logos:firebase"></iconify-icon><span>Firebase</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:qr-code-2-rounded"></iconify-icon><span>QR Code</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:phone-android"></iconify-icon><span>Mobile App</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/129tID2chBt-1D9hCXIgQ0yhpox_KnMt_/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/Smart-Attendance-ENSA-El-Jadida.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
@@ -1299,7 +1358,7 @@
                             <p class="orange-sub">Mobile Application</p>
                             <h3>MovieApp / CineAI</h3>
                             <p class="soft-copy">Movie browsing mobile app with modern UI, authentication, dynamic movie content, home screens, profile, and smooth user experience.</p>
-                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>Android Studio</span><span class="tag"><span class="tag-dot"></span>Java</span><span class="tag"><span class="tag-dot"></span>API</span><span class="tag"><span class="tag-dot"></span>UI Design</span><span class="tag"><span class="tag-dot"></span>Mobile App</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="simple-icons:androidstudio"></iconify-icon><span>Android Studio</span></span><span class="tech-badge"><iconify-icon icon="logos:java"></iconify-icon><span>Java</span></span><span class="tech-badge"><iconify-icon icon="carbon:api-1"></iconify-icon><span>API</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:design-services"></iconify-icon><span>UI Design</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:phone-android"></iconify-icon><span>Mobile App</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1rKmLy86YX0qMUC8HPENR3XWbgdpznV15/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/MovieApp_CineAI.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
@@ -1312,7 +1371,7 @@
                             <p class="orange-sub">Mobile Application</p>
                             <h3>PermiApp</h3>
                             <p class="soft-copy">Driving license learning mobile app with quizzes, lessons, videos, competition mode, AI assistant, profile, and modern interactive interfaces.</p>
-                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>Android Studio</span><span class="tag"><span class="tag-dot"></span>Java</span><span class="tag"><span class="tag-dot"></span>UI Design</span><span class="tag"><span class="tag-dot"></span>Quiz App</span><span class="tag"><span class="tag-dot"></span>Mobile App</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="simple-icons:androidstudio"></iconify-icon><span>Android Studio</span></span><span class="tech-badge"><iconify-icon icon="logos:java"></iconify-icon><span>Java</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:design-services"></iconify-icon><span>UI Design</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:quiz"></iconify-icon><span>Quiz App</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:phone-android"></iconify-icon><span>Mobile App</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/12hGWnccZLBvcJPWggJ661h7XnborjonT/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/permis.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
@@ -1325,7 +1384,7 @@
                             <p class="orange-sub">E-commerce Platform</p>
                             <h3>Dar Atlas</h3>
                             <p class="soft-copy">Moroccan-inspired e-commerce platform for artisan, food, and clothing products with premium UI, shopping cart, categories, and product management.</p>
-                            <div class="tag-row"><span class="tag"><span class="tag-dot"></span>PHP</span><span class="tag"><span class="tag-dot"></span>MySQL</span><span class="tag"><span class="tag-dot"></span>JavaScript</span><span class="tag"><span class="tag-dot"></span>HTML</span><span class="tag"><span class="tag-dot"></span>CSS</span><span class="tag"><span class="tag-dot"></span>Bootstrap</span><span class="tag"><span class="tag-dot"></span>E-commerce</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:php"></iconify-icon><span>PHP</span></span><span class="tech-badge"><iconify-icon icon="logos:mysql-icon"></iconify-icon><span>MySQL</span></span><span class="tech-badge"><iconify-icon icon="logos:javascript"></iconify-icon><span>JavaScript</span></span><span class="tech-badge"><iconify-icon icon="logos:html-5"></iconify-icon><span>HTML</span></span><span class="tech-badge"><iconify-icon icon="logos:css-3"></iconify-icon><span>CSS</span></span><span class="tech-badge"><iconify-icon icon="logos:bootstrap"></iconify-icon><span>Bootstrap</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:shopping-cart"></iconify-icon><span>E-commerce</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1TWyPF1wd9KwaOcO8_ukHop62S45gqD3G/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/dar-atlas.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
@@ -1334,7 +1393,7 @@
                             <p class="orange-sub">Stage Professionnel</p>
                             <h3>Application GMAO — OCP</h3>
                             <p class="soft-copy">Application de gestion de maintenance assistée par ordinateur pour la digitalisation de la maintenance industrielle chez OCP Jorf Lasfar, avec dashboard Power BI pour le suivi des KPIs.</p>
-                            <div class="tag-row"><span class="tag">Architecture Logicielle</span><span class="tag">POO</span><span class="tag">Power BI</span><span class="tag">SQL</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="carbon:deployment-pattern"></iconify-icon><span>Architecture Logicielle</span></span><span class="tech-badge"><iconify-icon icon="carbon:object-storage"></iconify-icon><span>POO</span></span><span class="tech-badge"><iconify-icon icon="logos:microsoft-power-bi"></iconify-icon><span>Power BI</span></span><span class="tech-badge"><iconify-icon icon="carbon:sql"></iconify-icon><span>SQL</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1XLDrKxaqd6K6-YOUYC0dbON_nocurx0E/view?usp=sharing" target="_blank" rel="noreferrer">Rapport</a></div>
                         </div>
                     </article>
@@ -1343,7 +1402,7 @@
                             <p class="orange-sub">Deep Learning</p>
                             <h3>Détection de Pneumonie par IA</h3>
                             <p class="soft-copy">Modèle de Deep Learning pour le diagnostic médical par analyse d'images radiologiques utilisant des réseaux de neurones convolutifs (CNN) pour la détection automatique de pneumonie.</p>
-                            <div class="tag-row"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">CNN</span><span class="tag">Computer Vision</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:python"></iconify-icon><span>Python</span></span><span class="tech-badge"><iconify-icon icon="logos:tensorflow"></iconify-icon><span>TensorFlow</span></span><span class="tech-badge"><iconify-icon icon="carbon:machine-learning-model"></iconify-icon><span>CNN</span></span><span class="tech-badge"><iconify-icon icon="carbon:ai-status"></iconify-icon><span>Computer Vision</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/pneumonia-detection-fastapi" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1fSyvkiYc2_BZfAKoxbcct3L-TlA2UdVo/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
@@ -1352,7 +1411,7 @@
                             <p class="orange-sub">Intelligence Artificielle</p>
                             <h3>Chatbot IA pour Étudiants</h3>
                             <p class="soft-copy">Assistant intelligent utilisant RAG (Retrieval-Augmented Generation), Fine-tuning et Agentic AI pour aider les étudiants dans leurs recherches et apprentissage.</p>
-                            <div class="tag-row"><span class="tag">Streamlit</span><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">Agentic AI</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="simple-icons:streamlit"></iconify-icon><span>Streamlit</span></span><span class="tech-badge"><iconify-icon icon="logos:python"></iconify-icon><span>Python</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:psychology-alt"></iconify-icon><span>RAG</span></span><span class="tech-badge"><iconify-icon icon="carbon:ai-governance-lifecycle"></iconify-icon><span>Agentic AI</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/ensaj-chatbot-streamlit" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/12O5l9v-diK8XuqVKi_gwjP3ip6WHjSLF/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
@@ -1361,7 +1420,7 @@
                             <p class="orange-sub">Application Desktop</p>
                             <h3>Gestion d'École Primaire</h3>
                             <p class="soft-copy">Solution complète de gestion scolaire avec emploi du temps, suivi des absences et notes, génération automatique de bulletins PDF et notifications WhatsApp aux parents.</p>
-                            <div class="tag-row"><span class="tag">C#</span><span class="tag">SQL Server</span><span class="tag">PDF</span><span class="tag">WhatsApp API</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="devicon:csharp"></iconify-icon><span>C#</span></span><span class="tech-badge"><iconify-icon icon="simple-icons:microsoftsqlserver"></iconify-icon><span>SQL Server</span></span><span class="tech-badge"><iconify-icon icon="teenyicons:pdf-solid"></iconify-icon><span>PDF</span></span><span class="tech-badge"><iconify-icon icon="logos:whatsapp-icon"></iconify-icon><span>WhatsApp API</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1_YXSxmoAH3RUI5SOoElzN14DLaKenLkp/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
@@ -1370,7 +1429,7 @@
                             <p class="orange-sub">Plateforme Web</p>
                             <h3>Plateforme Gestion des Demandes de Besoins</h3>
                             <p class="soft-copy">Plateforme web avec workflow multi-niveaux pour la gestion des demandes d'expression de besoins, incluant des notifications automatiques et un système de validation hiérarchique.</p>
-                            <div class="tag-row"><span class="tag">PHP POO</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:php"></iconify-icon><span>PHP POO</span></span><span class="tech-badge"><iconify-icon icon="logos:mysql-icon"></iconify-icon><span>MySQL</span></span><span class="tech-badge"><iconify-icon icon="logos:bootstrap"></iconify-icon><span>Bootstrap</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/gestion-besoins" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1yTzwmc_ZSLplXdR6RGMYz1VhGdD5l64A/view?usp=sharing" target="_blank" rel="noreferrer">Démo Demandeur</a><a class="icon-btn" href="https://drive.google.com/file/d/1GU6lW2h1H2KOZzn2PAq-3rK1zm9IZRQG/view?usp=sharing" target="_blank" rel="noreferrer">Démo Admin</a></div>
                         </div>
                     </article>
@@ -1379,7 +1438,7 @@
                             <p class="orange-sub">Application Mobile</p>
                             <h3>Vaccination Reminder App</h3>
                             <p class="soft-copy">Application mobile Flutter de suivi vaccinal multi-profils avec système de rappels automatisés pour ne jamais manquer une vaccination importante.</p>
-                            <div class="tag-row"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Notifications</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:flutter"></iconify-icon><span>Flutter</span></span><span class="tech-badge"><iconify-icon icon="logos:dart"></iconify-icon><span>Dart</span></span><span class="tech-badge"><iconify-icon icon="material-symbols:notifications-active"></iconify-icon><span>Notifications</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/vaccination_reminder_app_version_modifi-" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/10Iw8hHgM0xkwG6ug6lFL_m1N5G3ph8r9/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
@@ -1388,7 +1447,7 @@
                             <p class="orange-sub">Application Mobile</p>
                             <h3>Waqt Al Khayr</h3>
                             <p class="soft-copy">Application mobile React Native dédiée aux services communautaires, facilitant la mise en relation des bénévoles avec les associations et les actions solidaires.</p>
-                            <div class="tag-row"><span class="tag">React Native</span><span class="tag">Redux</span><span class="tag">JavaScript</span></div>
+                            <div class="tag-row"><span class="tech-badge"><iconify-icon icon="logos:react"></iconify-icon><span>React Native</span></span><span class="tech-badge"><iconify-icon icon="logos:redux"></iconify-icon><span>Redux</span></span><span class="tech-badge"><iconify-icon icon="logos:javascript"></iconify-icon><span>JavaScript</span></span></div>
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/WA9T_LKHIR" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1UxTK4FIhu9L6l_QqKBIaz-rWJSLVID3w/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
