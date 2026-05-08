@@ -698,11 +698,30 @@
             padding: 0.66rem 1rem;
             font-weight: 800;
             font-family: "DM Sans", sans-serif;
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
         }
 
         .pill-filter.active {
             background: var(--accent);
             color: #fff;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .pill-filter:not(.active) {
+            border-color: rgba(255, 90, 0, 0.42);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        body.light-mode .pill-filter:not(.active) {
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .pill-filter:hover,
+        .sort-select:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 0 16px rgba(255, 90, 0, 0.24);
         }
 
         .projects-grid {
@@ -719,7 +738,21 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+            transition: opacity 0.28s ease, transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .project-card.is-hiding {
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+            pointer-events: none;
+        }
+
+        .project-card.is-hidden {
+            display: none;
+        }
+
+        .project-card.is-showing {
+            animation: projectCardIn 0.38s ease both;
         }
 
         .project-card::before {
@@ -1252,6 +1285,11 @@
             50% { opacity: 0.86; transform: scale(1.06); }
         }
 
+        @keyframes projectCardIn {
+            from { opacity: 0; transform: translateY(18px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @media (max-width: 1100px) {
             .nav-wrap { grid-template-columns: 90px 1fr auto; }
             .nav-links { gap: 1.1rem; }
@@ -1421,19 +1459,21 @@
                         <h2 class="section-title">Projects <span>I've Built</span></h2>
                     </div>
                     <div class="project-tools" aria-label="Project filters">
-                        <button class="pill-filter active" type="button">All Projects</button>
-                        <button class="pill-filter" type="button">Web Development</button>
-                        <button class="pill-filter" type="button">AI / Machine Learning</button>
-                        <button class="pill-filter" type="button">Mobile Apps</button>
-                        <button class="pill-filter" type="button">Other</button>
-                        <select class="sort-select" aria-label="Sort projects">
-                            <option>Most Recent</option>
-                            <option>Featured</option>
+                        <button class="pill-filter active" type="button" data-filter="all">All Projects</button>
+                        <button class="pill-filter" type="button" data-filter="web">Web Development</button>
+                        <button class="pill-filter" type="button" data-filter="ai">AI / Machine Learning</button>
+                        <button class="pill-filter" type="button" data-filter="mobile">Mobile Apps</button>
+                        <button class="pill-filter" type="button" data-filter="other">Other</button>
+                        <select class="sort-select" aria-label="Sort projects" id="projectSort">
+                            <option value="recent">Most Recent</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="az">A-Z</option>
+                            <option value="za">Z-A</option>
                         </select>
                     </div>
                 </div>
                 <div class="projects-grid">
-                    <article class="project-card featured-project card reveal">
+                    <article class="project-card featured-project card reveal" data-title="FraudShield TrustGuard" data-date="2026-12" data-categories="ai">
                         <div class="project-media">
                             <picture><source srcset="assets/images/fraudshield.webp" type="image/webp"><img src="assets/images/fraudshield.png" alt="FraudShield project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1446,7 +1486,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/13OHhmXmMHxfjDtr61V1ojt2B5dSv1wxQ/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/FraudShield.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
-                    <article class="project-card featured-project card reveal">
+                    <article class="project-card featured-project card reveal" data-title="Smart Attendance" data-date="2026-11" data-categories="mobile">
                         <div class="project-media">
                             <picture><source srcset="assets/images/smart-attendance.webp" type="image/webp"><img src="assets/images/smart-attendance.png" alt="Smart Attendance project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1459,7 +1499,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/129tID2chBt-1D9hCXIgQ0yhpox_KnMt_/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/Smart-Attendance-ENSA-El-Jadida.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
-                    <article class="project-card featured-project card reveal">
+                    <article class="project-card featured-project card reveal" data-title="MovieApp CineAI" data-date="2026-10" data-categories="mobile">
                         <div class="project-media">
                             <picture><source srcset="assets/images/movieapp.webp" type="image/webp"><img src="assets/images/movieapp.png" alt="MovieApp CineAI project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1472,7 +1512,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1rKmLy86YX0qMUC8HPENR3XWbgdpznV15/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/MovieApp_CineAI.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
-                    <article class="project-card featured-project card reveal">
+                    <article class="project-card featured-project card reveal" data-title="PermiApp" data-date="2026-09" data-categories="mobile">
                         <div class="project-media">
                             <picture><source srcset="assets/images/permiapp.webp" type="image/webp"><img src="assets/images/permiapp.png" alt="PermiApp project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1485,7 +1525,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/12hGWnccZLBvcJPWggJ661h7XnborjonT/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/permis.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
-                    <article class="project-card featured-project card reveal">
+                    <article class="project-card featured-project card reveal" data-title="Dar Atlas" data-date="2026-08" data-categories="web">
                         <div class="project-media">
                             <picture><source srcset="assets/images/dar-atlas.webp" type="image/webp"><img src="assets/images/dar-atlas.png" alt="Dar Atlas project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1498,7 +1538,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1TWyPF1wd9KwaOcO8_ukHop62S45gqD3G/view?usp=sharing" target="_blank" rel="noreferrer">Demo</a><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/dar-atlas.git" target="_blank" rel="noreferrer">GitHub</a></div>
                         </div>
                     </article>
-                    <article class="project-card card reveal">
+                    <article class="project-card card reveal" data-title="Application GMAO OCP" data-date="2026-07" data-categories="web">
                         <div class="project-media">
                             <picture><source srcset="assets/images/GMAO.webp" type="image/webp"><img src="assets/images/GMAO.jfif" alt="Application GMAO OCP project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1511,7 +1551,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1XLDrKxaqd6K6-YOUYC0dbON_nocurx0E/view?usp=sharing" target="_blank" rel="noreferrer">Rapport</a></div>
                         </div>
                     </article>
-                    <article class="project-card card reveal">
+                    <article class="project-card card reveal" data-title="Pneumonia AI" data-date="2026-06" data-categories="ai">
                         <div class="project-media">
                             <picture><source srcset="assets/images/pneumonia-ai.webp" type="image/webp"><img src="assets/images/pneumonia-ai.png" alt="Pneumonia AI project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1524,7 +1564,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/pneumonia-detection-fastapi" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1fSyvkiYc2_BZfAKoxbcct3L-TlA2UdVo/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
-                    <article class="project-card card reveal">
+                    <article class="project-card card reveal" data-title="ENSAJ AI Assistant" data-date="2026-05" data-categories="web ai">
                         <div class="project-media">
                             <picture><source srcset="assets/images/chatbot-ai.webp" type="image/webp"><img src="assets/images/chatbot-ai.png" alt="ENSAJ AI Assistant project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1537,7 +1577,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/ensaj-chatbot-streamlit" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/12O5l9v-diK8XuqVKi_gwjP3ip6WHjSLF/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
-                    <article class="project-card card reveal">
+                    <article class="project-card card reveal" data-title="NOVA Platform" data-date="2026-04" data-categories="other">
                         <div class="project-media">
                             <picture><source srcset="assets/images/NOVA.webp" type="image/webp"><img src="assets/images/NOVA.jfif" alt="NOVA platform project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1550,7 +1590,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://drive.google.com/file/d/1_YXSxmoAH3RUI5SOoElzN14DLaKenLkp/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
-                    <article class="project-card card reveal">
+                    <article class="project-card card reveal" data-title="Gestion des Demandes" data-date="2026-03" data-categories="web">
                         <div class="project-media">
                             <picture><source srcset="assets/images/gestionBesoin.webp" type="image/webp"><img src="assets/images/gestionBesoin.png" alt="Gestion des Demandes project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1563,7 +1603,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/wijdanelamsaadi-commits/gestion-besoins" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/1yTzwmc_ZSLplXdR6RGMYz1VhGdD5l64A/view?usp=sharing" target="_blank" rel="noreferrer">Démo Demandeur</a><a class="icon-btn" href="https://drive.google.com/file/d/1GU6lW2h1H2KOZzn2PAq-3rK1zm9IZRQG/view?usp=sharing" target="_blank" rel="noreferrer">Démo Admin</a></div>
                         </div>
                     </article>
-                    <article class="project-card card reveal">
+                    <article class="project-card card reveal" data-title="Vaccination Reminder App" data-date="2026-02" data-categories="mobile">
                         <div class="project-media">
                             <picture><source srcset="assets/images/vaccination-app.webp" type="image/webp"><img src="assets/images/vaccination-app.png" alt="Vaccination Reminder project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1576,7 +1616,7 @@
                             <div class="card-actions"><a class="icon-btn" href="https://github.com/ouma-bg/vaccination_reminder_app_version_modifi-" target="_blank" rel="noreferrer">GitHub</a><a class="icon-btn" href="https://drive.google.com/file/d/10Iw8hHgM0xkwG6ug6lFL_m1N5G3ph8r9/view?usp=sharing" target="_blank" rel="noreferrer">Démo</a></div>
                         </div>
                     </article>
-                    <article class="project-card card reveal">
+                    <article class="project-card card reveal" data-title="Waqt Al Khayr" data-date="2026-01" data-categories="mobile">
                         <div class="project-media">
                             <picture><source srcset="assets/images/waqt-al-khayr.webp" type="image/webp"><img src="assets/images/waqt-al-khayr.png" alt="Waqt Al Khayr project screenshot" loading="lazy" decoding="async"></picture>
                             <span class="project-media-label">Screenshot</span>
@@ -1732,6 +1772,79 @@
         }, { threshold: 0.14 });
 
         document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+
+        const projectGrid = document.querySelector('.projects-grid');
+        const projectCards = Array.from(document.querySelectorAll('.project-card'));
+        const filterButtons = Array.from(document.querySelectorAll('.pill-filter'));
+        const projectSort = document.getElementById('projectSort');
+        let activeProjectFilter = 'all';
+        let projectFilterRun = 0;
+
+        function projectMatchesFilter(card) {
+            if (activeProjectFilter === 'all') return true;
+            return (card.dataset.categories || '').split(' ').includes(activeProjectFilter);
+        }
+
+        function getSortedProjectCards() {
+            const mode = projectSort.value;
+            return [...projectCards].sort((first, second) => {
+                const firstTitle = (first.dataset.title || '').toLowerCase();
+                const secondTitle = (second.dataset.title || '').toLowerCase();
+                const firstDate = first.dataset.date || '';
+                const secondDate = second.dataset.date || '';
+
+                if (mode === 'az') return firstTitle.localeCompare(secondTitle);
+                if (mode === 'za') return secondTitle.localeCompare(firstTitle);
+                if (mode === 'oldest') return firstDate.localeCompare(secondDate);
+                return secondDate.localeCompare(firstDate);
+            });
+        }
+
+        function updateProjectCards() {
+            const run = ++projectFilterRun;
+            const sortedCards = getSortedProjectCards();
+            sortedCards.forEach((card) => projectGrid.appendChild(card));
+
+            sortedCards.forEach((card) => {
+                const shouldShow = projectMatchesFilter(card);
+                const wasHidden = card.classList.contains('is-hidden');
+
+                if (shouldShow) {
+                    card.classList.remove('is-hidden');
+                    if (wasHidden) {
+                        card.classList.add('is-hiding');
+                        requestAnimationFrame(() => {
+                            if (run !== projectFilterRun) return;
+                            card.classList.remove('is-hiding');
+                            card.classList.add('is-showing');
+                            window.setTimeout(() => card.classList.remove('is-showing'), 420);
+                        });
+                    } else {
+                        card.classList.remove('is-hiding');
+                    }
+                    return;
+                }
+
+                card.classList.add('is-hiding');
+                card.classList.remove('is-showing');
+                window.setTimeout(() => {
+                    if (run === projectFilterRun && !projectMatchesFilter(card)) {
+                        card.classList.add('is-hidden');
+                    }
+                }, 280);
+            });
+        }
+
+        filterButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                activeProjectFilter = button.dataset.filter || 'all';
+                filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+                updateProjectCards();
+            });
+        });
+
+        projectSort.addEventListener('change', updateProjectCards);
+        updateProjectCards();
 
         document.getElementById('contactForm').addEventListener('submit', (event) => {
             event.preventDefault();
