@@ -470,10 +470,10 @@
             position: relative;
             align-self: stretch;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             min-height: 690px;
-            padding: 5rem 0 5.5rem;
+            padding: 3.2rem 0 5.5rem;
             perspective: 1400px;
             isolation: isolate;
             animation: slideFromRight 0.95s ease 0.3s both;
@@ -526,10 +526,55 @@
             transform: translateX(-50%) rotate(7deg);
         }
 
-        .hero-id-card {
+        .hero-card-wrapper {
             position: relative;
             z-index: 2;
             width: min(360px, 82vw);
+            padding-top: 112px;
+            display: grid;
+            justify-items: center;
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        .strap {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            z-index: 1;
+            width: 150px;
+            height: 148px;
+            transform: translateX(-50%);
+            pointer-events: none;
+            filter: drop-shadow(0 18px 24px rgba(255, 90, 0, 0.22));
+        }
+
+        .strap::before,
+        .strap::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 28px;
+            height: 148px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(255, 139, 58, 0.95), rgba(255, 90, 0, 0.7));
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34), 0 0 26px rgba(255, 90, 0, 0.18);
+        }
+
+        .strap::before {
+            left: 36px;
+            transform: rotate(-16deg);
+        }
+
+        .strap::after {
+            right: 36px;
+            transform: rotate(16deg);
+        }
+
+        .hero-id-card {
+            position: relative;
+            z-index: 2;
+            width: 100%;
             padding: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 34px;
@@ -540,11 +585,12 @@
                 0 34px 76px rgba(0, 0, 0, 0.58),
                 0 0 62px rgba(255, 90, 0, 0.28);
             backdrop-filter: blur(22px);
-            transform: perspective(1000px) rotateX(7deg) rotateY(-10deg) rotateZ(2deg) translateY(0) scale(1);
+            transform-origin: center -78px;
             transform-style: preserve-3d;
             will-change: transform;
             cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            animation: floatCard 3s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         body.light-mode .hero-id-card {
@@ -557,40 +603,21 @@
                 0 0 58px rgba(255, 90, 0, 0.24);
         }
 
+        .hero-card-wrapper:hover .hero-id-card,
         .hero-id-card:hover {
+            animation: none;
+            transform: rotate(6deg) translateY(-15px) scale(1.05);
             border-color: rgba(255, 90, 0, 0.58);
             box-shadow:
-                0 30px 80px rgba(0, 0, 0, 0.64),
-                0 0 80px rgba(255, 90, 0, 0.35);
+                0 40px 100px rgba(0, 0, 0, 0.66),
+                0 0 100px rgba(255, 90, 0, 0.5);
         }
 
-        .hero-id-card.is-tilting {
-            transition: box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-
-        .hero-id-card.is-resetting {
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
-        }
-
+        body.light-mode .hero-card-wrapper:hover .hero-id-card,
         body.light-mode .hero-id-card:hover {
             box-shadow:
                 0 44px 88px rgba(10, 10, 10, 0.2),
                 0 0 84px rgba(255, 90, 0, 0.34);
-        }
-
-        .lanyard-straps {
-            position: absolute;
-            left: 50%;
-            top: -142px;
-            z-index: -1;
-            width: 164px;
-            height: 166px;
-            transform: translateX(-50%);
-            background:
-                linear-gradient(106deg, transparent 37%, rgba(255, 90, 0, 0.85) 39%, rgba(255, 139, 58, 0.92) 47%, transparent 49%),
-                linear-gradient(74deg, transparent 51%, rgba(255, 139, 58, 0.92) 53%, rgba(255, 90, 0, 0.85) 61%, transparent 63%);
-            filter: drop-shadow(0 14px 22px rgba(255, 90, 0, 0.24));
-            opacity: 0.92;
         }
 
         .badge-clip {
@@ -1507,8 +1534,9 @@
         }
 
         @keyframes cardFloat {
-            0%, 100% { transform: rotateX(7deg) rotateY(-10deg) rotateZ(2deg) translateY(0); }
-            50% { transform: rotateX(8deg) rotateY(-7deg) rotateZ(-1deg) translateY(-12px); }
+            0% { transform: rotate(-2deg) translateY(0); }
+            50% { transform: rotate(2deg) translateY(-10px); }
+            100% { transform: rotate(-2deg) translateY(0); }
         }
 
         @keyframes skillsUp {
@@ -1562,9 +1590,9 @@
             .hero-copy { padding-bottom: 0; }
             .portrait-stage {
                 min-height: 620px;
-                padding: 4.6rem 0 3rem;
+                padding: 3rem 0 3rem;
             }
-            .hero-id-card { width: min(340px, 82vw); }
+            .hero-card-wrapper { width: min(340px, 82vw); }
             .projects-grid { grid-template-columns: repeat(2, 1fr); }
             .tech-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -1587,7 +1615,7 @@
             }
             .portrait-stage {
                 min-height: 560px;
-                padding: 4rem 0 2.4rem;
+                padding: 2.4rem 0 2.4rem;
                 animation: none;
                 transform: none;
             }
@@ -1606,15 +1634,25 @@
                 height: 340px;
                 bottom: 22%;
             }
+            .hero-card-wrapper {
+                width: min(300px, 84vw);
+                padding-top: 92px;
+            }
+            .strap {
+                width: 124px;
+                height: 122px;
+            }
+            .strap::before,
+            .strap::after {
+                width: 22px;
+                height: 122px;
+            }
+            .strap::before { left: 30px; }
+            .strap::after { right: 30px; }
             .hero-id-card {
                 width: min(300px, 84vw);
                 padding: 0.82rem;
                 border-radius: 28px;
-            }
-            .lanyard-straps {
-                top: -112px;
-                width: 134px;
-                height: 134px;
             }
             .badge-clip {
                 top: -24px;
@@ -1685,8 +1723,9 @@
                 </div>
                 <div class="portrait-stage" aria-label="Portrait">
                     <span class="portrait-lines"></span>
-                    <div class="hero-id-card" aria-label="Wijdane Lamsadi profile badge">
-                        <span class="lanyard-straps" aria-hidden="true"></span>
+                    <div class="hero-card-wrapper">
+                        <div class="strap" aria-hidden="true"></div>
+                        <div class="hero-id-card" aria-label="Wijdane Lamsadi profile badge">
                         <span class="badge-clip" aria-hidden="true"><span></span></span>
                         <div class="badge-photo-frame">
                             <img class="hero-portrait" src="assets/images/wijdane-hero-card.jpeg" alt="Wijdane Lamsadi portrait">
@@ -1695,6 +1734,7 @@
                             <span class="id-kicker">Portfolio ID</span>
                             <strong>Wijdane Lamsadi</strong>
                             <span>Full-Stack • AI • Data</span>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -2107,57 +2147,6 @@
                 image.alt = 'Project screenshot placeholder';
             });
         });
-
-        const heroIdCard = document.querySelector('.hero-id-card');
-        if (heroIdCard) {
-            const baseHeroCardTransform = 'perspective(1000px) rotateX(7deg) rotateY(-10deg) rotateZ(2deg) translateY(0) scale(1)';
-            let heroCardResetTimer;
-
-            function resetHeroCardTilt() {
-                window.clearTimeout(heroCardResetTimer);
-                heroIdCard.classList.remove('is-tilting');
-                heroIdCard.classList.add('is-resetting');
-                heroIdCard.style.transform = baseHeroCardTransform;
-
-                heroCardResetTimer = window.setTimeout(() => {
-                    heroIdCard.classList.remove('is-resetting');
-                }, 360);
-            }
-
-            heroIdCard.addEventListener('mouseenter', () => {
-                window.clearTimeout(heroCardResetTimer);
-                heroIdCard.classList.remove('is-resetting');
-                heroIdCard.classList.add('is-tilting');
-            });
-
-            heroIdCard.addEventListener('mousemove', (event) => {
-                const rect = heroIdCard.getBoundingClientRect();
-                const x = event.clientX - rect.left;
-                const y = event.clientY - rect.top;
-                const rotateY = ((x / rect.width) - 0.5) * 18;
-                const rotateX = (0.5 - (y / rect.height)) * 18;
-
-                window.clearTimeout(heroCardResetTimer);
-                heroIdCard.classList.remove('is-resetting');
-                heroIdCard.classList.add('is-tilting');
-                heroIdCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(0deg) translateY(-10px) scale(1.03)`;
-            });
-
-            heroIdCard.addEventListener('mouseleave', resetHeroCardTilt);
-            heroIdCard.addEventListener('pointerleave', resetHeroCardTilt);
-
-            document.addEventListener('mousemove', (event) => {
-                if (!heroIdCard.classList.contains('is-tilting')) return;
-                const rect = heroIdCard.getBoundingClientRect();
-                const isOutsideCard =
-                    event.clientX < rect.left ||
-                    event.clientX > rect.right ||
-                    event.clientY < rect.top ||
-                    event.clientY > rect.bottom;
-
-                if (isOutsideCard) resetHeroCardTilt();
-            });
-        }
 
         const projectGrid = document.querySelector('.projects-grid');
         const projectCards = Array.from(document.querySelectorAll('.project-card'));
