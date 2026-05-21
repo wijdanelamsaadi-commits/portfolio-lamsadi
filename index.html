@@ -540,10 +540,11 @@
                 0 34px 76px rgba(0, 0, 0, 0.58),
                 0 0 62px rgba(255, 90, 0, 0.28);
             backdrop-filter: blur(22px);
-            transform: rotateX(7deg) rotateY(-10deg) rotateZ(2deg);
+            transform: perspective(1000px) rotateX(7deg) rotateY(-10deg) rotateZ(2deg) translateY(0) scale(1);
             transform-style: preserve-3d;
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.45s ease;
-            animation: cardFloat 6s ease-in-out 1.2s infinite;
+            will-change: transform;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
         body.light-mode .hero-id-card {
@@ -557,12 +558,18 @@
         }
 
         .hero-id-card:hover {
-            animation-play-state: paused;
-            transform: translateY(-16px) scale(1.035) rotateX(4deg) rotateY(-4deg) rotateZ(-1deg);
             border-color: rgba(255, 90, 0, 0.58);
             box-shadow:
-                0 46px 96px rgba(0, 0, 0, 0.64),
-                0 0 90px rgba(255, 90, 0, 0.48);
+                0 30px 80px rgba(0, 0, 0, 0.64),
+                0 0 80px rgba(255, 90, 0, 0.35);
+        }
+
+        .hero-id-card.is-tilting {
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .hero-id-card.is-resetting {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
         }
 
         body.light-mode .hero-id-card:hover {
@@ -2100,6 +2107,57 @@
                 image.alt = 'Project screenshot placeholder';
             });
         });
+
+        const heroIdCard = document.querySelector('.hero-id-card');
+        if (heroIdCard) {
+            const baseHeroCardTransform = 'perspective(1000px) rotateX(7deg) rotateY(-10deg) rotateZ(2deg) translateY(0) scale(1)';
+            let heroCardResetTimer;
+
+            function resetHeroCardTilt() {
+                window.clearTimeout(heroCardResetTimer);
+                heroIdCard.classList.remove('is-tilting');
+                heroIdCard.classList.add('is-resetting');
+                heroIdCard.style.transform = baseHeroCardTransform;
+
+                heroCardResetTimer = window.setTimeout(() => {
+                    heroIdCard.classList.remove('is-resetting');
+                }, 360);
+            }
+
+            heroIdCard.addEventListener('mouseenter', () => {
+                window.clearTimeout(heroCardResetTimer);
+                heroIdCard.classList.remove('is-resetting');
+                heroIdCard.classList.add('is-tilting');
+            });
+
+            heroIdCard.addEventListener('mousemove', (event) => {
+                const rect = heroIdCard.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                const rotateY = ((x / rect.width) - 0.5) * 18;
+                const rotateX = (0.5 - (y / rect.height)) * 18;
+
+                window.clearTimeout(heroCardResetTimer);
+                heroIdCard.classList.remove('is-resetting');
+                heroIdCard.classList.add('is-tilting');
+                heroIdCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(0deg) translateY(-10px) scale(1.03)`;
+            });
+
+            heroIdCard.addEventListener('mouseleave', resetHeroCardTilt);
+            heroIdCard.addEventListener('pointerleave', resetHeroCardTilt);
+
+            document.addEventListener('mousemove', (event) => {
+                if (!heroIdCard.classList.contains('is-tilting')) return;
+                const rect = heroIdCard.getBoundingClientRect();
+                const isOutsideCard =
+                    event.clientX < rect.left ||
+                    event.clientX > rect.right ||
+                    event.clientY < rect.top ||
+                    event.clientY > rect.bottom;
+
+                if (isOutsideCard) resetHeroCardTilt();
+            });
+        }
 
         const projectGrid = document.querySelector('.projects-grid');
         const projectCards = Array.from(document.querySelectorAll('.project-card'));
