@@ -666,13 +666,14 @@
             pointer-events: none;
         }
 
-        .hero-portrait,
+        .card-img,
+        .hero-img,
         .contact-portrait,
-        .about-photo img {
+        .about-photo .hero-img {
             background: transparent;
         }
 
-        .hero-portrait {
+        .card-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -682,12 +683,13 @@
             transition: transform 0.45s ease;
         }
 
-        .hero-id-card:hover .hero-portrait {
+        .hero-id-card:hover .card-img {
             transform: scale(1.055);
         }
 
+        .hero-img,
         .contact-portrait,
-        .about-photo img {
+        .about-photo .hero-img {
             object-fit: contain;
         }
 
@@ -801,7 +803,7 @@
             filter: blur(36px);
         }
 
-        .about-photo img {
+        .about-photo .hero-img {
             position: relative;
             z-index: 1;
             max-height: 580px;
@@ -1671,7 +1673,7 @@
             .projects-grid,
             .tech-grid { grid-template-columns: 1fr; }
             .about-photo { min-height: 430px; }
-            .about-photo img { max-height: 420px; }
+            .about-photo .hero-img { max-height: 420px; }
             .contact-portrait-wrap { min-height: 300px; }
         }
     </style>
@@ -1729,7 +1731,7 @@
                         <div class="hero-id-card" aria-label="Wijdane Lamsadi profile badge">
                         <span class="badge-clip" aria-hidden="true"><span></span></span>
                         <div class="badge-photo-frame">
-                                <img class="hero-portrait" src="./profile1.jpg" alt="Wijdane Lamsadi portrait">
+                                <img class="card-img" src="./profile1.jpg" alt="Wijdane Lamsadi portrait">
                         </div>
                         <div class="badge-meta" aria-hidden="true">
                             <span class="id-kicker">Portfolio ID</span>
@@ -1754,7 +1756,7 @@
             <div class="section-inner">
                 <div class="about-grid">
                     <div class="about-photo card reveal">
-                        <img src="./profile1.jpg" alt="Wijdane Lamsadi portrait">
+                        <img class="hero-img" src="./profile1.jpg" alt="Wijdane Lamsadi portrait">
                     </div>
                     <div class="about-copy reveal">
                         <div class="eyebrow">ABOUT ME</div>
