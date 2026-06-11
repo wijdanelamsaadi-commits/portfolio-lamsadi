@@ -1,16 +1,23 @@
 'use client';
 
 import Image from 'next/image';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import {
+  AnimatePresence,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
-import { Monitor } from 'lucide-react';
+import { ArrowLeft, Monitor } from 'lucide-react';
 
 const INTRO_DURATION_MS = 7200;
 const DESKTOP_REVEAL_MS = 6100;
 const BASE_PATH = '/portfolio-lamsadi';
 
 const folderHotspots = [
-  { label: 'About Me', hash: '#about', top: '10.4%' },
+  { label: 'About Me', hash: '#about', top: '10.4%', opensAbout: true },
   { label: 'Skills', hash: '#skills', top: '25.2%' },
   { label: 'Projects', hash: '#projects', top: '39.2%' },
   { label: 'Experience', hash: '#experience', top: '53.6%' },
@@ -50,10 +57,125 @@ function useIntroProgress() {
   return smoothProgress;
 }
 
+function PortraitReveal() {
+  const mouseX = useMotionValue(384);
+  const mouseY = useMotionValue(512);
+  const radius = useMotionValue(0);
+  const smoothX = useSpring(mouseX, { stiffness: 190, damping: 24, mass: 0.35 });
+  const smoothY = useSpring(mouseY, { stiffness: 190, damping: 24, mass: 0.35 });
+  const smoothRadius = useSpring(radius, { stiffness: 170, damping: 21, mass: 0.35 });
+  const clipPath = useMotionTemplate`circle(${smoothRadius}px at ${smoothX}px ${smoothY}px)`;
+  const revealOpacity = useTransform(smoothRadius, [0, 120], [0, 1]);
+
+  return (
+    <motion.div
+      className="relative aspect-[3/4] w-full max-w-[27rem] overflow-hidden rounded-[1.6rem] border border-[#f2b891]/60 bg-[#f7ddca] shadow-[0_32px_90px_rgba(67,28,8,0.24)]"
+      initial={{ opacity: 0, scale: 0.94, y: 24 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.78, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+      onPointerMove={(event) => {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        mouseX.set(event.clientX - bounds.left);
+        mouseY.set(event.clientY - bounds.top);
+        radius.set(120);
+      }}
+      onPointerEnter={() => radius.set(120)}
+      onPointerLeave={() => radius.set(0)}
+    >
+      <Image
+        src={`${BASE_PATH}/about-normal.png`}
+        alt="Wijdane Lamsadi portrait"
+        fill
+        sizes="(max-width: 768px) 84vw, 27rem"
+        className="object-cover"
+        priority
+      />
+
+      <motion.div className="absolute inset-0" style={{ clipPath, WebkitClipPath: clipPath }}>
+        <Image
+          src={`${BASE_PATH}/about-cyber.png`}
+          alt="Cybernetic Wijdane Lamsadi portrait reveal"
+          fill
+          sizes="(max-width: 768px) 84vw, 27rem"
+          className="object-cover"
+          priority
+        />
+      </motion.div>
+
+      <motion.div
+        className="pointer-events-none absolute h-60 w-60 rounded-full border border-[#ff6b1a]/80 shadow-[0_0_26px_rgba(255,106,26,0.55),inset_0_0_24px_rgba(255,255,255,0.2)]"
+        style={{
+          left: smoothX,
+          top: smoothY,
+          opacity: revealOpacity,
+          transform: 'translate(-50%, -50%)',
+        }}
+      />
+    </motion.div>
+  );
+}
+
+function AboutMeWindow({ onBack }: { onBack: () => void }) {
+  return (
+    <motion.section
+      aria-label="About Me window"
+      className="absolute inset-0 z-40 overflow-hidden bg-[#f6dfcf] text-[#1a100b]"
+      initial={{ opacity: 0, scale: 0.965 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.985 }}
+      transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(255,106,26,0.22),transparent_24rem),radial-gradient(circle_at_20%_80%,rgba(31,18,11,0.13),transparent_28rem)]" />
+      <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(rgba(255,106,26,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,106,26,0.08)_1px,transparent_1px)] [background-size:64px_64px]" />
+
+      <button
+        type="button"
+        aria-label="Back to desktop"
+        title="Back"
+        onClick={onBack}
+        className="absolute left-5 top-5 z-20 grid h-11 w-11 place-items-center rounded-full border border-[#e9ad87]/80 bg-white/45 text-[#1a100b] shadow-[0_14px_34px_rgba(67,28,8,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b1a]"
+      >
+        <ArrowLeft size={21} strokeWidth={2.4} />
+      </button>
+
+      <div className="relative z-10 grid min-h-screen items-center gap-10 px-7 py-20 md:grid-cols-[0.9fr_1.1fr] md:px-16 lg:px-24">
+        <motion.div
+          className="max-w-xl"
+          initial={{ opacity: 0, x: -34 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.72, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.32em] text-[#f06418]">About Me</p>
+          <h1 className="text-5xl font-black leading-none text-[#1a100b] sm:text-6xl lg:text-7xl">Wijdane Lamsadi</h1>
+          <p className="mt-6 max-w-lg text-xl font-semibold leading-relaxed text-[#2d221b]">
+            Engineering Student in Information Systems
+          </p>
+
+          <div className="mt-7 inline-flex rounded-full border border-[#efb087]/80 bg-white/42 px-5 py-2 text-sm font-bold text-[#2a1710] shadow-[0_12px_28px_rgba(67,28,8,0.08)] backdrop-blur-xl">
+            AI • Full Stack • Data
+          </div>
+
+          <button
+            type="button"
+            className="mt-10 rounded-full bg-[#17100c] px-7 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#ffe1c8] shadow-[0_18px_44px_rgba(27,12,5,0.28)] transition hover:-translate-y-1 hover:bg-[#ff651c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b1a]"
+          >
+            Explore Journey
+          </button>
+        </motion.div>
+
+        <div className="flex justify-center md:justify-end">
+          <PortraitReveal />
+        </div>
+      </div>
+    </motion.section>
+  );
+}
+
 export default function CinematicIntro() {
   const progress = useIntroProgress();
   const [enteredDesktop, setEnteredDesktop] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
@@ -179,9 +301,14 @@ export default function CinematicIntro() {
                 type="button"
                 aria-label={`Open ${folder.label}`}
                 title={folder.label}
-                className="absolute left-[3.1%] h-[7.4%] w-[5.9%] rounded-2xl outline-none transition focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40"
+                className="absolute left-[3.1%] z-10 h-[7.4%] w-[5.9%] rounded-2xl outline-none transition focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40"
                 style={{ top: folder.top }}
                 onClick={() => {
+                  if (folder.opensAbout) {
+                    setAboutOpen(true);
+                    return;
+                  }
+
                   window.location.hash = folder.hash;
                 }}
               />
@@ -189,7 +316,7 @@ export default function CinematicIntro() {
           </div>
         </motion.div>
 
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0)_18%,rgba(70,28,8,0.08)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0)_18%,rgba(70,28,8,0.08)_100%)]" />
 
         {enteredDesktop && (
           <motion.div
@@ -221,6 +348,10 @@ export default function CinematicIntro() {
       >
         Entering portfolio
       </motion.div>
+
+      <AnimatePresence>
+        {aboutOpen && <AboutMeWindow onBack={() => setAboutOpen(false)} />}
+      </AnimatePresence>
     </main>
   );
 }
