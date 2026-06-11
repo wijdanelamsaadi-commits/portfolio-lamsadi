@@ -92,6 +92,14 @@ const skillLayers = [
   },
 ];
 
+const architectureConnections = [
+  'M500 126 C650 150 662 195 525 223 C455 237 430 258 500 280',
+  'M500 278 C345 304 356 350 475 375 C570 395 625 420 500 434',
+  'M500 432 C662 460 652 504 532 529 C450 545 424 570 500 590',
+  'M500 588 C350 610 366 657 482 681 C580 701 620 724 500 742',
+  'M500 740 C650 766 660 812 530 836 C452 850 430 872 500 896',
+];
+
 function useIntroProgress() {
   const progress = useMotionValue(0);
   const smoothProgress = useSpring(progress, {
@@ -240,6 +248,7 @@ function AboutMeWindow({ onBack }: { onBack: () => void }) {
 
 function SkillsWindow({ onBack }: { onBack: () => void }) {
   const [activeLayer, setActiveLayer] = useState(0);
+  const [flowBoost, setFlowBoost] = useState(false);
 
   return (
     <motion.section
@@ -280,24 +289,79 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
         </header>
 
         <div className="relative mx-auto min-h-0 w-full max-w-6xl flex-1 overflow-hidden rounded-[1.6rem] border border-[#ffb07e]/18 bg-white/[0.045] shadow-[0_36px_110px_rgba(0,0,0,0.45)] backdrop-blur-2xl [perspective:1400px]">
-          <div className="pointer-events-none absolute inset-x-[12%] bottom-8 top-8">
-            {skillLayers.slice(0, -1).map((_, index) => (
-              <motion.div
-                key={`vertical-connection-${index}`}
-                className="absolute left-1/2 h-[15%] w-px -translate-x-1/2 overflow-hidden bg-[#ff9a55]/20"
-                style={{ top: `${12.5 + index * 15.4}%` }}
-              >
-                <motion.span
-                  className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-transparent via-[#ff8a3d] to-transparent shadow-[0_0_18px_rgba(255,122,43,0.95)]"
-                  animate={{ y: ['-80%', '210%'] }}
-                  transition={{ duration: 1.8, repeat: Infinity, delay: index * 0.18, ease: 'linear' }}
-                />
-              </motion.div>
-            ))}
-          </div>
-
           <div className="relative z-10 h-full overflow-y-auto px-4 py-7 sm:px-8">
-            <div className="mx-auto flex min-h-full max-w-5xl flex-col items-center gap-5">
+            <div className="relative mx-auto min-h-[900px] max-w-5xl">
+              <svg
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible"
+                viewBox="0 0 1000 930"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <filter id="orange-cable-glow" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur stdDeviation="5" result="blur" />
+                    <feColorMatrix
+                      in="blur"
+                      type="matrix"
+                      values="1 0 0 0 1  0 0.46 0 0 0.24  0 0 0.12 0 0.02  0 0 0 1 0"
+                    />
+                    <feMerge>
+                      <feMergeNode />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                  <radialGradient id="data-packet-glow">
+                    <stop offset="0%" stopColor="#fff2d8" />
+                    <stop offset="38%" stopColor="#ff8a3d" />
+                    <stop offset="100%" stopColor="#ff6b1a" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+
+                {architectureConnections.map((path, index) => (
+                  <g key={`living-cable-${index}`} filter="url(#orange-cable-glow)">
+                    <motion.path
+                      d={path}
+                      fill="none"
+                      stroke="#ff6b1a"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={flowBoost ? 7 : 4.5}
+                      strokeOpacity={flowBoost || activeLayer === index || activeLayer === index + 1 ? 0.62 : 0.34}
+                      strokeDasharray="20 24"
+                      initial={{ pathLength: 0, strokeDashoffset: 0 }}
+                      animate={{ pathLength: 1, strokeDashoffset: [0, -176] }}
+                      transition={{
+                        pathLength: { duration: 1.1, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] },
+                        strokeDashoffset: { duration: flowBoost ? 1.1 : 2.1, repeat: Infinity, ease: 'linear' },
+                      }}
+                    />
+                    <motion.path
+                      d={path}
+                      fill="none"
+                      stroke="#ffd2a8"
+                      strokeLinecap="round"
+                      strokeWidth={flowBoost ? 8 : 5}
+                      strokeOpacity={flowBoost ? 0.95 : 0.7}
+                      strokeDasharray="54 430"
+                      initial={{ strokeDashoffset: 360 }}
+                      animate={{ strokeDashoffset: [360, -360] }}
+                      transition={{ duration: flowBoost ? 1.35 : 2.35, repeat: Infinity, delay: index * 0.18, ease: 'linear' }}
+                    />
+                    {[0, 1, 2].map((packet) => (
+                      <circle key={`packet-${index}-${packet}`} r={packet === 1 ? 5.5 : 3.6} fill="url(#data-packet-glow)" opacity={flowBoost ? 0.98 : 0.72}>
+                        <animateMotion
+                          dur={`${flowBoost ? 1.45 : 2.8}s`}
+                          begin={`${index * 0.18 + packet * 0.55}s`}
+                          repeatCount="indefinite"
+                          path={path}
+                        />
+                      </circle>
+                    ))}
+                  </g>
+                ))}
+              </svg>
+
+              <div className="relative z-10 flex min-h-[900px] flex-col items-center justify-between">
               {skillLayers.map((layer, index) => (
                 <motion.article
                   key={layer.name}
@@ -309,22 +373,29 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
                   onFocus={() => setActiveLayer(index)}
                 >
                   <motion.div
-                    className="relative overflow-visible rounded-[1.25rem] border border-[#ffb07e]/24 bg-[linear-gradient(135deg,rgba(255,247,239,0.16),rgba(255,106,26,0.055))] px-5 py-4 shadow-[0_28px_75px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition group-hover:border-[#ff8a3d]/80"
-                    animate={{ y: [0, -5, 0] }}
+                    className="relative overflow-visible rounded-[1.25rem] border border-[#ffb07e]/24 bg-[linear-gradient(135deg,rgba(255,247,239,0.16),rgba(255,106,26,0.055))] px-5 py-4 shadow-[0_0_42px_rgba(255,106,26,0.16),0_28px_75px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition group-hover:border-[#ff8a3d]/80"
+                    animate={{ y: [0, index % 2 === 0 ? -8 : -5, 0] }}
                     transition={{ duration: 4.5, repeat: Infinity, delay: index * 0.18, ease: 'easeInOut' }}
                     style={{
-                      transform: `rotateX(10deg) rotateZ(${index % 2 === 0 ? '-0.6deg' : '0.6deg'})`,
+                      rotateX: 10,
+                      rotateZ: index % 2 === 0 ? -0.6 : 0.6,
                       boxShadow:
-                        activeLayer === index
-                          ? `0 0 54px ${layer.accent}44, 0 32px 90px rgba(0,0,0,0.45)`
-                          : undefined,
+                        activeLayer === index || flowBoost
+                          ? `0 0 70px ${layer.accent}66, 0 0 22px ${layer.accent}55, 0 32px 90px rgba(0,0,0,0.45)`
+                          : `0 0 36px ${layer.accent}2f, 0 28px 75px rgba(0,0,0,0.38)`,
                     }}
                   >
                     <div
-                      className="pointer-events-none absolute inset-x-8 -bottom-3 h-5 rounded-full blur-xl"
-                      style={{ background: `${layer.accent}55` }}
+                      className="pointer-events-none absolute -inset-4 rounded-[1.6rem] blur-2xl"
+                      style={{ background: `${layer.accent}${activeLayer === index || flowBoost ? '35' : '1f'}` }}
                     />
-                    <div className="mb-4 flex items-center justify-between gap-4">
+                    <motion.div
+                      className="pointer-events-none absolute inset-x-8 -bottom-3 h-5 rounded-full blur-xl"
+                      style={{ background: `${layer.accent}66` }}
+                      animate={{ opacity: activeLayer === index || flowBoost ? [0.55, 1, 0.55] : [0.32, 0.56, 0.32] }}
+                      transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                    <div className="relative mb-4 flex items-center justify-between gap-4">
                       <h2 className="text-xl font-black text-white sm:text-2xl">{layer.name}</h2>
                       <span
                         className="rounded-full border border-white/10 bg-black/22 px-3 py-1 text-xs font-black tracking-[0.18em]"
@@ -334,9 +405,22 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+                    <div className="relative flex flex-wrap justify-center gap-2 sm:gap-3">
                       {layer.technologies.map((tech) => (
-                        <div key={tech.name} className="group/tech relative">
+                        <div
+                          key={tech.name}
+                          className="group/tech relative"
+                          onMouseEnter={() => {
+                            setActiveLayer(index);
+                            setFlowBoost(true);
+                          }}
+                          onMouseLeave={() => setFlowBoost(false)}
+                          onFocus={() => {
+                            setActiveLayer(index);
+                            setFlowBoost(true);
+                          }}
+                          onBlur={() => setFlowBoost(false)}
+                        >
                           <button
                             type="button"
                             className="rounded-2xl border border-[#ffb07e]/20 bg-black/28 px-4 py-2 text-sm font-extrabold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(0,0,0,0.22)] outline-none transition hover:-translate-y-1 hover:border-[#ff8a3d]/85 hover:bg-[#ff6b1a]/20 hover:shadow-[0_0_24px_rgba(255,106,26,0.34)] focus-visible:ring-2 focus-visible:ring-[#ff8a3d]"
@@ -364,6 +448,7 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
                   </motion.div>
                 </motion.article>
               ))}
+              </div>
             </div>
           </div>
         </div>
