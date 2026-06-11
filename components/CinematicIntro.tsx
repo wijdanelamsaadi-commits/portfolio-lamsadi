@@ -69,7 +69,7 @@ function PortraitReveal() {
 
   return (
     <motion.div
-      className="relative aspect-[3/4] w-full max-w-[27rem] overflow-hidden rounded-[1.6rem] border border-[#f2b891]/60 bg-[#f7ddca] shadow-[0_32px_90px_rgba(67,28,8,0.24)]"
+      className="relative aspect-[3/4] w-full max-w-[34rem] overflow-hidden rounded-[1.6rem] border border-[#f2b891]/60 bg-[#f7ddca] shadow-[0_32px_90px_rgba(67,28,8,0.24)]"
       initial={{ opacity: 0, scale: 0.94, y: 24 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.78, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
@@ -86,8 +86,8 @@ function PortraitReveal() {
         src={`${BASE_PATH}/about-normal.png`}
         alt="Wijdane Lamsadi portrait"
         fill
-        sizes="(max-width: 768px) 84vw, 27rem"
-        className="object-cover"
+        sizes="(max-width: 768px) 88vw, 34rem"
+        className="scale-[1.08] object-cover object-center"
         priority
       />
 
@@ -96,8 +96,8 @@ function PortraitReveal() {
           src={`${BASE_PATH}/about-cyber.png`}
           alt="Cybernetic Wijdane Lamsadi portrait reveal"
           fill
-          sizes="(max-width: 768px) 84vw, 27rem"
-          className="object-cover"
+          sizes="(max-width: 768px) 88vw, 34rem"
+          className="scale-[1.08] object-cover object-center"
           priority
         />
       </motion.div>
@@ -138,9 +138,9 @@ function AboutMeWindow({ onBack }: { onBack: () => void }) {
         <ArrowLeft size={21} strokeWidth={2.4} />
       </button>
 
-      <div className="relative z-10 grid min-h-screen items-center gap-10 px-7 py-20 md:grid-cols-[0.9fr_1.1fr] md:px-16 lg:px-24">
+      <div className="relative z-10 grid min-h-screen items-center gap-8 px-7 py-20 md:grid-cols-[0.82fr_1.18fr] md:px-16 lg:px-20 xl:px-24">
         <motion.div
-          className="max-w-xl"
+          className="max-w-2xl"
           initial={{ opacity: 0, x: -34 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.72, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -155,12 +155,11 @@ function AboutMeWindow({ onBack }: { onBack: () => void }) {
             AI • Full Stack • Data
           </div>
 
-          <button
-            type="button"
-            className="mt-10 rounded-full bg-[#17100c] px-7 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#ffe1c8] shadow-[0_18px_44px_rgba(27,12,5,0.28)] transition hover:-translate-y-1 hover:bg-[#ff651c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b1a]"
-          >
-            Explore Journey
-          </button>
+          <p className="mt-8 max-w-xl text-base font-medium leading-8 text-[#4c382e] sm:text-lg">
+            Wijdane Lamsadi, engineering student in Information Systems, passionate about AI, Full Stack
+            Development and Data Analysis. I build smart digital solutions that combine clean design, useful
+            features and intelligent systems.
+          </p>
         </motion.div>
 
         <div className="flex justify-center md:justify-end">
