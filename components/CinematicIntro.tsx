@@ -92,14 +92,6 @@ const skillLayers = [
   },
 ];
 
-const architectureConnections = [
-  'M500 126 C650 150 662 195 525 223 C455 237 430 258 500 280',
-  'M500 278 C345 304 356 350 475 375 C570 395 625 420 500 434',
-  'M500 432 C662 460 652 504 532 529 C450 545 424 570 500 590',
-  'M500 588 C350 610 366 657 482 681 C580 701 620 724 500 742',
-  'M500 740 C650 766 660 812 530 836 C452 850 430 872 500 896',
-];
-
 function useIntroProgress() {
   const progress = useMotionValue(0);
   const smoothProgress = useSpring(progress, {
@@ -289,78 +281,19 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
         </header>
 
         <div className="relative mx-auto min-h-0 w-full max-w-6xl flex-1 overflow-hidden rounded-[1.6rem] border border-[#ffb07e]/18 bg-white/[0.045] shadow-[0_36px_110px_rgba(0,0,0,0.45)] backdrop-blur-2xl [perspective:1400px]">
+          <video
+            className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-[0.55] mix-blend-screen"
+            src={`${BASE_PATH}/assets/skills-cable-light.mp4`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+          <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,106,26,0.18),transparent_34rem)]" />
           <div className="relative z-10 h-full overflow-y-auto px-4 py-7 sm:px-8">
             <div className="relative mx-auto min-h-[900px] max-w-5xl">
-              <svg
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible"
-                viewBox="0 0 1000 930"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <filter id="orange-cable-glow" x="-40%" y="-40%" width="180%" height="180%">
-                    <feGaussianBlur stdDeviation="5" result="blur" />
-                    <feColorMatrix
-                      in="blur"
-                      type="matrix"
-                      values="1 0 0 0 1  0 0.46 0 0 0.24  0 0 0.12 0 0.02  0 0 0 1 0"
-                    />
-                    <feMerge>
-                      <feMergeNode />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                  <radialGradient id="data-packet-glow">
-                    <stop offset="0%" stopColor="#fff2d8" />
-                    <stop offset="38%" stopColor="#ff8a3d" />
-                    <stop offset="100%" stopColor="#ff6b1a" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
-
-                {architectureConnections.map((path, index) => (
-                  <g key={`living-cable-${index}`} filter="url(#orange-cable-glow)">
-                    <motion.path
-                      d={path}
-                      fill="none"
-                      stroke="#ff6b1a"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={flowBoost ? 7 : 4.5}
-                      strokeOpacity={flowBoost || activeLayer === index || activeLayer === index + 1 ? 0.62 : 0.34}
-                      strokeDasharray="20 24"
-                      initial={{ pathLength: 0, strokeDashoffset: 0 }}
-                      animate={{ pathLength: 1, strokeDashoffset: [0, -176] }}
-                      transition={{
-                        pathLength: { duration: 1.1, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] },
-                        strokeDashoffset: { duration: flowBoost ? 1.1 : 2.1, repeat: Infinity, ease: 'linear' },
-                      }}
-                    />
-                    <motion.path
-                      d={path}
-                      fill="none"
-                      stroke="#ffd2a8"
-                      strokeLinecap="round"
-                      strokeWidth={flowBoost ? 8 : 5}
-                      strokeOpacity={flowBoost ? 0.95 : 0.7}
-                      strokeDasharray="54 430"
-                      initial={{ strokeDashoffset: 360 }}
-                      animate={{ strokeDashoffset: [360, -360] }}
-                      transition={{ duration: flowBoost ? 1.35 : 2.35, repeat: Infinity, delay: index * 0.18, ease: 'linear' }}
-                    />
-                    {[0, 1, 2].map((packet) => (
-                      <circle key={`packet-${index}-${packet}`} r={packet === 1 ? 5.5 : 3.6} fill="url(#data-packet-glow)" opacity={flowBoost ? 0.98 : 0.72}>
-                        <animateMotion
-                          dur={`${flowBoost ? 1.45 : 2.8}s`}
-                          begin={`${index * 0.18 + packet * 0.55}s`}
-                          repeatCount="indefinite"
-                          path={path}
-                        />
-                      </circle>
-                    ))}
-                  </g>
-                ))}
-              </svg>
-
               <div className="relative z-10 flex min-h-[900px] flex-col items-center justify-between">
               {skillLayers.map((layer, index) => (
                 <motion.article
