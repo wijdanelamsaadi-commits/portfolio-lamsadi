@@ -24,74 +24,6 @@ const folderHotspots = [
   { label: 'Contact', hash: '#contact', top: '67.8%' },
 ];
 
-const skillLayers = [
-  {
-    name: 'AI Layer',
-    accent: '#ff6b1a',
-    technologies: [
-      { name: 'Python', description: 'AI and automation language', projects: ['AI prototypes', 'Data workflows'], level: 'Advanced' },
-      { name: 'TensorFlow', description: 'Deep learning framework', projects: ['AI models', 'Vision experiments'], level: 'Intermediate' },
-      { name: 'PyTorch', description: 'Research-focused AI framework', projects: ['Future AI projects', 'Model experiments'], level: 'Intermediate' },
-      { name: 'OpenCV', description: 'Computer vision toolkit', projects: ['Vision processing', 'Smart detection'], level: 'Intermediate' },
-      { name: 'DeepFace', description: 'Face intelligence library', projects: ['Face analysis', 'Recognition demos'], level: 'Intermediate' },
-      { name: 'FastAPI', description: 'Python API framework', projects: ['AI APIs', 'Backend services'], level: 'Advanced' },
-    ],
-  },
-  {
-    name: 'Backend Layer',
-    accent: '#f05d14',
-    technologies: [
-      { name: 'Java', description: 'Enterprise backend language', projects: ['Academic systems', 'API services'], level: 'Advanced' },
-      { name: 'Spring Boot', description: 'Java service framework', projects: ['REST services', 'Layered backends'], level: 'Intermediate' },
-      { name: 'C#', description: 'Typed backend language', projects: ['Management apps', 'Desktop logic'], level: 'Advanced' },
-      { name: 'ASP.NET', description: 'Microsoft web framework', projects: ['Web APIs', 'Full-stack apps'], level: 'Advanced' },
-      { name: 'Node.js', description: 'JavaScript runtime', projects: ['Future projects', 'API prototypes'], level: 'Intermediate' },
-      { name: 'REST APIs', description: 'Service communication pattern', projects: ['Portfolio systems', 'Backend integrations'], level: 'Advanced' },
-    ],
-  },
-  {
-    name: 'Database Layer',
-    accent: '#ff7d2b',
-    technologies: [
-      { name: 'SQL Server', description: 'Microsoft relational database', projects: ['ASP.NET apps', 'Reporting systems'], level: 'Advanced' },
-      { name: 'MySQL', description: 'Relational database engine', projects: ['Web apps', 'Academic projects'], level: 'Advanced' },
-      { name: 'PostgreSQL', description: 'Advanced SQL database', projects: ['Future systems', 'Data modeling'], level: 'Intermediate' },
-      { name: 'SQLite', description: 'Lightweight embedded database', projects: ['Mobile prototypes', 'Local storage'], level: 'Intermediate' },
-      { name: 'MongoDB', description: 'Document database', projects: ['Flexible data apps', 'API prototypes'], level: 'Intermediate' },
-    ],
-  },
-  {
-    name: 'Frontend Layer',
-    accent: '#ff8a3d',
-    technologies: [
-      { name: 'React', description: 'Frontend library', projects: ['Portfolio', 'Future projects'], level: 'Advanced' },
-      { name: 'Next.js', description: 'React application framework', projects: ['Portfolio desktop', 'Static web apps'], level: 'Advanced' },
-      { name: 'HTML', description: 'Semantic web structure', projects: ['Portfolio', 'Web interfaces'], level: 'Advanced' },
-      { name: 'CSS', description: 'Visual styling language', projects: ['Premium UI', 'Responsive layouts'], level: 'Advanced' },
-      { name: 'JavaScript', description: 'Browser interaction language', projects: ['Interactive UI', 'App logic'], level: 'Advanced' },
-      { name: 'TypeScript', description: 'Typed JavaScript', projects: ['Portfolio app', 'Safer UI systems'], level: 'Advanced' },
-    ],
-  },
-  {
-    name: 'Mobile Layer',
-    accent: '#ef6a22',
-    technologies: [
-      { name: 'Android Java', description: 'Native Android development', projects: ['Mobile apps', 'Academic mobile work'], level: 'Intermediate' },
-      { name: 'Flutter', description: 'Cross-platform mobile UI', projects: ['Future mobile projects', 'App prototypes'], level: 'Intermediate' },
-    ],
-  },
-  {
-    name: 'Analytics Layer',
-    accent: '#ff9a55',
-    technologies: [
-      { name: 'Power BI', description: 'Business intelligence dashboards', projects: ['Dashboards', 'Decision reports'], level: 'Advanced' },
-      { name: 'Excel', description: 'Spreadsheet analysis tool', projects: ['Data cleaning', 'Operational reports'], level: 'Advanced' },
-      { name: 'KPI', description: 'Performance indicator design', projects: ['Analytics dashboards', 'Reporting systems'], level: 'Advanced' },
-      { name: 'Data Analysis', description: 'Insight extraction workflow', projects: ['Reports', 'Business metrics'], level: 'Advanced' },
-    ],
-  },
-];
-
 function useIntroProgress() {
   const progress = useMotionValue(0);
   const smoothProgress = useSpring(progress, {
@@ -239,24 +171,24 @@ function AboutMeWindow({ onBack }: { onBack: () => void }) {
 }
 
 function SkillsWindow({ onBack }: { onBack: () => void }) {
-  const [activeLayer, setActiveLayer] = useState(0);
-  const [flowBoost, setFlowBoost] = useState(false);
-
   return (
     <motion.section
       aria-label="Skills app window"
-      className="absolute inset-0 z-40 overflow-hidden bg-[#050301] text-[#fff2e8]"
+      className="absolute inset-0 z-40 overflow-hidden bg-black"
       initial={{ opacity: 0, scale: 0.965 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.985 }}
       transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,rgba(255,106,26,0.34),transparent_28rem),radial-gradient(circle_at_18%_76%,rgba(255,126,47,0.18),transparent_26rem),radial-gradient(circle_at_84%_78%,rgba(255,164,92,0.16),transparent_24rem),linear-gradient(180deg,#090502_0%,#160803_48%,#030201_100%)]" />
-      <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,122,43,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,122,43,0.12)_1px,transparent_1px)] [background-size:42px_42px]" />
-      <motion.div
-        className="absolute left-1/2 top-[13%] h-[70rem] w-[70rem] -translate-x-1/2 rounded-full border border-[#ff7a2b]/10"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 34, repeat: Infinity, ease: 'linear' }}
+      <video
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        src={`${BASE_PATH}/assets/skills-cable-light.mp4`}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
       />
 
       <button
@@ -268,124 +200,6 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
       >
         <ArrowLeft size={21} strokeWidth={2.4} />
       </button>
-
-      <motion.div
-        className="relative z-10 flex h-screen flex-col px-4 pb-5 pt-16 sm:px-8"
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.72, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <header className="mb-3 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.34em] text-[#ff8a3d]">Skills.app</p>
-          <h1 className="mt-1 text-3xl font-black tracking-tight text-white sm:text-5xl">3D Technology Stack</h1>
-        </header>
-
-        <div className="relative mx-auto min-h-0 w-full max-w-6xl flex-1 overflow-hidden rounded-[1.6rem] border border-[#ffb07e]/18 bg-white/[0.045] shadow-[0_36px_110px_rgba(0,0,0,0.45)] backdrop-blur-2xl [perspective:1400px]">
-          <video
-            className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-[0.55] mix-blend-screen"
-            src={`${BASE_PATH}/assets/skills-cable-light.mp4`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-          />
-          <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,106,26,0.18),transparent_34rem)]" />
-          <div className="relative z-10 h-full overflow-y-auto px-4 py-7 sm:px-8">
-            <div className="relative mx-auto min-h-[900px] max-w-5xl">
-              <div className="relative z-10 flex min-h-[900px] flex-col items-center justify-between">
-              {skillLayers.map((layer, index) => (
-                <motion.article
-                  key={layer.name}
-                  className="group relative w-full max-w-[56rem]"
-                  initial={{ opacity: 0, y: 54, rotateX: -18, scale: 0.92 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-                  transition={{ duration: 0.72, delay: 0.12 + index * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                  onMouseEnter={() => setActiveLayer(index)}
-                  onFocus={() => setActiveLayer(index)}
-                >
-                  <motion.div
-                    className="relative overflow-visible rounded-[1.25rem] border border-[#ffb07e]/24 bg-[linear-gradient(135deg,rgba(255,247,239,0.16),rgba(255,106,26,0.055))] px-5 py-4 shadow-[0_0_42px_rgba(255,106,26,0.16),0_28px_75px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition group-hover:border-[#ff8a3d]/80"
-                    animate={{ y: [0, index % 2 === 0 ? -8 : -5, 0] }}
-                    transition={{ duration: 4.5, repeat: Infinity, delay: index * 0.18, ease: 'easeInOut' }}
-                    style={{
-                      rotateX: 10,
-                      rotateZ: index % 2 === 0 ? -0.6 : 0.6,
-                      boxShadow:
-                        activeLayer === index || flowBoost
-                          ? `0 0 70px ${layer.accent}66, 0 0 22px ${layer.accent}55, 0 32px 90px rgba(0,0,0,0.45)`
-                          : `0 0 36px ${layer.accent}2f, 0 28px 75px rgba(0,0,0,0.38)`,
-                    }}
-                  >
-                    <div
-                      className="pointer-events-none absolute -inset-4 rounded-[1.6rem] blur-2xl"
-                      style={{ background: `${layer.accent}${activeLayer === index || flowBoost ? '35' : '1f'}` }}
-                    />
-                    <motion.div
-                      className="pointer-events-none absolute inset-x-8 -bottom-3 h-5 rounded-full blur-xl"
-                      style={{ background: `${layer.accent}66` }}
-                      animate={{ opacity: activeLayer === index || flowBoost ? [0.55, 1, 0.55] : [0.32, 0.56, 0.32] }}
-                      transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                    />
-                    <div className="relative mb-4 flex items-center justify-between gap-4">
-                      <h2 className="text-xl font-black text-white sm:text-2xl">{layer.name}</h2>
-                      <span
-                        className="rounded-full border border-white/10 bg-black/22 px-3 py-1 text-xs font-black tracking-[0.18em]"
-                        style={{ color: layer.accent }}
-                      >
-                        LAYER {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-
-                    <div className="relative flex flex-wrap justify-center gap-2 sm:gap-3">
-                      {layer.technologies.map((tech) => (
-                        <div
-                          key={tech.name}
-                          className="group/tech relative"
-                          onMouseEnter={() => {
-                            setActiveLayer(index);
-                            setFlowBoost(true);
-                          }}
-                          onMouseLeave={() => setFlowBoost(false)}
-                          onFocus={() => {
-                            setActiveLayer(index);
-                            setFlowBoost(true);
-                          }}
-                          onBlur={() => setFlowBoost(false)}
-                        >
-                          <button
-                            type="button"
-                            className="rounded-2xl border border-[#ffb07e]/20 bg-black/28 px-4 py-2 text-sm font-extrabold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(0,0,0,0.22)] outline-none transition hover:-translate-y-1 hover:border-[#ff8a3d]/85 hover:bg-[#ff6b1a]/20 hover:shadow-[0_0_24px_rgba(255,106,26,0.34)] focus-visible:ring-2 focus-visible:ring-[#ff8a3d]"
-                          >
-                            {tech.name}
-                          </button>
-
-                          <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-3 w-64 -translate-x-1/2 translate-y-2 rounded-2xl border border-[#ffb07e]/35 bg-[#130a06]/92 p-4 text-left opacity-0 shadow-[0_24px_70px_rgba(0,0,0,0.42),0_0_28px_rgba(255,106,26,0.22)] backdrop-blur-2xl transition duration-250 group-hover/tech:translate-y-0 group-hover/tech:opacity-100 group-focus-within/tech:translate-y-0 group-focus-within/tech:opacity-100">
-                            <p className="text-base font-black text-white">{tech.name}</p>
-                            <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-[#ff8a3d]">
-                              {tech.description}
-                            </p>
-                            <div className="mt-3 text-xs font-semibold leading-5 text-[#ffe1cc]/86">
-                              <p className="text-[#ffb07e]">Used in:</p>
-                              {tech.projects.map((project) => (
-                                <p key={project}>- {project}</p>
-                              ))}
-                              <p className="mt-3 text-[#ffb07e]">Level:</p>
-                              <p>{tech.level}</p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </motion.article>
-              ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
     </motion.section>
   );
 }
