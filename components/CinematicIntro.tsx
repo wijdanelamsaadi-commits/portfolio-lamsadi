@@ -1,19 +1,20 @@
 'use client';
 
 import Image from 'next/image';
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
-import { Folder, Mail, Monitor, PanelsTopLeft, UserRound } from 'lucide-react';
+import { Monitor } from 'lucide-react';
 
 const INTRO_DURATION_MS = 7200;
 const DESKTOP_REVEAL_MS = 6100;
 const BASE_PATH = '/portfolio-lamsadi';
 
-const dockItems = [
-  { label: 'Profile', icon: UserRound },
-  { label: 'Work', icon: Folder },
-  { label: 'Interface', icon: PanelsTopLeft },
-  { label: 'Contact', icon: Mail },
+const folderHotspots = [
+  { label: 'About Me', hash: '#about', top: '10.4%' },
+  { label: 'Skills', hash: '#skills', top: '25.2%' },
+  { label: 'Projects', hash: '#projects', top: '39.2%' },
+  { label: 'Experience', hash: '#experience', top: '53.6%' },
+  { label: 'Contact', hash: '#contact', top: '67.8%' },
 ];
 
 function useIntroProgress() {
@@ -155,69 +156,61 @@ export default function CinematicIntro() {
           filter: introComplete ? 'blur(0px)' : desktopFilter,
         }}
       >
-        <motion.div className="absolute inset-0" style={{ x: reverseParallaxX, y: reverseParallaxY }}>
-          <Image
-            src={`${BASE_PATH}/assets/portfolio-desktop.png`}
-            alt="Wijdane Lamsadi portfolio desktop interface"
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover"
-          />
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ x: reverseParallaxX, y: reverseParallaxY }}
+        >
+          <div
+            className="relative overflow-hidden"
+            style={{ width: 'min(96vw, 138vh)', aspectRatio: '3 / 2' }}
+          >
+            <Image
+              src={`${BASE_PATH}/assets/portfolio-desktop.png`}
+              alt="Wijdane Lamsadi portfolio desktop interface"
+              fill
+              sizes="(max-aspect-ratio: 3/2) 96vw, 138vh"
+              priority
+              className="object-contain"
+            />
+
+            {folderHotspots.map((folder) => (
+              <button
+                key={folder.hash}
+                type="button"
+                aria-label={`Open ${folder.label}`}
+                title={folder.label}
+                className="absolute left-[3.1%] h-[7.4%] w-[5.9%] rounded-2xl outline-none transition focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40"
+                style={{ top: folder.top }}
+                onClick={() => {
+                  window.location.hash = folder.hash;
+                }}
+              />
+            ))}
+          </div>
         </motion.div>
 
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0)_18%,rgba(70,28,8,0.08)_100%)]" />
 
-        <AnimatePresence>
-          {enteredDesktop && (
-            <>
-              <motion.div
-                key={introComplete ? 'desktop-bar-complete' : 'desktop-bar-enter'}
-                className="absolute left-0 right-0 top-0 flex h-9 items-center justify-between bg-white/40 px-4 text-[13px] font-semibold text-black/80 shadow-[0_1px_18px_rgba(94,50,22,0.12)] backdrop-blur-2xl sm:px-8 sm:text-sm"
-                initial={introComplete ? false : { y: -36, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                style={introComplete ? { opacity: 1, transform: 'translateY(0px)' } : undefined}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <div className="flex items-center gap-5">
-                  <span className="text-base">W</span>
-                  <span>Portfolio</span>
-                  <span className="hidden sm:inline">Intro</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <Monitor size={16} strokeWidth={2.4} />
-                  <span>{today}</span>
-                </div>
-              </motion.div>
-
-              <motion.nav
-                key={introComplete ? 'dock-complete' : 'dock-enter'}
-                aria-label="Desktop dock"
-                className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-[1.7rem] border border-white/50 bg-white/40 px-4 py-3 shadow-[0_24px_70px_rgba(74,32,9,0.2)] backdrop-blur-2xl"
-                initial={introComplete ? false : { y: 42, opacity: 0, scale: 0.96 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                style={
-                  introComplete
-                    ? { opacity: 1, transform: 'translateX(-50%) translateY(0px) scale(1)' }
-                    : undefined
-                }
-                transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {dockItems.map(({ label, icon: Icon }) => (
-                  <button
-                    key={label}
-                    type="button"
-                    className="group grid h-12 w-12 place-items-center rounded-2xl bg-white/75 text-[#1c140f] shadow-[0_10px_24px_rgba(70,32,9,0.13)] outline-none transition duration-300 hover:-translate-y-2 hover:bg-white focus-visible:ring-2 focus-visible:ring-[#ff6b1a]"
-                    aria-label={label}
-                    title={label}
-                  >
-                    <Icon size={22} strokeWidth={2.1} />
-                  </button>
-                ))}
-              </motion.nav>
-            </>
-          )}
-        </AnimatePresence>
+        {enteredDesktop && (
+          <motion.div
+            key={introComplete ? 'desktop-bar-complete' : 'desktop-bar-enter'}
+            className="absolute left-0 right-0 top-0 flex h-9 items-center justify-between bg-white/40 px-4 text-[13px] font-semibold text-black/80 shadow-[0_1px_18px_rgba(94,50,22,0.12)] backdrop-blur-2xl sm:px-8 sm:text-sm"
+            initial={introComplete ? false : { y: -36, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            style={introComplete ? { opacity: 1, transform: 'translateY(0px)' } : undefined}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="flex items-center gap-5">
+              <span className="text-base">W</span>
+              <span>Portfolio</span>
+              <span className="hidden sm:inline">Intro</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <Monitor size={16} strokeWidth={2.4} />
+              <span>{today}</span>
+            </div>
+          </motion.div>
+        )}
       </motion.section>
 
       <motion.div
