@@ -180,18 +180,14 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
       exit={{ opacity: 0, scale: 0.985 }}
       transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-8">
-        <div className="relative h-[90vh] w-[94vw] overflow-hidden rounded-[28px] shadow-[0_30px_80px_rgba(111,59,25,0.22)]">
-          <Image
-            src={`${BASE_PATH}/assets/skills-map.png`}
-            alt="Skills architecture map"
-            fill
-            sizes="94vw"
-            className="object-contain"
-            priority
-          />
-        </div>
-      </div>
+      <Image
+        src={`${BASE_PATH}/assets/skills-map.png`}
+        alt="Skills architecture map"
+        fill
+        sizes="100vw"
+        className="object-contain object-center"
+        priority
+      />
 
       <button
         type="button"
