@@ -18,10 +18,81 @@ const BASE_PATH = '/portfolio-lamsadi';
 
 const folderHotspots = [
   { label: 'About Me', hash: '#about', top: '10.4%', opensAbout: true },
-  { label: 'Skills', hash: '#skills', top: '25.2%' },
+  { label: 'Skills', hash: '#skills', top: '25.2%', opensSkills: true },
   { label: 'Projects', hash: '#projects', top: '39.2%' },
   { label: 'Experience', hash: '#experience', top: '53.6%' },
   { label: 'Contact', hash: '#contact', top: '67.8%' },
+];
+
+const skillLayers = [
+  {
+    name: 'AI Layer',
+    accent: '#ff6b1a',
+    summary: 'Computer vision, model integration, intelligent APIs.',
+    technologies: [
+      { name: 'Python', detail: 'Core language for AI workflows, automation, and data pipelines.' },
+      { name: 'TensorFlow', detail: 'Neural-network models, training flows, and inference foundations.' },
+      { name: 'OpenCV', detail: 'Image processing, detection pipelines, and real-time vision tasks.' },
+      { name: 'DeepFace', detail: 'Face analysis, recognition experiments, and identity intelligence.' },
+      { name: 'FastAPI', detail: 'Fast model-serving APIs with clean Python backend contracts.' },
+    ],
+  },
+  {
+    name: 'Backend Layer',
+    accent: '#f05d14',
+    summary: 'Reliable services, business logic, and API architecture.',
+    technologies: [
+      { name: 'Java', detail: 'Strong backend fundamentals and object-oriented application structure.' },
+      { name: 'Spring Boot', detail: 'Production-ready Java APIs, services, and layered architecture.' },
+      { name: 'C#', detail: 'Typed backend development and enterprise application logic.' },
+      { name: 'ASP.NET', detail: 'Secure web APIs and full-stack Microsoft ecosystem development.' },
+      { name: 'REST APIs', detail: 'Clear resource contracts for frontend, mobile, and AI integrations.' },
+    ],
+  },
+  {
+    name: 'Database Layer',
+    accent: '#ff7d2b',
+    summary: 'Structured storage, relational modeling, and flexible documents.',
+    technologies: [
+      { name: 'MySQL', detail: 'Relational schemas, joins, indexing, and transactional systems.' },
+      { name: 'PostgreSQL', detail: 'Advanced relational design and robust query-driven applications.' },
+      { name: 'SQL Server', detail: 'Microsoft database workflows, reporting, and enterprise data.' },
+      { name: 'MongoDB', detail: 'Document storage for flexible product data and fast iteration.' },
+      { name: 'SQLite', detail: 'Lightweight local persistence for prototypes and mobile apps.' },
+    ],
+  },
+  {
+    name: 'Frontend Layer',
+    accent: '#ff8a3d',
+    summary: 'Interfaces, interaction systems, and polished product screens.',
+    technologies: [
+      { name: 'React', detail: 'Component-driven UI, stateful interactions, and reusable interfaces.' },
+      { name: 'Next.js', detail: 'Modern React apps with routing, static export, and optimized delivery.' },
+      { name: 'HTML', detail: 'Semantic structure and accessible page foundations.' },
+      { name: 'CSS', detail: 'Responsive layouts, animation polish, and visual systems.' },
+      { name: 'JavaScript', detail: 'Interactive browser behavior and client-side product logic.' },
+      { name: 'TypeScript', detail: 'Safer UI and API contracts with strong typing.' },
+    ],
+  },
+  {
+    name: 'Mobile Layer',
+    accent: '#ef6a22',
+    summary: 'Cross-device experiences and native-style app flows.',
+    technologies: [
+      { name: 'Android Java', detail: 'Native Android foundations, activities, and mobile UI logic.' },
+      { name: 'Flutter', detail: 'Cross-platform mobile interfaces with a clean widget system.' },
+    ],
+  },
+  {
+    name: 'Analytics Layer',
+    accent: '#ff9a55',
+    summary: 'Dashboards, indicators, and decision-ready reporting.',
+    technologies: [
+      { name: 'Power BI', detail: 'Interactive dashboards, data models, and business reporting.' },
+      { name: 'Excel', detail: 'Analysis, cleaning, formulas, and fast operational reports.' },
+      { name: 'KPI', detail: 'Performance metrics that translate data into product decisions.' },
+    ],
+  },
 ];
 
 function useIntroProgress() {
@@ -170,11 +241,130 @@ function AboutMeWindow({ onBack }: { onBack: () => void }) {
   );
 }
 
+function SkillsWindow({ onBack }: { onBack: () => void }) {
+  const [activeLayer, setActiveLayer] = useState(0);
+
+  return (
+    <motion.section
+      aria-label="Skills app window"
+      className="absolute inset-0 z-40 overflow-hidden bg-[#140b07] text-[#fff2e8]"
+      initial={{ opacity: 0, scale: 0.965 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.985 }}
+      transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_16%,rgba(255,106,26,0.34),transparent_28rem),radial-gradient(circle_at_85%_78%,rgba(255,148,85,0.2),transparent_30rem),linear-gradient(135deg,#140b07_0%,#2a1208_52%,#090604_100%)]" />
+      <div className="absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(255,122,43,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,122,43,0.12)_1px,transparent_1px)] [background-size:52px_52px]" />
+
+      <button
+        type="button"
+        aria-label="Back to desktop"
+        title="Back"
+        onClick={onBack}
+        className="absolute left-5 top-5 z-30 grid h-11 w-11 place-items-center rounded-full border border-[#ffb07e]/45 bg-white/10 text-[#fff0e5] shadow-[0_18px_40px_rgba(0,0,0,0.26)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-[#ff6b1a]/24 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8a3d]"
+      >
+        <ArrowLeft size={21} strokeWidth={2.4} />
+      </button>
+
+      <motion.div
+        className="relative z-10 flex h-screen flex-col px-5 pb-5 pt-20 sm:px-8 lg:px-12"
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.72, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <header className="mb-5 flex flex-col justify-between gap-4 border-b border-[#ffb07e]/20 pb-5 md:flex-row md:items-end">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.34em] text-[#ff8a3d]">Skills.app</p>
+            <h1 className="mt-2 text-4xl font-black tracking-tight text-white sm:text-5xl">Architecture Layers</h1>
+          </div>
+          <p className="max-w-xl text-sm font-medium leading-6 text-[#ffd8bf]/78">
+            A layered map of technologies, connected from intelligence to interfaces, storage, mobile delivery,
+            and analytics.
+          </p>
+        </header>
+
+        <div className="relative min-h-0 flex-1 overflow-hidden rounded-[1.45rem] border border-[#ffb07e]/24 bg-white/[0.075] p-4 shadow-[0_32px_90px_rgba(0,0,0,0.32)] backdrop-blur-2xl">
+          <svg
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            viewBox="0 0 1000 650"
+            preserveAspectRatio="none"
+          >
+            {skillLayers.slice(0, -1).map((_, index) => (
+              <motion.path
+                key={`connection-${index}`}
+                d={`M ${index % 2 === 0 ? 235 : 765} ${96 + index * 91} C 470 ${132 + index * 82}, 530 ${
+                  132 + index * 82
+                }, ${index % 2 === 0 ? 765 : 235} ${187 + index * 91}`}
+                fill="none"
+                stroke={activeLayer === index || activeLayer === index + 1 ? '#ff8a3d' : 'rgba(255,176,126,0.24)'}
+                strokeWidth={activeLayer === index || activeLayer === index + 1 ? 3.1 : 1.55}
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.95, delay: 0.12 + index * 0.08, ease: 'easeOut' }}
+              />
+            ))}
+          </svg>
+
+          <div className="relative z-10 grid h-full grid-cols-1 gap-4 overflow-y-auto pr-1 lg:grid-cols-2">
+            {skillLayers.map((layer, index) => (
+              <motion.article
+                key={layer.name}
+                className="group relative overflow-hidden rounded-[1.2rem] border border-[#ffb07e]/24 bg-[#fff7ef]/10 p-4 shadow-[0_18px_44px_rgba(0,0,0,0.18)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-[#ff8a3d]/70 hover:bg-[#fff7ef]/14"
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.58, delay: 0.14 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                onMouseEnter={() => setActiveLayer(index)}
+                onFocus={() => setActiveLayer(index)}
+                style={{ boxShadow: activeLayer === index ? `0 0 46px ${layer.accent}33` : undefined }}
+              >
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-1"
+                  style={{ background: `linear-gradient(90deg, transparent, ${layer.accent}, transparent)` }}
+                />
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <h2 className="text-xl font-black text-white">{layer.name}</h2>
+                    <p className="mt-2 max-w-md text-sm leading-6 text-[#ffd8bf]/72">{layer.summary}</p>
+                  </div>
+                  <span
+                    className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-white/10 bg-black/18 text-sm font-black text-white"
+                    style={{ color: layer.accent }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {layer.technologies.map((tech) => (
+                    <div
+                      key={tech.name}
+                      tabIndex={0}
+                      className="group/tech relative min-h-[4.2rem] overflow-hidden rounded-2xl border border-white/10 bg-black/18 px-3 py-3 outline-none transition hover:-translate-y-1 hover:border-[#ff8a3d]/70 hover:bg-[#ff6b1a]/16 focus-visible:ring-2 focus-visible:ring-[#ff8a3d]"
+                    >
+                      <p className="text-sm font-extrabold text-white">{tech.name}</p>
+                      <p className="mt-2 translate-y-2 text-[11px] font-medium leading-4 text-[#ffe2ce]/0 transition duration-300 group-hover/tech:translate-y-0 group-hover/tech:text-[#ffe2ce]/90 group-focus/tech:translate-y-0 group-focus/tech:text-[#ffe2ce]/90">
+                        {tech.detail}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </motion.section>
+  );
+}
+
 export default function CinematicIntro() {
   const progress = useIntroProgress();
   const [enteredDesktop, setEnteredDesktop] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [skillsOpen, setSkillsOpen] = useState(false);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
@@ -308,6 +498,11 @@ export default function CinematicIntro() {
                     return;
                   }
 
+                  if (folder.opensSkills) {
+                    setSkillsOpen(true);
+                    return;
+                  }
+
                   window.location.hash = folder.hash;
                 }}
               />
@@ -350,6 +545,10 @@ export default function CinematicIntro() {
 
       <AnimatePresence>
         {aboutOpen && <AboutMeWindow onBack={() => setAboutOpen(false)} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {skillsOpen && <SkillsWindow onBack={() => setSkillsOpen(false)} />}
       </AnimatePresence>
     </main>
   );
