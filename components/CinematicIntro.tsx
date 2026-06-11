@@ -174,23 +174,21 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
   return (
     <motion.section
       aria-label="Skills app window"
-      className="absolute inset-0 z-40 overflow-hidden bg-black"
+      className="absolute inset-0 z-40 overflow-hidden bg-[#f5e2d4]"
       initial={{ opacity: 0, scale: 0.965 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.985 }}
       transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4">
-        <div className="h-[90vh] w-[95vw] overflow-hidden rounded-[28px] bg-black shadow-[0_32px_90px_rgba(0,0,0,0.42),0_0_42px_rgba(255,106,26,0.22)]">
-          <video
-            className="h-full w-full object-contain object-center"
-            src={`${BASE_PATH}/assets/skills-cable-light.mp4`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
+      <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-8">
+        <div className="relative h-[90vh] w-[94vw] overflow-hidden rounded-[28px] shadow-[0_30px_80px_rgba(111,59,25,0.22)]">
+          <Image
+            src={`${BASE_PATH}/assets/skills-map.png`}
+            alt="Skills architecture map"
+            fill
+            sizes="94vw"
+            className="object-contain"
+            priority
           />
         </div>
       </div>
