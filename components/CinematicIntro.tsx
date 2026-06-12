@@ -24,6 +24,9 @@ import {
   Film,
   Github,
   Landmark,
+  Linkedin,
+  Mail,
+  MessageCircle,
   type LucideIcon,
   Monitor,
   School,
@@ -43,6 +46,33 @@ const folderHotspots = [
   { label: 'Projects', hash: '#projects', top: '39.2%', opensProjects: true },
   { label: 'Experience', hash: '#experience', top: '53.6%' },
   { label: 'Contact', hash: '#contact', top: '67.8%' },
+];
+
+const contactCards = [
+  {
+    label: 'Email',
+    text: 'wijdanelamsaadi@gmail.com',
+    href: 'mailto:wijdanelamsaadi@gmail.com',
+    Icon: Mail,
+  },
+  {
+    label: 'WhatsApp',
+    text: '+212 630 853 382',
+    href: 'https://wa.me/212630853382',
+    Icon: MessageCircle,
+  },
+  {
+    label: 'LinkedIn',
+    text: 'lamsadi-wijdane-a236bb257',
+    href: 'https://www.linkedin.com/in/lamsadi-wijdane-a236bb257',
+    Icon: Linkedin,
+  },
+  {
+    label: 'GitHub',
+    text: 'wijdanelamsaadi-commits',
+    href: 'https://github.com/wijdanelamsaadi-commits',
+    Icon: Github,
+  },
 ];
 
 type Project = {
@@ -638,6 +668,94 @@ function ExperienceWindow({ onBack }: { onBack: () => void }) {
   );
 }
 
+function ContactWindow({ onBack }: { onBack: () => void }) {
+  return (
+    <motion.section
+      aria-label="Contact window"
+      className="absolute inset-0 z-40 overflow-y-auto bg-[#fffaf5] text-[#0f1720] dark:bg-[#05070d] dark:text-white"
+      initial={{ opacity: 0, scale: 0.965 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.985 }}
+      transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-orange-100/70 blur-3xl dark:bg-orange-500/10" />
+        <div className="absolute right-0 top-0 h-80 w-80 rounded-full bg-orange-50/80 blur-3xl dark:bg-orange-400/10" />
+        <div className="absolute left-8 top-8 h-28 w-28 opacity-30 [background-image:radial-gradient(#ff6b00_1.5px,transparent_1.5px)] [background-size:18px_18px] dark:opacity-20" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-tl-full border-l border-t border-orange-200/50 dark:border-orange-400/15" />
+      </div>
+
+      <button
+        type="button"
+        aria-label="Back to desktop"
+        title="Back"
+        onClick={onBack}
+        className="fixed left-5 top-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-orange-200/80 bg-white/78 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18] dark:border-orange-400/25 dark:bg-white/10 dark:text-orange-200 dark:shadow-[0_0_32px_rgba(255,107,0,0.18)] dark:hover:bg-white/15"
+      >
+        <ArrowLeft size={21} strokeWidth={2.4} />
+      </button>
+
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-20 sm:px-8 lg:px-10">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="mx-auto inline-flex items-center gap-4 text-[#ff6b00]">
+            <span className="h-px w-16 bg-gradient-to-r from-transparent to-[#ff6b00]" />
+            <span className="text-sm font-black uppercase tracking-[0.28em]">Contact</span>
+            <span className="h-px w-16 bg-gradient-to-l from-transparent to-[#ff6b00]" />
+          </div>
+          <h1 className="mt-7 text-5xl font-black leading-none tracking-normal text-[#101820] dark:text-white sm:text-6xl lg:text-7xl">
+            Get In Touch
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg font-medium leading-8 text-slate-600 dark:text-slate-300 sm:text-xl">
+            Feel free to reach out through any of the platforms below.
+          </p>
+          <div className="mx-auto mt-7 h-0.5 w-20 rounded-full bg-[#ff6b00] shadow-[0_0_22px_rgba(255,107,0,0.42)]" />
+        </motion.div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {contactCards.map((card, index) => {
+            const Icon = card.Icon;
+
+            return (
+              <motion.a
+                key={card.label}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-[1.65rem] border border-orange-100/90 bg-white/88 p-6 text-left shadow-[0_24px_70px_rgba(27,32,50,0.08)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[#ff6b00]/55 hover:shadow-[0_28px_86px_rgba(255,107,0,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#fffaf5] dark:border-orange-400/15 dark:bg-white/[0.055] dark:shadow-[0_24px_80px_rgba(0,0,0,0.35)] dark:hover:border-[#ff6b00]/65 dark:hover:shadow-[0_0_48px_rgba(255,107,0,0.18)] dark:focus-visible:ring-offset-[#05070d] sm:p-8"
+                initial={{ opacity: 0, y: 26 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.52, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="absolute right-6 top-6 text-[#ff6b00] transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                  <ExternalLink size={23} strokeWidth={2.2} />
+                </div>
+
+                <div className="flex items-center gap-6 pr-10">
+                  <div className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border border-orange-200/80 bg-orange-50/80 text-[#ff6b00] shadow-[0_14px_34px_rgba(255,107,0,0.12)] transition duration-300 group-hover:scale-105 group-hover:bg-white dark:border-orange-400/20 dark:bg-orange-400/10 dark:shadow-[0_0_28px_rgba(255,107,0,0.12)] dark:group-hover:bg-orange-400/15">
+                    <Icon size={38} strokeWidth={2.05} />
+                  </div>
+                  <div className="min-w-0">
+                    <h2 className="text-2xl font-black text-[#101820] dark:text-white">{card.label}</h2>
+                    <p className="mt-3 break-words text-base font-medium leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
+                      {card.text}
+                    </p>
+                  </div>
+                </div>
+              </motion.a>
+            );
+          })}
+        </div>
+      </div>
+    </motion.section>
+  );
+}
+
 function getInitialHashState() {
   if (typeof window === 'undefined') return false;
   const hash = window.location.hash;
@@ -657,6 +775,7 @@ export default function CinematicIntro() {
   const [skillsOpen, setSkillsOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [experienceOpen, setExperienceOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
@@ -695,6 +814,7 @@ export default function CinematicIntro() {
       setSkillsOpen(false);
       setProjectsOpen(false);
       setExperienceOpen(false);
+      setContactOpen(false);
 
       if (hash === '#about') {
         setAboutOpen(true);
@@ -706,6 +826,7 @@ export default function CinematicIntro() {
         setExperienceOpen(true);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#contact') {
+        setContactOpen(true);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
@@ -840,6 +961,12 @@ export default function CinematicIntro() {
                   }
 
                   if (folder.hash === '#contact') {
+                    setAboutOpen(false);
+                    setSkillsOpen(false);
+                    setProjectsOpen(false);
+                    setExperienceOpen(false);
+                    setContactOpen(true);
+                    window.location.hash = '#contact';
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     return;
                   }
@@ -898,6 +1025,10 @@ export default function CinematicIntro() {
 
       <AnimatePresence>
         {experienceOpen && <ExperienceWindow onBack={() => setExperienceOpen(false)} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {contactOpen && <ContactWindow onBack={() => setContactOpen(false)} />}
       </AnimatePresence>
     </main>
   );
