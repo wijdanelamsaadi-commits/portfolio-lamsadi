@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { BarChart3, BriefcaseBusiness, Code2, Database, MapPin, UsersRound } from 'lucide-react';
 
+const BASE_PATH = '/portfolio-lamsadi';
+
 const achievements = [
   {
     icon: Code2,
@@ -85,7 +87,7 @@ export default function ExperienceCard() {
               </div>
               <div className="hidden sm:block">
                 <Image
-                  src="/assets/ocp-logo.png"
+                  src={`${BASE_PATH}/assets/ocp-logo.png`}
                   alt="OCP Logo"
                   width={110}
                   height={110}

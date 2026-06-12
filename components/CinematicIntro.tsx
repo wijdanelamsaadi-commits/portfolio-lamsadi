@@ -14,7 +14,6 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   Activity,
   ArrowLeft,
-  BarChart3,
   Bot,
   Brain,
   Car,
@@ -22,6 +21,7 @@ import {
   Database,
   ExternalLink,
   Film,
+  Gem,
   Github,
   Landmark,
   Linkedin,
@@ -83,6 +83,8 @@ type Project = {
   features: string[];
   Icon: LucideIcon;
   accent: string;
+  githubUrl?: string;
+  demoUrl?: string;
 };
 
 type ProjectGallery = {
@@ -107,6 +109,8 @@ const projectGalleries: ProjectGallery[] = [
         features: ['Real-time fraud scoring', 'Behavior pattern analysis', 'Risk dashboard', 'REST API integration'],
         Icon: ShieldCheck,
         accent: '#0d5b83',
+        githubUrl: 'https://github.com/wijdanelamsaadi-commits/FraudShield',
+        demoUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7463923857033265152/',
       },
       {
         title: 'Pneumonia Detection',
@@ -117,6 +121,9 @@ const projectGalleries: ProjectGallery[] = [
         features: ['X-ray preprocessing', 'CNN classification', 'Model evaluation', 'Prediction report view'],
         Icon: Activity,
         accent: '#466783',
+        githubUrl: 'https://github.com/ouma-bg/pneumonia-detection-fastapi',
+        demoUrl:
+          'https://www.linkedin.com/posts/lamsadi-wijdane-a236bb257_deeplearning-computervision-healthcareai-activity-7435422925106802688-gfHU?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9JQvsB3fV2yTFgprcxZk7zgEiifXPsKoQ',
       },
       {
         title: 'Chatbot IA',
@@ -127,6 +134,9 @@ const projectGalleries: ProjectGallery[] = [
         features: ['Intent handling', 'Context-aware replies', 'Prompt pipeline', 'Service integration'],
         Icon: Bot,
         accent: '#183952',
+        githubUrl: 'https://github.com/ouma-bg/ensaj-chatbot-assistant-',
+        demoUrl:
+          'https://www.linkedin.com/posts/lamsadi-wijdane-a236bb257_rag-llm-generativeai-activity-7435426124777672705--99L?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9JQvsB3fV2yTFgprcxZk7zgEiifXPsKoQ',
       },
     ],
   },
@@ -144,6 +154,9 @@ const projectGalleries: ProjectGallery[] = [
         features: ['Movie discovery', 'AI recommendations', 'Favorites flow', 'Responsive mobile UI'],
         Icon: Film,
         accent: '#075d7a',
+        githubUrl: 'https://github.com/wijdanelamsaadi-commits/MovieApp_CineAI',
+        demoUrl:
+          'https://www.linkedin.com/feed/update/urn:li:activity:7461118740823441408/',
       },
       {
         title: 'Smart Attendance',
@@ -154,6 +167,7 @@ const projectGalleries: ProjectGallery[] = [
         features: ['QR attendance', 'Student records', 'Realtime database', 'Admin overview'],
         Icon: ClipboardCheck,
         accent: '#164b6f',
+        githubUrl: 'https://github.com/wijdanelamsaadi-commits/Smart-Attendance-ENSA-El-Jadida',
       },
       {
         title: 'PermiApp',
@@ -164,6 +178,33 @@ const projectGalleries: ProjectGallery[] = [
         features: ['Lesson modules', 'Practice tracking', 'Mobile navigation', 'API-backed content'],
         Icon: Car,
         accent: '#1f5a75',
+        githubUrl: 'https://github.com/wijdanelamsaadi-commits/permis',
+      },
+      {
+        title: 'Vaccination Reminder',
+        category: 'Health Reminder',
+        tech: ['Flutter', 'Local DB', 'Notifications', 'Dart'],
+        description:
+          'A health reminder mobile app that helps users track vaccination dates, upcoming doses, and reminder alerts.',
+        features: ['Vaccination schedule', 'Reminder alerts', 'Dose tracking', 'Simple mobile dashboard'],
+        Icon: ClipboardCheck,
+        accent: '#5b4a8f',
+        githubUrl: 'https://github.com/ouma-bg/vaccination_reminder_app_version_modifi-',
+        demoUrl:
+          'https://www.linkedin.com/posts/lamsadi-wijdane-a236bb257_flutter-dart-mobiledevelopment-activity-7435432606860644353-A5Js?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9JQvsB3fV2yTFgprcxZk7zgEiifXPsKoQ',
+      },
+      {
+        title: 'Waqt Al Khayr',
+        category: 'Charity & Donation App',
+        tech: ['Flutter', 'Firebase', 'Mobile UI', 'Auth'],
+        description:
+          'A charity and donation mobile app concept focused on connecting users with helpful giving opportunities.',
+        features: ['Donation flows', 'Campaign listings', 'User authentication', 'Mobile-first experience'],
+        Icon: Activity,
+        accent: '#2a8c5d',
+        githubUrl: 'https://github.com/ouma-bg/WA9T_LKHIR',
+        demoUrl:
+          'https://www.linkedin.com/posts/lamsadi-wijdane-a236bb257_reactnative-mobiledevelopment-techforgood-activity-7435453224075247616-xiaX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9JQvsB3fV2yTFgprcxZk7zgEiifXPsKoQ',
       },
     ],
   },
@@ -181,6 +222,8 @@ const projectGalleries: ProjectGallery[] = [
         features: ['Equipment records', 'Intervention planning', 'Maintenance history', 'Role-based workflows'],
         Icon: Wrench,
         accent: '#273e4e',
+        demoUrl:
+          'https://www.linkedin.com/posts/lamsadi-wijdane-a236bb257_ocp-gmao-powerbi-activity-7435831272226107392-2BZP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9JQvsB3fV2yTFgprcxZk7zgEiifXPsKoQ',
       },
       {
         title: 'Gestion d’école',
@@ -193,17 +236,61 @@ const projectGalleries: ProjectGallery[] = [
         accent: '#7b4b1f',
       },
       {
-        title: 'Power BI Dashboard',
-        category: 'Data Analytics',
-        tech: ['Power BI', 'DAX', 'Excel', 'KPI'],
+        title: 'Gestion des Besoins',
+        category: 'Needs Management',
+        tech: ['PHP', 'Laravel', 'MySQL', 'Workflow'],
         description:
-          'An analytics dashboard focused on turning raw data into readable KPIs, charts, and business insights.',
-        features: ['KPI cards', 'Interactive charts', 'Data cleaning', 'Executive reporting'],
-        Icon: BarChart3,
+          'A web platform for organizing internal needs, requests, validation states, and follow-up between users.',
+        features: ['Request tracking', 'Validation workflow', 'Needs dashboard', 'Relational database'],
+        Icon: Database,
         accent: '#9a5a14',
+        githubUrl: 'https://github.com/wijdanelamsaadi-commits/gestion-besoins',
+        demoUrl:
+          'https://www.linkedin.com/posts/lamsadi-wijdane-a236bb257_php-mysql-bootstrap-activity-7444039318286921728-QDFS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9JQvsB3fV2yTFgprcxZk7zgEiifXPsKoQ',
+      },
+      {
+        title: 'Dar Atlas',
+        category: 'Real Estate Platform',
+        tech: ['Laravel', 'MySQL', 'PHP', 'Responsive UI'],
+        description:
+          'A real estate web platform for browsing properties, showcasing details, and managing listings cleanly.',
+        features: ['Property listings', 'Search-ready structure', 'Listing detail pages', 'Admin content flow'],
+        Icon: Landmark,
+        accent: '#1d6f91',
+        githubUrl: 'https://github.com/wijdanelamsaadi-commits/dar-atlas',
+      },
+      {
+        title: 'AURÉLIA',
+        category: 'E-commerce Jewelry',
+        tech: ['Next.js', 'React', 'Spring Boot', 'MySQL'],
+        description:
+          'Luxury jewelry e-commerce website with elegant UI, product showcase, cart and order system.',
+        features: ['Elegant luxury UI', 'Product showcase', 'Shopping cart', 'Order system'],
+        Icon: Gem,
+        accent: '#b7791f',
+        githubUrl: 'https://github.com/ouma-bg/aurelia-jewelry',
+        demoUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7460420227537993728/',
       },
     ],
   },
+];
+
+const museumProjects = projectGalleries.flatMap((gallery) => gallery.projects);
+
+const projectHotspots = [
+  { title: 'TrustGuard', frame: { left: 1.5, top: 31.5, width: 8.7, height: 31.7 }, button: { left: 3.5, top: 58.5, width: 4.8, height: 3.6 } },
+  { title: 'Pneumonia Detection', frame: { left: 10.4, top: 32.7, width: 8.6, height: 29.6 }, button: { left: 12.4, top: 58.6, width: 4.9, height: 3.6 } },
+  { title: 'Chatbot IA', frame: { left: 19.1, top: 33.8, width: 7.6, height: 27.8 }, button: { left: 20.4, top: 58.4, width: 4.8, height: 3.5 } },
+  { title: 'CineAI', frame: { left: 32.4, top: 35.7, width: 6.3, height: 25.3 }, button: { left: 33.5, top: 57.4, width: 4.3, height: 3.4 } },
+  { title: 'Smart Attendance', frame: { left: 39.3, top: 35.7, width: 6.4, height: 25.3 }, button: { left: 40.3, top: 57.4, width: 4.4, height: 3.4 } },
+  { title: 'PermiApp', frame: { left: 46.1, top: 35.7, width: 6.4, height: 25.3 }, button: { left: 47.1, top: 57.4, width: 4.4, height: 3.4 } },
+  { title: 'Vaccination Reminder', frame: { left: 53.0, top: 35.7, width: 6.3, height: 25.3 }, button: { left: 54.0, top: 57.4, width: 4.4, height: 3.4 } },
+  { title: 'Waqt Al Khayr', frame: { left: 59.8, top: 35.7, width: 6.5, height: 25.3 }, button: { left: 60.9, top: 57.4, width: 4.4, height: 3.4 } },
+  { title: 'GMAO OCP', frame: { left: 72.7, top: 36.2, width: 5.1, height: 25.2 }, button: { left: 73.2, top: 58.1, width: 4.1, height: 3.6 } },
+  { title: 'Gestion d’école', frame: { left: 77.6, top: 36.2, width: 5.4, height: 25.2 }, button: { left: 78.1, top: 58.1, width: 4.3, height: 3.6 } },
+  { title: 'Gestion des Besoins', frame: { left: 83.0, top: 36.2, width: 5.1, height: 25.2 }, button: { left: 83.5, top: 58.1, width: 4.2, height: 3.6 } },
+  { title: 'Dar Atlas', frame: { left: 88.1, top: 35.0, width: 5.2, height: 28.0 }, button: { left: 88.8, top: 58.3, width: 3.8, height: 3.6 } },
+  { title: 'AURÉLIA', frame: { left: 93.1, top: 34.0, width: 5.6, height: 29.3 }, button: { left: 93.8, top: 58.3, width: 4.2, height: 3.6 } },
 ];
 
 function useIntroProgress() {
@@ -265,7 +352,7 @@ function PortraitReveal() {
       onPointerLeave={() => radius.set(0)}
     >
       <Image
-        src={`${BASE_PATH}/about-normal.png`}
+        src={`${BASE_PATH}/assets/about-normal.png`}
         alt="Wijdane Lamsadi portrait"
         fill
         sizes="(max-width: 768px) 88vw, 34rem"
@@ -275,7 +362,7 @@ function PortraitReveal() {
 
       <motion.div className="absolute inset-0" style={{ clipPath, WebkitClipPath: clipPath }}>
         <Image
-          src={`${BASE_PATH}/about-cyber.png`}
+          src={`${BASE_PATH}/assets/about-cyber.png`}
           alt="Cybernetic Wijdane Lamsadi portrait reveal"
           fill
           sizes="(max-width: 768px) 88vw, 34rem"
@@ -416,91 +503,9 @@ function ProjectArtwork({ project }: { project: Project }) {
   );
 }
 
-function ProjectFrame({ project, index, onSelect }: { project: Project; index: number; onSelect: () => void }) {
-  return (
-    <motion.article
-      className="group relative min-w-0"
-      initial={{ opacity: 0, y: 28, scale: 0.94 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.64, delay: 0.24 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="pointer-events-none absolute left-1/2 top-[-1.85rem] h-10 w-20 -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,239,206,0.95),rgba(255,160,78,0.24)_48%,transparent_72%)] blur-sm" />
-      <motion.div
-        className="relative rounded-[0.85rem] border-[5px] border-[#9b5a20] bg-[#f5dcc8] p-2 shadow-[0_20px_36px_rgba(77,39,13,0.28),inset_0_0_0_1px_rgba(255,245,223,0.72)]"
-        whileHover={{
-          y: -7,
-          boxShadow: '0 0 34px rgba(234,105,22,0.38), 0 24px 46px rgba(77,39,13,0.34)',
-        }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-      >
-        <div className="overflow-hidden rounded-[0.52rem]">
-          <motion.div className="origin-center" whileHover={{ scale: 1.045 }} transition={{ duration: 0.42 }}>
-            <ProjectArtwork project={project} />
-          </motion.div>
-        </div>
-      </motion.div>
-
-      <div className="mt-2 text-center text-[#1d1008]">
-        <h3 className="text-[0.76rem] font-black leading-tight">{project.title}</h3>
-        <p className="mt-0.5 text-[0.58rem] font-semibold text-[#8b4b19]">{project.category}</p>
-        <p className="mx-auto mt-0.5 max-w-[11rem] truncate text-[0.55rem] font-semibold text-[#3e2a1a]/76">
-          {project.tech.slice(0, 3).join(' · ')}
-        </p>
-        <button
-          type="button"
-          onClick={onSelect}
-          className="mt-2 rounded-md bg-[#8b4b19] px-3 py-1.5 text-[0.58rem] font-black text-white shadow-[0_8px_18px_rgba(96,47,12,0.22)] transition hover:-translate-y-0.5 hover:bg-[#c65a05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18]"
-        >
-          View Details
-        </button>
-      </div>
-    </motion.article>
-  );
-}
-
-function GalleryRoom({
-  gallery,
-  galleryIndex,
-  onSelect,
-}: {
-  gallery: ProjectGallery;
-  galleryIndex: number;
-  onSelect: (project: Project) => void;
-}) {
-  const Icon = gallery.Icon;
-
-  return (
-    <motion.section
-      className="relative flex min-h-0 flex-col justify-between overflow-hidden rounded-[1.3rem] border border-[#bd7941]/45 bg-[linear-gradient(180deg,rgba(255,238,221,0.86),rgba(222,158,101,0.36))] px-5 pb-5 pt-12 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.52),0_26px_70px_rgba(108,57,20,0.22)]"
-      initial={{ opacity: 0, y: 36, rotateY: galleryIndex === 1 ? 0 : galleryIndex === 0 ? 4 : -4 }}
-      animate={{ opacity: 1, y: 0, rotateY: galleryIndex === 1 ? 0 : galleryIndex === 0 ? 2 : -2 }}
-      transition={{ duration: 0.74, delay: 0.12 + galleryIndex * 0.1, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-[radial-gradient(ellipse_at_top,rgba(255,244,221,0.95),rgba(244,149,59,0.2)_54%,transparent_80%)]" />
-      <div className="pointer-events-none absolute inset-x-4 bottom-4 h-px bg-[#e47722]/45 shadow-[0_0_18px_rgba(234,105,22,0.65)]" />
-
-      <div className="relative text-center">
-        <Icon className="mx-auto mb-1 text-[#1f130b]" size={23} strokeWidth={1.8} />
-        <h2 className="font-serif text-xl font-black uppercase leading-none tracking-wide text-[#201109]">{gallery.title}</h2>
-        <p className="mt-1 text-[0.62rem] font-semibold text-[#5d351d]">{gallery.subtitle}</p>
-      </div>
-
-      <div className="relative mt-6 grid grid-cols-3 gap-3">
-        {gallery.projects.map((project, projectIndex) => (
-          <ProjectFrame
-            key={project.title}
-            project={project}
-            index={galleryIndex * 3 + projectIndex}
-            onSelect={() => onSelect(project)}
-          />
-        ))}
-      </div>
-    </motion.section>
-  );
-}
-
 function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const Icon = project.Icon;
+  const hasLinks = Boolean(project.demoUrl || project.githubUrl);
 
   return (
     <motion.div
@@ -512,7 +517,7 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
       onClick={onClose}
     >
       <motion.article
-        className="relative grid w-full max-w-4xl gap-6 rounded-[1.2rem] bg-[#fff4eb] p-5 text-[#1d1008] shadow-[0_34px_100px_rgba(26,12,4,0.48)] md:grid-cols-[0.9fr_1.1fr]"
+        className="relative w-full max-w-2xl rounded-[1rem] bg-[#fff4eb] p-6 text-[#1d1008] shadow-[0_30px_90px_rgba(26,12,4,0.44)]"
         initial={{ opacity: 0, y: 28, scale: 0.92 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 18, scale: 0.96 }}
@@ -528,10 +533,6 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
         >
           <X size={18} />
         </button>
-
-        <div className="rounded-[0.9rem] bg-[#0b151d] p-3 shadow-[0_18px_45px_rgba(12,22,31,0.22)]">
-          <ProjectArtwork project={project} />
-        </div>
 
         <div className="pr-8">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[#c65a05]">{project.category}</p>
@@ -562,20 +563,30 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
             </ul>
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#1d1008] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#2e1a0f]"
-            >
-              View Live Demo <ExternalLink size={15} />
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#c65a05] px-5 py-3 text-sm font-black text-white shadow-[0_14px_26px_rgba(198,90,5,0.25)] transition hover:-translate-y-0.5 hover:bg-[#a94d05]"
-            >
-              View on GitHub <Github size={15} />
-            </a>
-          </div>
+          {hasLinks && (
+            <div className="mt-6 flex flex-wrap gap-3">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#1d1008] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#2e1a0f]"
+                >
+                  View Demo <ExternalLink size={15} />
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#c65a05] px-5 py-3 text-sm font-black text-white shadow-[0_14px_26px_rgba(198,90,5,0.25)] transition hover:-translate-y-0.5 hover:bg-[#a94d05]"
+                >
+                  View on GitHub <Github size={15} />
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </motion.article>
     </motion.div>
@@ -584,19 +595,25 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
 
 function ProjectsMuseumWindow({ onBack }: { onBack: () => void }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const getProject = (title: string) => museumProjects.find((project) => project.title === title);
 
   return (
     <motion.section
       aria-label="Projects museum window"
-      className="absolute inset-0 z-40 overflow-hidden bg-[#e7bea0] text-[#1d1008]"
+      className="absolute inset-0 z-40 overflow-hidden bg-[#b98862] text-[#1d1008]"
       initial={{ opacity: 0, scale: 0.965 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.985 }}
       transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,237,213,0.95),transparent_20rem),radial-gradient(circle_at_18%_25%,rgba(255,232,199,0.72),transparent_21rem),radial-gradient(circle_at_82%_25%,rgba(255,232,199,0.72),transparent_21rem),linear-gradient(180deg,#d4a27d_0%,#edc4a5_46%,#d8a37c_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-[34%] bg-[linear-gradient(180deg,rgba(141,76,32,0),rgba(123,69,33,0.26)),repeating-linear-gradient(90deg,rgba(255,255,255,0.16)_0_1px,transparent_1px_120px)] opacity-80" />
-      <div className="pointer-events-none absolute inset-x-[8%] bottom-[9%] h-28 rounded-[50%] bg-[#fff2e5]/24 blur-xl" />
+      <Image
+        src={`${BASE_PATH}/assets/projects-museum.png`}
+        alt="Projects Museum"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+        priority
+      />
 
       <button
         type="button"
@@ -608,33 +625,41 @@ function ProjectsMuseumWindow({ onBack }: { onBack: () => void }) {
         <ArrowLeft size={21} strokeWidth={2.4} />
       </button>
 
-      <div className="relative z-10 flex h-screen flex-col px-5 pb-5 pt-8 sm:px-8">
-        <motion.header
-          className="text-center"
-          initial={{ opacity: 0, y: -18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.66, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <Landmark className="mx-auto text-[#a64f16]" size={28} strokeWidth={1.8} />
-          <h1 className="mt-1 font-serif text-4xl font-black uppercase leading-none tracking-wide text-[#1f120b] sm:text-5xl">
-            Projects <span className="text-[#b65311]">Museum</span>
-          </h1>
-          <p className="mt-2 text-sm font-semibold text-[#5c321b]">Explore my work like a digital gallery</p>
-        </motion.header>
+      {projectHotspots.map((hotspot) => {
+        const project = getProject(hotspot.title);
+        if (!project) return null;
 
-        <div className="relative mt-6 grid min-h-0 flex-1 grid-cols-3 gap-5 [perspective:1600px]">
-          <div className="pointer-events-none absolute left-[31.8%] top-8 h-[76%] w-14 rounded-full bg-[linear-gradient(90deg,rgba(103,58,28,0.18),rgba(255,232,201,0.58),rgba(103,58,28,0.12))] shadow-[inset_0_0_22px_rgba(93,49,21,0.2)]" />
-          <div className="pointer-events-none absolute right-[31.8%] top-8 h-[76%] w-14 rounded-full bg-[linear-gradient(90deg,rgba(103,58,28,0.18),rgba(255,232,201,0.58),rgba(103,58,28,0.12))] shadow-[inset_0_0_22px_rgba(93,49,21,0.2)]" />
-          {projectGalleries.map((gallery, galleryIndex) => (
-            <GalleryRoom
-              key={gallery.title}
-              gallery={gallery}
-              galleryIndex={galleryIndex}
-              onSelect={setSelectedProject}
+        return (
+          <div key={hotspot.title}>
+            <button
+              type="button"
+              aria-label={`Open ${project.title} details`}
+              title={project.title}
+              onClick={() => setSelectedProject(project)}
+              className="absolute z-20 rounded-sm bg-[#f06b18]/0 outline-none transition hover:bg-[#f06b18]/10 focus-visible:bg-[#f06b18]/14 focus-visible:ring-2 focus-visible:ring-[#ff9b4a]"
+              style={{
+                left: `${hotspot.frame.left}%`,
+                top: `${hotspot.frame.top}%`,
+                width: `${hotspot.frame.width}%`,
+                height: `${hotspot.frame.height}%`,
+              }}
             />
-          ))}
-        </div>
-      </div>
+            <button
+              type="button"
+              aria-label={`View ${project.title} details`}
+              title={`View ${project.title} details`}
+              onClick={() => setSelectedProject(project)}
+              className="absolute z-20 rounded-lg bg-[#f06b18]/0 outline-none transition hover:bg-[#f06b18]/12 focus-visible:bg-[#f06b18]/18 focus-visible:ring-2 focus-visible:ring-[#ff9b4a]"
+              style={{
+                left: `${hotspot.button.left}%`,
+                top: `${hotspot.button.top}%`,
+                width: `${hotspot.button.width}%`,
+                height: `${hotspot.button.height}%`,
+              }}
+            />
+          </div>
+        );
+      })}
 
       <AnimatePresence>
         {selectedProject && <ProjectDetailsModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
