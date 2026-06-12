@@ -1067,21 +1067,10 @@ function ContactWindow({ onBack }: { onBack: () => void }) {
   );
 }
 
-function getInitialHashState() {
-  if (typeof window === 'undefined') return false;
-  const hash = window.location.hash;
-  return (
-    hash === '#experience' ||
-    hash === '#about' ||
-    hash === '#skills' ||
-    hash === '#projects' ||
-    hash === '#contact'
-  );
-}
 export default function CinematicIntro() {
   const progress = useIntroProgress();
-  const [enteredDesktop, setEnteredDesktop] = useState(getInitialHashState);
-  const [introComplete, setIntroComplete] = useState(getInitialHashState);
+  const [enteredDesktop, setEnteredDesktop] = useState(false);
+  const [introComplete, setIntroComplete] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [skillsOpen, setSkillsOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
