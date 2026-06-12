@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import ExperienceCertificationsSection from '@/components/ExperienceCertificationsSection';
 import {
   AnimatePresence,
   motion,
@@ -611,6 +612,32 @@ function ProjectsMuseumWindow({ onBack }: { onBack: () => void }) {
     </motion.section>
   );
 }
+
+function ExperienceWindow({ onBack }: { onBack: () => void }) {
+  return (
+    <motion.section
+      aria-label="Experience and certifications window"
+      className="absolute inset-0 z-40 overflow-y-auto bg-[#fffdfb] text-[#111827]"
+      initial={{ opacity: 0, scale: 0.965 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.985 }}
+      transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <button
+        type="button"
+        aria-label="Back to desktop"
+        title="Back"
+        onClick={onBack}
+        className="fixed left-5 top-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-orange-200/80 bg-white/78 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18]"
+      >
+        <ArrowLeft size={21} strokeWidth={2.4} />
+      </button>
+
+      <ExperienceCertificationsSection />
+    </motion.section>
+  );
+}
+
 function getInitialHashState() {
   if (typeof window === 'undefined') return false;
   const hash = window.location.hash;
@@ -629,6 +656,7 @@ export default function CinematicIntro() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [skillsOpen, setSkillsOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
+  const [experienceOpen, setExperienceOpen] = useState(false);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
@@ -663,6 +691,10 @@ export default function CinematicIntro() {
       if (!hash) return;
       setIntroComplete(true);
       setEnteredDesktop(true);
+      setAboutOpen(false);
+      setSkillsOpen(false);
+      setProjectsOpen(false);
+      setExperienceOpen(false);
 
       if (hash === '#about') {
         setAboutOpen(true);
@@ -671,10 +703,8 @@ export default function CinematicIntro() {
       } else if (hash === '#projects') {
         setProjectsOpen(true);
       } else if (hash === '#experience') {
-        requestAnimationFrame(() => {
-          const el = document.getElementById('experience');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        });
+        setExperienceOpen(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#contact') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
@@ -801,8 +831,11 @@ export default function CinematicIntro() {
 
                   if (folder.hash === '#experience') {
                     window.location.hash = '#experience';
-                    const el = document.getElementById('experience');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    setAboutOpen(false);
+                    setSkillsOpen(false);
+                    setProjectsOpen(false);
+                    setExperienceOpen(true);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     return;
                   }
 
@@ -861,6 +894,10 @@ export default function CinematicIntro() {
 
       <AnimatePresence>
         {projectsOpen && <ProjectsMuseumWindow onBack={() => setProjectsOpen(false)} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {experienceOpen && <ExperienceWindow onBack={() => setExperienceOpen(false)} />}
       </AnimatePresence>
     </main>
   );
