@@ -455,7 +455,7 @@ const skillGroups: SkillGroup[] = [
     title: 'AI & Machine Learning',
     count: '18+ Technologies',
     Icon: Brain,
-    position: 'lg:left-[3%] lg:top-[12%] lg:h-[30%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[13%] lg:h-[29%] lg:w-[31.5%]',
     items: [
       'Python',
       'TensorFlow',
@@ -467,7 +467,7 @@ const skillGroups: SkillGroup[] = [
       'DeepFace',
       'EasyOCR',
       'XGBoost',
-      'Autoencoders',
+      'Autoencoder',
       'Siamese Networks',
       'Streamlit',
       'FastAPI',
@@ -481,7 +481,7 @@ const skillGroups: SkillGroup[] = [
     title: 'Full Stack Development',
     count: '16+ Technologies',
     Icon: Code2,
-    position: 'lg:right-[3%] lg:top-[12%] lg:h-[30%] lg:w-[33.5%]',
+    position: 'lg:right-[3%] lg:top-[13%] lg:h-[29%] lg:w-[33.5%]',
     items: [
       'Java',
       'Spring Boot',
@@ -507,9 +507,9 @@ const skillGroups: SkillGroup[] = [
     title: 'Mobile Development',
     count: '12+ Technologies',
     Icon: Smartphone,
-    position: 'lg:left-[3%] lg:top-[45%] lg:h-[22%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[46%] lg:h-[21%] lg:w-[31.5%]',
     items: [
-      'Java Android',
+      'Android',
       'Kotlin',
       'Flutter',
       'Dart',
@@ -517,25 +517,21 @@ const skillGroups: SkillGroup[] = [
       'Firebase',
       'SQLite',
       'XML',
-      'RecyclerView',
       'Material Design',
       'Android Studio',
-      'Mobile UI/UX',
     ],
   },
   {
     title: 'Databases & Data',
     count: '10+ Technologies',
     Icon: Database,
-    position: 'lg:right-[3%] lg:top-[45%] lg:h-[22%] lg:w-[33.5%]',
+    position: 'lg:right-[3%] lg:top-[46%] lg:h-[21%] lg:w-[33.5%]',
     items: [
       'MySQL',
       'PostgreSQL',
       'SQL Server',
       'H2 Database',
       'SQLite',
-      'Database Design',
-      'Data Modeling',
       'Power BI',
       'KPI Dashboards',
       'Data Analytics',
@@ -545,22 +541,29 @@ const skillGroups: SkillGroup[] = [
     title: 'Tools & DevOps',
     count: '15+ Technologies',
     Icon: Wrench,
-    position: 'lg:left-[3%] lg:top-[70%] lg:h-[21%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[71%] lg:h-[20%] lg:w-[31.5%]',
     items: ['Git', 'GitHub', 'VS Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 'Maven', 'Postman', 'Swagger', 'Docker', 'n8n', 'VMware'],
   },
   {
-    title: 'Cloud & Architecture',
-    count: '8+ Technologies',
+    title: 'Cloud / Architecture / Cybersecurity',
+    count: '16+ Technologies',
     Icon: Cloud,
-    position: 'lg:left-1/2 lg:top-[72%] lg:h-[19%] lg:w-[25%] lg:-translate-x-1/2',
-    items: ['AWS', 'Cloud Foundations', 'API Architecture', 'Microservices', 'System Design', 'Client-Server Architecture'],
-  },
-  {
-    title: 'Cybersecurity',
-    count: '10+ Technologies',
-    Icon: ShieldCheck,
-    position: 'lg:right-[3%] lg:top-[70%] lg:h-[21%] lg:w-[33.5%]',
-    items: ['Network Security', 'VPN', 'IPSec', 'GRE', 'Firewalls', 'ACL', 'SHA-256', 'Authentication', 'Authorization'],
+    position: 'lg:right-[3%] lg:top-[71%] lg:h-[20%] lg:w-[33.5%]',
+    items: [
+      'AWS',
+      'Microservices',
+      'System Design',
+      'Client-Server Architecture',
+      'Network Security',
+      'VPN',
+      'IPSec',
+      'GRE',
+      'Firewall',
+      'ACL',
+      'SHA-256',
+      'Authentication',
+      'Authorization',
+    ],
   },
 ];
 
@@ -569,7 +572,7 @@ const skillStats = ['65+ Technologies', '13 Projects Completed', '4 AWS Certific
 function SkillBadge({ label, index }: { label: string; index: number }) {
   return (
     <motion.span
-      className="inline-flex min-h-6 items-center rounded-md border border-white/70 bg-white/76 px-2 py-1 text-[9px] font-bold leading-none text-[#473426] shadow-[0_5px_14px_rgba(92,50,25,0.06)] backdrop-blur-xl sm:text-[10px]"
+      className="relative z-20 inline-flex min-h-[1.35rem] items-center rounded-md border border-[#f3dccb] bg-white/88 px-1.5 py-1 text-[8px] font-extrabold leading-none text-[#3c2a1f] shadow-[0_5px_14px_rgba(92,50,25,0.08)] backdrop-blur-xl sm:text-[9px] xl:px-2 xl:text-[10px]"
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.32, delay: 0.16 + index * 0.012, ease: 'easeOut' }}
@@ -585,25 +588,25 @@ function SkillPanel({ group, index }: { group: SkillGroup; index: number }) {
 
   return (
     <motion.article
-      className={`relative z-20 overflow-hidden rounded-[1.35rem] border border-white/70 bg-white/58 p-3 text-[#16110d] shadow-[0_18px_46px_rgba(80,47,28,0.12)] backdrop-blur-2xl ${group.position}`}
+      className={`isolate relative z-20 overflow-hidden rounded-[1.35rem] border border-white/70 bg-white/68 p-3 text-[#16110d] shadow-[0_18px_46px_rgba(80,47,28,0.12)] backdrop-blur-2xl lg:absolute ${group.position}`}
       initial={{ opacity: 0, y: 20, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.48, delay: 0.14 + index * 0.055, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4, boxShadow: '0 24px 62px rgba(255, 107, 26, 0.18)' }}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_10%,rgba(255,107,26,0.1),transparent_10rem),linear-gradient(135deg,rgba(255,255,255,0.76),rgba(255,255,255,0.2))]" />
-      <div className="relative flex items-center gap-3">
-        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[#ffd3b6] bg-white text-[#ff6b00] shadow-[0_0_20px_rgba(255,107,26,0.22)] lg:h-12 lg:w-12">
-          <Icon size={24} strokeWidth={2.25} />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_12%_10%,rgba(255,107,26,0.1),transparent_10rem),linear-gradient(135deg,rgba(255,255,255,0.8),rgba(255,255,255,0.24))]" />
+      <div className="relative z-20 flex items-center gap-2.5">
+        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[#ffd3b6] bg-white text-[#ff6b00] shadow-[0_0_20px_rgba(255,107,26,0.22)] lg:h-11 lg:w-11">
+          <Icon size={23} strokeWidth={2.35} />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
-            <h2 className="text-[11px] font-black uppercase tracking-normal text-[#16110d] lg:text-[12px]">{group.title}</h2>
-            <p className="text-[8px] font-black text-[#ff6b00] lg:text-[9px]">{group.count}</p>
+            <h2 className="text-[10px] font-black uppercase leading-tight tracking-normal text-[#16110d] lg:text-[11px] xl:text-[12px]">{group.title}</h2>
+            <p className="text-[8px] font-black leading-tight text-[#ff6b00] lg:text-[9px]">{group.count}</p>
           </div>
         </div>
       </div>
-      <div className="relative mt-3 flex flex-wrap content-start gap-1.5 lg:gap-1.5">
+      <div className="relative z-20 mt-2.5 flex flex-wrap content-start gap-1.5">
         {group.items.map((item, itemIndex) => (
           <SkillBadge key={`${group.title}-${item}`} label={item} index={itemIndex} />
         ))}
