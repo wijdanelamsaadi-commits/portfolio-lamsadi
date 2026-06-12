@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { BarChart3, BriefcaseBusiness, Code2, Database, MapPin, UsersRound } from 'lucide-react';
 
@@ -25,24 +26,6 @@ const achievements = [
     text: 'Collabore avec une equipe d ingenieurs en methodologie Agile/Scrum.',
   },
 ];
-
-function OcpLogo() {
-  return (
-    <div className="flex flex-col items-center justify-center text-[#35a839]" aria-label="OCP logo">
-      <div className="relative h-14 w-16">
-        <span className="absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border-[6px] border-current" />
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((degree) => (
-          <span
-            key={degree}
-            className="absolute left-1/2 top-1/2 h-2.5 w-6 origin-left rounded-full bg-current"
-            style={{ transform: `rotate(${degree}deg) translateX(10px)` }}
-          />
-        ))}
-      </div>
-      <span className="-mt-2 text-2xl font-black tracking-tight">OCP</span>
-    </div>
-  );
-}
 
 export default function ExperienceCard() {
   return (
@@ -101,7 +84,13 @@ export default function ExperienceCard() {
                 </p>
               </div>
               <div className="hidden sm:block">
-                <OcpLogo />
+                <Image
+                  src="/assets/ocp-logo.png"
+                  alt="OCP Logo"
+                  width={110}
+                  height={110}
+                  className="h-auto w-[110px] object-contain"
+                />
               </div>
             </div>
 
