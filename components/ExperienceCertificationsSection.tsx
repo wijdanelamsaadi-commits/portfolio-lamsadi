@@ -9,7 +9,6 @@ import ExperienceCard from './ExperienceCard';
 export default function ExperienceCertificationsSection() {
   return (
     <section
-      id="experience"
       aria-labelledby="experience-certifications-title"
       className="relative isolate overflow-hidden bg-[#fffdfb] px-4 py-10 text-[#111827] transition-colors duration-500 sm:px-6 sm:py-12 lg:px-10"
     >
