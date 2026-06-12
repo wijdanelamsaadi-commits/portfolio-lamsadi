@@ -611,11 +611,21 @@ function ProjectsMuseumWindow({ onBack }: { onBack: () => void }) {
     </motion.section>
   );
 }
-
+function getInitialHashState() {
+  if (typeof window === 'undefined') return false;
+  const hash = window.location.hash;
+  return (
+    hash === '#experience' ||
+    hash === '#about' ||
+    hash === '#skills' ||
+    hash === '#projects' ||
+    hash === '#contact'
+  );
+}
 export default function CinematicIntro() {
   const progress = useIntroProgress();
-  const [enteredDesktop, setEnteredDesktop] = useState(false);
-  const [introComplete, setIntroComplete] = useState(false);
+  const [enteredDesktop, setEnteredDesktop] = useState(getInitialHashState);
+  const [introComplete, setIntroComplete] = useState(getInitialHashState);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [skillsOpen, setSkillsOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
@@ -648,7 +658,34 @@ export default function CinematicIntro() {
     const timeout = window.setTimeout(() => setIntroComplete(true), INTRO_DURATION_MS + 260);
     return () => window.clearTimeout(timeout);
   }, []);
+  useEffect(() => {
+    const applyHash = (hash: string) => {
+      if (!hash) return;
+      setIntroComplete(true);
+      setEnteredDesktop(true);
 
+      if (hash === '#about') {
+        setAboutOpen(true);
+      } else if (hash === '#skills') {
+        setSkillsOpen(true);
+      } else if (hash === '#projects') {
+        setProjectsOpen(true);
+      } else if (hash === '#experience') {
+        requestAnimationFrame(() => {
+          const el = document.getElementById('experience');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        });
+      } else if (hash === '#contact') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+
+    applyHash(window.location.hash);
+
+    const onHashChange = () => applyHash(window.location.hash);
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
   const today = useMemo(() => {
     return new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
@@ -759,6 +796,18 @@ export default function CinematicIntro() {
 
                   if (folder.opensProjects) {
                     setProjectsOpen(true);
+                    return;
+                  }
+
+                  if (folder.hash === '#experience') {
+                    window.location.hash = '#experience';
+                    const el = document.getElementById('experience');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                  }
+
+                  if (folder.hash === '#contact') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     return;
                   }
 
