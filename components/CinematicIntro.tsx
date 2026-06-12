@@ -448,6 +448,7 @@ type SkillGroup = {
   Icon: LucideIcon;
   items: string[];
   position: string;
+  compact?: boolean;
 };
 
 const skillGroups: SkillGroup[] = [
@@ -455,7 +456,7 @@ const skillGroups: SkillGroup[] = [
     title: 'AI & Machine Learning',
     count: '18+ Technologies',
     Icon: Brain,
-    position: 'lg:left-[3%] lg:top-[13%] lg:h-[29%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[12%] lg:h-[27%] lg:w-[31.5%]',
     items: [
       'Python',
       'TensorFlow',
@@ -481,7 +482,7 @@ const skillGroups: SkillGroup[] = [
     title: 'Full Stack Development',
     count: '16+ Technologies',
     Icon: Code2,
-    position: 'lg:right-[3%] lg:top-[13%] lg:h-[29%] lg:w-[33.5%]',
+    position: 'lg:right-[3%] lg:top-[12%] lg:h-[27%] lg:w-[33%]',
     items: [
       'Java',
       'Spring Boot',
@@ -497,7 +498,7 @@ const skillGroups: SkillGroup[] = [
       'JavaScript',
       'HTML5',
       'CSS3',
-      'Tailwind CSS',
+      'Tailwind',
       'Bootstrap',
       'PHP',
       'FastAPI',
@@ -507,7 +508,7 @@ const skillGroups: SkillGroup[] = [
     title: 'Mobile Development',
     count: '12+ Technologies',
     Icon: Smartphone,
-    position: 'lg:left-[3%] lg:top-[46%] lg:h-[21%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[42%] lg:h-[20%] lg:w-[31.5%]',
     items: [
       'Android',
       'Kotlin',
@@ -525,7 +526,7 @@ const skillGroups: SkillGroup[] = [
     title: 'Databases & Data',
     count: '10+ Technologies',
     Icon: Database,
-    position: 'lg:right-[3%] lg:top-[46%] lg:h-[21%] lg:w-[33.5%]',
+    position: 'lg:right-[3%] lg:top-[42%] lg:h-[20%] lg:w-[33%]',
     items: [
       'MySQL',
       'PostgreSQL',
@@ -541,43 +542,99 @@ const skillGroups: SkillGroup[] = [
     title: 'Tools & DevOps',
     count: '15+ Technologies',
     Icon: Wrench,
-    position: 'lg:left-[3%] lg:top-[71%] lg:h-[20%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[65%] lg:h-[22%] lg:w-[31.5%]',
     items: ['Git', 'GitHub', 'VS Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 'Maven', 'Postman', 'Swagger', 'Docker', 'n8n', 'VMware'],
   },
   {
-    title: 'Cloud / Architecture / Cybersecurity',
-    count: '16+ Technologies',
+    title: 'Cloud Architecture',
+    count: '8+ Technologies',
     Icon: Cloud,
-    position: 'lg:right-[3%] lg:top-[71%] lg:h-[20%] lg:w-[33.5%]',
-    items: [
-      'AWS',
-      'Microservices',
-      'System Design',
-      'Client-Server Architecture',
-      'Network Security',
-      'VPN',
-      'IPSec',
-      'GRE',
-      'Firewall',
-      'ACL',
-      'SHA-256',
-      'Authentication',
-      'Authorization',
-    ],
+    position: 'lg:left-[36.5%] lg:top-[73%] lg:h-[15%] lg:w-[27%]',
+    compact: true,
+    items: ['AWS', 'Microservices', 'System Design', 'Client-Server Architecture'],
+  },
+  {
+    title: 'Cybersecurity',
+    count: '10+ Technologies',
+    Icon: ShieldCheck,
+    position: 'lg:right-[3%] lg:top-[65%] lg:h-[22%] lg:w-[33%]',
+    items: ['Network Security', 'VPN', 'IPSec', 'GRE', 'Firewall', 'ACL', 'SHA-256', 'Authentication', 'Authorization'],
   },
 ];
 
-const skillStats = ['65+ Technologies', '13 Projects Completed', '4 AWS Certifications', 'AI • Mobile • Full Stack • Data', 'Always Learning'];
+const skillStats = ['65+ Technologies', '13 Projects Completed', '4 AWS Certifications'];
 
-function SkillBadge({ label, index }: { label: string; index: number }) {
+const badgeIconMap: Record<string, LucideIcon> = {
+  AWS: Cloud,
+  Android: Smartphone,
+  'Android Studio': Smartphone,
+  Authentication: ShieldCheck,
+  Authorization: ShieldCheck,
+  Autoencoder: Brain,
+  Bootstrap: Code2,
+  CSS3: Code2,
+  Dart: Smartphone,
+  Docker: Wrench,
+  FastAPI: Code2,
+  Firebase: Database,
+  Flutter: Smartphone,
+  Git: Github,
+  GitHub: Github,
+  HTML5: Code2,
+  JWT: ShieldCheck,
+  Java: Code2,
+  JavaScript: Code2,
+  Keras: Brain,
+  Kotlin: Smartphone,
+  Maven: Wrench,
+  MySQL: Database,
+  'Next.js': Code2,
+  NLP: Bot,
+  NumPy: Brain,
+  OpenCV: Activity,
+  Pandas: Brain,
+  PHP: Code2,
+  PostgreSQL: Database,
+  Python: Brain,
+  React: Code2,
+  'React Native': Smartphone,
+  SQLite: Database,
+  'SQL Server': Database,
+  Swagger: Wrench,
+  Tailwind: Code2,
+  TensorFlow: Brain,
+  TypeScript: Code2,
+  VMware: Monitor,
+  VPN: ShieldCheck,
+  XML: Code2,
+};
+
+function getBadgeIcon(label: string, fallback: LucideIcon) {
+  if (badgeIconMap[label]) return badgeIconMap[label];
+  if (label.includes('Security') || label.includes('Firewall') || label.includes('SHA') || label.includes('IPSec')) return ShieldCheck;
+  if (label.includes('SQL') || label.includes('Data') || label.includes('Database') || label.includes('Dashboard')) return Database;
+  if (label.includes('Machine') || label.includes('Deep') || label.includes('Computer Vision') || label.includes('Siamese')) return Brain;
+  if (label.includes('System') || label.includes('Microservices') || label.includes('Architecture')) return Cloud;
+  return fallback;
+}
+
+function SkillBadge({ label, index, fallbackIcon }: { label: string; index: number; fallbackIcon: LucideIcon }) {
+  const BadgeIcon = getBadgeIcon(label, fallbackIcon);
+
   return (
     <motion.span
-      className="relative z-20 inline-flex min-h-[1.35rem] items-center rounded-md border border-[#f3dccb] bg-white/88 px-1.5 py-1 text-[8px] font-extrabold leading-none text-[#3c2a1f] shadow-[0_5px_14px_rgba(92,50,25,0.08)] backdrop-blur-xl sm:text-[9px] xl:px-2 xl:text-[10px]"
+      className="relative z-20 inline-flex min-h-[1.28rem] items-center gap-1 rounded-md border border-[#f3dccb] bg-white/90 px-1.5 py-0.5 text-[7.5px] font-extrabold leading-none text-[#3c2a1f] shadow-[0_5px_14px_rgba(92,50,25,0.08)] backdrop-blur-xl sm:text-[8.5px] xl:px-2 xl:text-[9px]"
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.32, delay: 0.16 + index * 0.012, ease: 'easeOut' }}
-      whileHover={{ y: -2, scale: 1.035 }}
+      whileHover={{
+        y: -2,
+        scale: 1.055,
+        backgroundColor: 'rgba(255, 247, 237, 0.98)',
+        boxShadow: '0 8px 22px rgba(255, 107, 0, 0.18)',
+      }}
     >
+      <BadgeIcon size={10} strokeWidth={2.4} className="shrink-0 text-[#ff6b00]" />
       {label}
     </motion.span>
   );
@@ -588,7 +645,7 @@ function SkillPanel({ group, index }: { group: SkillGroup; index: number }) {
 
   return (
     <motion.article
-      className={`isolate relative z-20 overflow-hidden rounded-[1.35rem] border border-white/70 bg-white/68 p-3 text-[#16110d] shadow-[0_18px_46px_rgba(80,47,28,0.12)] backdrop-blur-2xl lg:absolute ${group.position}`}
+      className={`isolate relative z-20 overflow-hidden rounded-[1.25rem] border border-white/70 bg-white/70 p-2.5 text-[#16110d] shadow-[0_18px_46px_rgba(80,47,28,0.12)] backdrop-blur-2xl lg:absolute ${group.position}`}
       initial={{ opacity: 0, y: 20, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.48, delay: 0.14 + index * 0.055, ease: [0.22, 1, 0.36, 1] }}
@@ -596,19 +653,19 @@ function SkillPanel({ group, index }: { group: SkillGroup; index: number }) {
     >
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_12%_10%,rgba(255,107,26,0.1),transparent_10rem),linear-gradient(135deg,rgba(255,255,255,0.8),rgba(255,255,255,0.24))]" />
       <div className="relative z-20 flex items-center gap-2.5">
-        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[#ffd3b6] bg-white text-[#ff6b00] shadow-[0_0_20px_rgba(255,107,26,0.22)] lg:h-11 lg:w-11">
-          <Icon size={23} strokeWidth={2.35} />
+        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-2xl border border-[#ffd3b6] bg-white text-[#ff6b00] shadow-[0_0_20px_rgba(255,107,26,0.22)] lg:h-10 lg:w-10">
+          <Icon size={22} strokeWidth={2.35} />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
-            <h2 className="text-[10px] font-black uppercase leading-tight tracking-normal text-[#16110d] lg:text-[11px] xl:text-[12px]">{group.title}</h2>
-            <p className="text-[8px] font-black leading-tight text-[#ff6b00] lg:text-[9px]">{group.count}</p>
+            <h2 className="text-[9.5px] font-black uppercase leading-tight tracking-normal text-[#16110d] lg:text-[10px] xl:text-[11px]">{group.title}</h2>
+            <p className="text-[7.5px] font-black leading-tight text-[#ff6b00] lg:text-[8px] xl:text-[8.5px]">{group.count}</p>
           </div>
         </div>
       </div>
-      <div className="relative z-20 mt-2.5 flex flex-wrap content-start gap-1.5">
+      <div className={`relative z-20 flex flex-wrap content-start gap-1.5 ${group.compact ? 'mt-2' : 'mt-2.5'}`}>
         {group.items.map((item, itemIndex) => (
-          <SkillBadge key={`${group.title}-${item}`} label={item} index={itemIndex} />
+          <SkillBadge key={`${group.title}-${item}`} label={item} index={itemIndex} fallbackIcon={group.Icon} />
         ))}
       </div>
     </motion.article>
@@ -681,53 +738,59 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
             </filter>
           </defs>
           {[
-            'M35 25 C42 25 42 33 49 39',
-            'M65 25 C58 25 58 33 51 39',
-            'M35 55 C41 54 43 50 49 48',
-            'M65 55 C59 54 57 50 51 48',
-            'M35 81 C42 78 44 64 49 54',
-            'M50 72 C50 65 50 60 50 54',
-            'M65 81 C58 78 56 64 51 54',
+            'M34.5 23 C40 24 43 31 48.5 39',
+            'M65.5 23 C60 24 57 31 51.5 39',
+            'M34.5 51 C40 51 43 48 48.5 47',
+            'M65.5 51 C60 51 57 48 51.5 47',
+            'M34.5 76 C42 72 45 58 49 52',
+            'M50 76 C50 66 50 59 50 53',
+            'M65.5 76 C58 72 55 58 51 52',
           ].map((path) => (
-            <path key={path} d={path} fill="none" stroke="rgba(255,107,0,0.36)" strokeWidth="0.18" filter="url(#skill-line-glow)" />
+            <path key={path} d={path} fill="none" stroke="rgba(255,107,0,0.48)" strokeWidth="0.22" filter="url(#skill-line-glow)" />
           ))}
           {[35, 65].map((x) =>
-            [25, 55, 81].map((y) => (
+            [23, 51, 76].map((y) => (
               <circle key={`${x}-${y}`} cx={x} cy={y} r="0.38" fill="#fff7ed" stroke="#ffb35f" strokeWidth="0.18" />
             )),
           )}
+          <circle cx="50" cy="76" r="0.38" fill="#fff7ed" stroke="#ffb35f" strokeWidth="0.18" />
         </svg>
 
         <div className="relative mx-auto mt-7 grid max-w-6xl gap-3 lg:absolute lg:inset-x-0 lg:top-0 lg:mx-0 lg:mt-0 lg:h-full lg:max-w-none lg:px-6">
           <motion.div
-            className="relative z-20 order-first mx-auto grid min-h-72 w-full max-w-[21rem] place-items-center rounded-[2rem] lg:absolute lg:left-1/2 lg:top-[26%] lg:min-h-0 lg:w-[24%] lg:-translate-x-1/2"
+            className="relative z-20 order-first mx-auto grid min-h-72 w-full max-w-[24rem] place-items-center rounded-[2rem] lg:absolute lg:left-[35%] lg:top-[23%] lg:min-h-0 lg:w-[30%]"
             initial={{ opacity: 0, scale: 0.88 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.72, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
-              className="absolute h-64 w-64 rounded-full border border-[#ffb45f]/45 shadow-[0_0_45px_rgba(255,107,0,0.2)] lg:h-72 lg:w-72"
+              className="absolute h-72 w-72 rounded-full border border-[#ffb45f]/35 shadow-[0_0_52px_rgba(255,107,0,0.2)] lg:h-96 lg:w-96"
               animate={{ rotate: 360 }}
               transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
             />
             <motion.div
-              className="absolute h-52 w-52 rounded-full border border-dashed border-[#ffb45f]/70 shadow-[inset_0_0_32px_rgba(255,107,0,0.14)] lg:h-60 lg:w-60"
+              className="absolute h-60 w-60 rounded-full border border-dashed border-[#ffb45f]/60 shadow-[inset_0_0_32px_rgba(255,107,0,0.14)] lg:h-[21rem] lg:w-[21rem]"
               animate={{ rotate: -360 }}
               transition={{ duration: 34, repeat: Infinity, ease: 'linear' }}
             />
             <motion.div
-              className="absolute h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(255,107,0,0.22),rgba(255,107,0,0.06)_48%,transparent_72%)] blur-sm"
+              className="absolute h-52 w-52 rounded-full border border-[#ffd3a4]/55 shadow-[0_0_40px_rgba(255,140,50,0.18),inset_0_0_34px_rgba(255,107,0,0.08)] lg:h-[18rem] lg:w-[18rem]"
+              animate={{ scale: [1, 1.04, 1], opacity: [0.58, 0.86, 0.58] }}
+              transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <motion.div
+              className="absolute h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(255,107,0,0.22),rgba(255,107,0,0.06)_48%,transparent_72%)] blur-sm lg:h-64 lg:w-64"
               animate={{ scale: [1, 1.08, 1], opacity: [0.72, 1, 0.72] }}
               transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
             />
-            <div className="relative grid h-40 w-40 place-items-center rounded-full border border-white/80 bg-white/66 shadow-[0_0_46px_rgba(255,107,0,0.24),inset_0_0_30px_rgba(255,255,255,0.9)] backdrop-blur-2xl lg:h-48 lg:w-48">
-              <Brain className="h-24 w-24 text-[#ffb47c] drop-shadow-[0_0_18px_rgba(255,107,0,0.42)] lg:h-32 lg:w-32" strokeWidth={1.45} />
-              <div className="absolute grid h-12 w-12 place-items-center rounded-xl border border-[#ffb366] bg-[#ff6b00] text-sm font-black text-white shadow-[0_0_28px_rgba(255,107,0,0.55)]">
+            <div className="relative grid h-56 w-56 place-items-center rounded-full border border-white/80 bg-white/66 shadow-[0_0_60px_rgba(255,107,0,0.26),inset_0_0_38px_rgba(255,255,255,0.9)] backdrop-blur-2xl lg:h-[16.75rem] lg:w-[16.75rem]">
+              <Brain className="h-36 w-36 text-[#ffb47c] drop-shadow-[0_0_18px_rgba(255,107,0,0.42)] lg:h-44 lg:w-44" strokeWidth={1.3} />
+              <div className="absolute grid h-14 w-14 place-items-center rounded-xl border border-[#ffb366] bg-[#ff6b00] text-base font-black text-white shadow-[0_0_28px_rgba(255,107,0,0.55)]">
                 AI
               </div>
-              <Cpu className="absolute -bottom-2 h-10 w-10 rounded-xl border border-[#ffd1ad] bg-white p-2 text-[#ff6b00] shadow-[0_8px_20px_rgba(255,107,0,0.16)]" />
+              <Cpu className="absolute -bottom-2 h-11 w-11 rounded-xl border border-[#ffd1ad] bg-white p-2 text-[#ff6b00] shadow-[0_8px_20px_rgba(255,107,0,0.16)]" />
             </div>
-            <div className="mt-52 text-center lg:mt-60">
+            <div className="mt-[18rem] text-center lg:absolute lg:top-[17.6rem] lg:mt-0">
               <h2 className="text-xl font-black text-[#17100b]">AI CORE</h2>
               <p className="mt-1 text-[10px] font-semibold text-[#6d5445]">Intelligence • Learning • Innovation</p>
               <div className="mx-auto mt-2 h-4 w-16 text-[#ff6b00]">
@@ -744,7 +807,7 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
         </div>
 
         <motion.div
-          className="relative z-30 mt-5 grid gap-2 rounded-[1.25rem] border border-white/70 bg-white/62 p-3 text-center text-[11px] font-black text-[#513727] shadow-[0_16px_40px_rgba(73,38,18,0.11)] backdrop-blur-2xl sm:grid-cols-5 lg:absolute lg:bottom-3 lg:left-1/2 lg:mt-0 lg:w-[86%] lg:-translate-x-1/2"
+          className="relative z-30 mt-5 grid gap-2 rounded-[1.25rem] border border-white/70 bg-white/62 p-3 text-center text-[11px] font-black text-[#513727] shadow-[0_16px_40px_rgba(73,38,18,0.11)] backdrop-blur-2xl sm:grid-cols-3 lg:absolute lg:bottom-3 lg:left-[21%] lg:mt-0 lg:w-[58%]"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
