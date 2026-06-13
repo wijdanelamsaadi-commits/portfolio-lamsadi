@@ -1342,14 +1342,18 @@ export default function CinematicIntro() {
           style={{ x: reverseParallaxX, y: reverseParallaxY }}
         >
           <div
-            className="relative w-[min(96vw,138vh)] overflow-hidden lg:w-[min(92vw,calc((100vh-70px)*1.5))] lg:max-h-[calc(100vh-70px)] lg:max-w-none"
-            style={{ aspectRatio: '3 / 2' }}
+            className="relative max-w-none overflow-hidden"
+            style={{
+              width: 'min(96vw, calc((100vh - 48px) * 1.5))',
+              maxHeight: 'calc(100vh - 48px)',
+              aspectRatio: '3 / 2',
+            }}
           >
             <Image
               src={`${BASE_PATH}/assets/portfolio-desktop.png`}
               alt="Wijdane Lamsadi portfolio desktop interface"
               fill
-              sizes="(min-width: 1024px) 92vw, (max-aspect-ratio: 3/2) 96vw, 138vh"
+              sizes="96vw"
               priority
               className="object-contain"
             />
