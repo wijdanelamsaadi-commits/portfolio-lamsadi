@@ -20,7 +20,6 @@ import {
   ClipboardCheck,
   Cloud,
   Code2,
-  Cpu,
   Database,
   ExternalLink,
   Film,
@@ -456,7 +455,7 @@ const skillGroups: SkillGroup[] = [
     title: 'AI & Machine Learning',
     count: '18+ Technologies',
     Icon: Brain,
-    position: 'lg:left-[3%] lg:top-[12%] lg:h-[27%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[9%] lg:h-[24%] lg:w-[31.5%]',
     items: [
       'Python',
       'TensorFlow',
@@ -482,7 +481,7 @@ const skillGroups: SkillGroup[] = [
     title: 'Full Stack Development',
     count: '16+ Technologies',
     Icon: Code2,
-    position: 'lg:right-[3%] lg:top-[12%] lg:h-[27%] lg:w-[33%]',
+    position: 'lg:right-[3%] lg:top-[9%] lg:h-[24%] lg:w-[33%]',
     items: [
       'Java',
       'Spring Boot',
@@ -508,7 +507,7 @@ const skillGroups: SkillGroup[] = [
     title: 'Mobile Development',
     count: '12+ Technologies',
     Icon: Smartphone,
-    position: 'lg:left-[3%] lg:top-[42%] lg:h-[20%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[36%] lg:h-[18%] lg:w-[31.5%]',
     items: [
       'Android',
       'Kotlin',
@@ -526,7 +525,7 @@ const skillGroups: SkillGroup[] = [
     title: 'Databases & Data',
     count: '10+ Technologies',
     Icon: Database,
-    position: 'lg:right-[3%] lg:top-[42%] lg:h-[20%] lg:w-[33%]',
+    position: 'lg:right-[3%] lg:top-[36%] lg:h-[18%] lg:w-[33%]',
     items: [
       'MySQL',
       'PostgreSQL',
@@ -542,14 +541,14 @@ const skillGroups: SkillGroup[] = [
     title: 'Tools & DevOps',
     count: '15+ Technologies',
     Icon: Wrench,
-    position: 'lg:left-[3%] lg:top-[65%] lg:h-[22%] lg:w-[31.5%]',
+    position: 'lg:left-[3%] lg:top-[58%] lg:h-[18%] lg:w-[31.5%]',
     items: ['Git', 'GitHub', 'VS Code', 'Eclipse', 'IntelliJ IDEA', 'Android Studio', 'Maven', 'Postman', 'Swagger', 'Docker', 'n8n', 'VMware'],
   },
   {
     title: 'Cloud Architecture',
     count: '8+ Technologies',
     Icon: Cloud,
-    position: 'lg:left-[36.5%] lg:top-[73%] lg:h-[15%] lg:w-[27%]',
+    position: 'lg:left-[36.5%] lg:top-[65%] lg:h-[15%] lg:w-[27%]',
     compact: true,
     items: ['AWS', 'Microservices', 'System Design', 'Client-Server Architecture'],
   },
@@ -557,73 +556,115 @@ const skillGroups: SkillGroup[] = [
     title: 'Cybersecurity',
     count: '10+ Technologies',
     Icon: ShieldCheck,
-    position: 'lg:right-[3%] lg:top-[65%] lg:h-[22%] lg:w-[33%]',
+    position: 'lg:right-[3%] lg:top-[58%] lg:h-[18%] lg:w-[33%]',
     items: ['Network Security', 'VPN', 'IPSec', 'GRE', 'Firewall', 'ACL', 'SHA-256', 'Authentication', 'Authorization'],
   },
 ];
 
 const skillStats = ['65+ Technologies', '13 Projects Completed', '4 AWS Certifications'];
 
-const badgeIconMap: Record<string, LucideIcon> = {
-  AWS: Cloud,
-  Android: Smartphone,
-  'Android Studio': Smartphone,
-  Authentication: ShieldCheck,
-  Authorization: ShieldCheck,
-  Autoencoder: Brain,
-  Bootstrap: Code2,
-  CSS3: Code2,
-  Dart: Smartphone,
-  Docker: Wrench,
-  FastAPI: Code2,
-  Firebase: Database,
-  Flutter: Smartphone,
-  Git: Github,
-  GitHub: Github,
-  HTML5: Code2,
-  JWT: ShieldCheck,
-  Java: Code2,
-  JavaScript: Code2,
-  Keras: Brain,
-  Kotlin: Smartphone,
-  Maven: Wrench,
-  MySQL: Database,
-  'Next.js': Code2,
-  NLP: Bot,
-  NumPy: Brain,
-  OpenCV: Activity,
-  Pandas: Brain,
-  PHP: Code2,
-  PostgreSQL: Database,
-  Python: Brain,
-  React: Code2,
-  'React Native': Smartphone,
-  SQLite: Database,
-  'SQL Server': Database,
-  Swagger: Wrench,
-  Tailwind: Code2,
-  TensorFlow: Brain,
-  TypeScript: Code2,
-  VMware: Monitor,
-  VPN: ShieldCheck,
-  XML: Code2,
+const logoSlugMap: Record<string, string> = {
+  Android: 'android',
+  'Android Studio': 'androidstudio',
+  AWS: 'amazonwebservices',
+  Bootstrap: 'bootstrap',
+  CSS3: 'css3',
+  Dart: 'dart',
+  Docker: 'docker',
+  Eclipse: 'eclipseide',
+  FastAPI: 'fastapi',
+  Firebase: 'firebase',
+  Flutter: 'flutter',
+  Git: 'git',
+  GitHub: 'github',
+  HTML5: 'html5',
+  'IntelliJ IDEA': 'intellijidea',
+  Java: 'openjdk',
+  JavaScript: 'javascript',
+  Keras: 'keras',
+  Kotlin: 'kotlin',
+  Maven: 'apachemaven',
+  MySQL: 'mysql',
+  'Next.js': 'nextdotjs',
+  NumPy: 'numpy',
+  OpenCV: 'opencv',
+  Pandas: 'pandas',
+  PHP: 'php',
+  PostgreSQL: 'postgresql',
+  'Power BI': 'powerbi',
+  Python: 'python',
+  React: 'react',
+  'React Native': 'react',
+  'Scikit-Learn': 'scikitlearn',
+  'SQL Server': 'microsoftsqlserver',
+  SQLite: 'sqlite',
+  Swagger: 'swagger',
+  Tailwind: 'tailwindcss',
+  TensorFlow: 'tensorflow',
+  TypeScript: 'typescript',
+  'VS Code': 'visualstudiocode',
 };
 
-function getBadgeIcon(label: string, fallback: LucideIcon) {
-  if (badgeIconMap[label]) return badgeIconMap[label];
-  if (label.includes('Security') || label.includes('Firewall') || label.includes('SHA') || label.includes('IPSec')) return ShieldCheck;
-  if (label.includes('SQL') || label.includes('Data') || label.includes('Database') || label.includes('Dashboard')) return Database;
-  if (label.includes('Machine') || label.includes('Deep') || label.includes('Computer Vision') || label.includes('Siamese')) return Brain;
-  if (label.includes('System') || label.includes('Microservices') || label.includes('Architecture')) return Cloud;
-  return fallback;
+const fallbackBadgeColors: Record<string, string> = {
+  DeepFace: '#22c55e',
+  EasyOCR: '#0ea5e9',
+  XGBoost: '#16a34a',
+  Autoencoder: '#6366f1',
+  'Siamese Networks': '#8b5cf6',
+  Streamlit: '#ff4b4b',
+  'Machine Learning': '#2563eb',
+  'Deep Learning': '#4f46e5',
+  'Computer Vision': '#0891b2',
+  NLP: '#7c3aed',
+  JWT: '#111827',
+  Hibernate: '#59666c',
+  'Spring Boot': '#6db33f',
+  'Spring MVC': '#6db33f',
+  'Spring Data JPA': '#6db33f',
+  'REST API': '#14b8a6',
+  XML: '#f97316',
+  'Material Design': '#22c55e',
+  'KPI Dashboards': '#f59e0b',
+  'Data Analytics': '#84cc16',
+  Postman: '#ff6c37',
+  n8n: '#ea4b71',
+  VMware: '#607078',
+  Microservices: '#3b82f6',
+  'System Design': '#64748b',
+  'Client-Server Architecture': '#0f766e',
+  'Network Security': '#2563eb',
+  VPN: '#0ea5e9',
+  IPSec: '#2563eb',
+  GRE: '#64748b',
+  Firewall: '#ef4444',
+  ACL: '#64748b',
+  'SHA-256': '#0f766e',
+  Authentication: '#0ea5e9',
+  Authorization: '#2563eb',
+};
+
+function getLogoUrl(label: string) {
+  const slug = logoSlugMap[label];
+  return slug ? `https://cdn.simpleicons.org/${slug}` : undefined;
 }
 
-function SkillBadge({ label, index, fallbackIcon }: { label: string; index: number; fallbackIcon: LucideIcon }) {
-  const BadgeIcon = getBadgeIcon(label, fallbackIcon);
+function getFallbackInitial(label: string) {
+  return label
+    .split(/[\s/-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase();
+}
+
+function SkillBadge({ label, index }: { label: string; index: number }) {
+  const logoUrl = getLogoUrl(label);
+  const fallbackColor = fallbackBadgeColors[label] || '#ff7a00';
 
   return (
     <motion.span
-      className="relative z-20 inline-flex min-h-[1.28rem] items-center gap-1 rounded-md border border-[#f3dccb] bg-white/90 px-1.5 py-0.5 text-[7.5px] font-extrabold leading-none text-[#3c2a1f] shadow-[0_5px_14px_rgba(92,50,25,0.08)] backdrop-blur-xl sm:text-[8.5px] xl:px-2 xl:text-[9px]"
+      className="relative z-20 inline-flex min-h-[1.22rem] items-center gap-1 rounded-md border border-[#f2dfd1] bg-white/92 px-1.5 py-0.5 text-[7.2px] font-extrabold leading-none text-[#3c2a1f] shadow-[0_4px_12px_rgba(92,50,25,0.07)] backdrop-blur-xl sm:text-[8.2px] xl:px-2 xl:text-[8.6px]"
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.32, delay: 0.16 + index * 0.012, ease: 'easeOut' }}
@@ -634,7 +675,16 @@ function SkillBadge({ label, index, fallbackIcon }: { label: string; index: numb
         boxShadow: '0 8px 22px rgba(255, 107, 0, 0.18)',
       }}
     >
-      <BadgeIcon size={10} strokeWidth={2.4} className="shrink-0 text-[#ff6b00]" />
+      {logoUrl ? (
+        <img src={logoUrl} alt="" className="h-3 w-3 shrink-0 object-contain" loading="lazy" />
+      ) : (
+        <span
+          className="grid h-3 w-3 shrink-0 place-items-center rounded-[0.22rem] text-[5.8px] font-black leading-none text-white"
+          style={{ backgroundColor: fallbackColor }}
+        >
+          {getFallbackInitial(label)}
+        </span>
+      )}
       {label}
     </motion.span>
   );
@@ -665,7 +715,7 @@ function SkillPanel({ group, index }: { group: SkillGroup; index: number }) {
       </div>
       <div className={`relative z-20 flex flex-wrap content-start gap-1.5 ${group.compact ? 'mt-2' : 'mt-2.5'}`}>
         {group.items.map((item, itemIndex) => (
-          <SkillBadge key={`${group.title}-${item}`} label={item} index={itemIndex} fallbackIcon={group.Icon} />
+          <SkillBadge key={`${group.title}-${item}`} label={item} index={itemIndex} />
         ))}
       </div>
     </motion.article>
@@ -738,59 +788,68 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
             </filter>
           </defs>
           {[
-            'M34.5 23 C40 24 43 31 48.5 39',
-            'M65.5 23 C60 24 57 31 51.5 39',
-            'M34.5 51 C40 51 43 48 48.5 47',
-            'M65.5 51 C60 51 57 48 51.5 47',
-            'M34.5 76 C42 72 45 58 49 52',
-            'M50 76 C50 66 50 59 50 53',
-            'M65.5 76 C58 72 55 58 51 52',
+            'M34.5 21 C40 22 43 29 48 38',
+            'M65.5 21 C60 22 57 29 52 38',
+            'M34.5 45 C40 45 43 45 48 45',
+            'M65.5 45 C60 45 57 45 52 45',
+            'M34.5 68 C42 65 45 56 49 51',
+            'M50 72 C50 63 50 57 50 51',
+            'M65.5 68 C58 65 55 56 51 51',
           ].map((path) => (
             <path key={path} d={path} fill="none" stroke="rgba(255,107,0,0.48)" strokeWidth="0.22" filter="url(#skill-line-glow)" />
           ))}
           {[35, 65].map((x) =>
-            [23, 51, 76].map((y) => (
+            [21, 45, 68].map((y) => (
               <circle key={`${x}-${y}`} cx={x} cy={y} r="0.38" fill="#fff7ed" stroke="#ffb35f" strokeWidth="0.18" />
             )),
           )}
-          <circle cx="50" cy="76" r="0.38" fill="#fff7ed" stroke="#ffb35f" strokeWidth="0.18" />
+          <circle cx="50" cy="72" r="0.38" fill="#fff7ed" stroke="#ffb35f" strokeWidth="0.18" />
         </svg>
 
         <div className="relative mx-auto mt-7 grid max-w-6xl gap-3 lg:absolute lg:inset-x-0 lg:top-0 lg:mx-0 lg:mt-0 lg:h-full lg:max-w-none lg:px-6">
           <motion.div
-            className="relative z-20 order-first mx-auto grid min-h-72 w-full max-w-[24rem] place-items-center rounded-[2rem] lg:absolute lg:left-[35%] lg:top-[23%] lg:min-h-0 lg:w-[30%]"
+            className="relative z-20 order-first mx-auto grid min-h-72 w-full max-w-[24rem] place-items-center rounded-[2rem] lg:absolute lg:left-[35%] lg:top-[15%] lg:min-h-0 lg:w-[30%]"
             initial={{ opacity: 0, scale: 0.88 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.72, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
-              className="absolute h-72 w-72 rounded-full border border-[#ffb45f]/35 shadow-[0_0_52px_rgba(255,107,0,0.2)] lg:h-96 lg:w-96"
+              className="absolute h-72 w-72 rounded-full border border-[#ffb45f]/35 shadow-[0_0_52px_rgba(255,122,0,0.2)] lg:h-80 lg:w-80"
               animate={{ rotate: 360 }}
               transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
             />
             <motion.div
-              className="absolute h-60 w-60 rounded-full border border-dashed border-[#ffb45f]/60 shadow-[inset_0_0_32px_rgba(255,107,0,0.14)] lg:h-[21rem] lg:w-[21rem]"
+              className="absolute h-60 w-60 rounded-full border border-dashed border-[#ffb45f]/60 shadow-[inset_0_0_32px_rgba(255,122,0,0.14)] lg:h-72 lg:w-72"
               animate={{ rotate: -360 }}
               transition={{ duration: 34, repeat: Infinity, ease: 'linear' }}
             />
             <motion.div
-              className="absolute h-52 w-52 rounded-full border border-[#ffd3a4]/55 shadow-[0_0_40px_rgba(255,140,50,0.18),inset_0_0_34px_rgba(255,107,0,0.08)] lg:h-[18rem] lg:w-[18rem]"
+              className="absolute h-52 w-52 rounded-full border border-[#ffd3a4]/55 shadow-[0_0_40px_rgba(255,140,50,0.18),inset_0_0_34px_rgba(255,122,0,0.08)] lg:h-64 lg:w-64"
               animate={{ scale: [1, 1.04, 1], opacity: [0.58, 0.86, 0.58] }}
               transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
             />
             <motion.div
-              className="absolute h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(255,107,0,0.22),rgba(255,107,0,0.06)_48%,transparent_72%)] blur-sm lg:h-64 lg:w-64"
+              className="absolute h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(255,122,0,0.22),rgba(255,122,0,0.06)_48%,transparent_72%)] blur-sm lg:h-60 lg:w-60"
               animate={{ scale: [1, 1.08, 1], opacity: [0.72, 1, 0.72] }}
               transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
             />
-            <div className="relative grid h-56 w-56 place-items-center rounded-full border border-white/80 bg-white/66 shadow-[0_0_60px_rgba(255,107,0,0.26),inset_0_0_38px_rgba(255,255,255,0.9)] backdrop-blur-2xl lg:h-[16.75rem] lg:w-[16.75rem]">
-              <Brain className="h-36 w-36 text-[#ffb47c] drop-shadow-[0_0_18px_rgba(255,107,0,0.42)] lg:h-44 lg:w-44" strokeWidth={1.3} />
-              <div className="absolute grid h-14 w-14 place-items-center rounded-xl border border-[#ffb366] bg-[#ff6b00] text-base font-black text-white shadow-[0_0_28px_rgba(255,107,0,0.55)]">
+            <div className="relative grid h-52 w-52 place-items-center rounded-full border border-white/80 bg-white/70 shadow-[0_0_60px_rgba(255,122,0,0.26),inset_0_0_38px_rgba(255,255,255,0.92)] backdrop-blur-2xl lg:h-60 lg:w-60">
+              <div className="absolute inset-5 rounded-full bg-[radial-gradient(circle_at_44%_38%,rgba(255,255,255,0.95),rgba(255,204,162,0.28)_45%,rgba(255,122,0,0.06)_72%,transparent_100%)] blur-[1px]" />
+              <div
+                className="relative select-none text-[7.5rem] leading-none drop-shadow-[0_14px_24px_rgba(255,122,0,0.22)] lg:text-[9rem]"
+                style={{
+                  filter: 'saturate(1.08) contrast(1.03) drop-shadow(0 0 18px rgba(255, 122, 0, 0.28))',
+                  textShadow: '0 2px 0 rgba(255,255,255,0.75)',
+                }}
+                aria-hidden="true"
+              >
+                🧠
+              </div>
+              <div className="absolute grid h-12 w-12 place-items-center rounded-xl border border-[#ffb366] bg-[#ff7a00] text-base font-black text-white shadow-[0_0_28px_rgba(255,122,0,0.6)]">
                 AI
               </div>
-              <Cpu className="absolute -bottom-2 h-11 w-11 rounded-xl border border-[#ffd1ad] bg-white p-2 text-[#ff6b00] shadow-[0_8px_20px_rgba(255,107,0,0.16)]" />
             </div>
-            <div className="mt-[18rem] text-center lg:absolute lg:top-[17.6rem] lg:mt-0">
+            <div className="mt-[16rem] text-center lg:absolute lg:top-[15.8rem] lg:mt-0">
               <h2 className="text-xl font-black text-[#17100b]">AI CORE</h2>
               <p className="mt-1 text-[10px] font-semibold text-[#6d5445]">Intelligence • Learning • Innovation</p>
               <div className="mx-auto mt-2 h-4 w-16 text-[#ff6b00]">
