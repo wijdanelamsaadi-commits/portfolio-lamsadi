@@ -1461,120 +1461,102 @@ export default function CinematicIntro() {
               </div>
             </div>
 
-            <div className="absolute left-[3.3%] top-[11.2%] z-20 flex h-[65%] w-[8.2%] flex-col justify-between">
-              {folderHotspots.map((folder) => {
-                const Icon = folder.Icon;
-
-                return (
-                  <button
-                    key={folder.hash}
-                    type="button"
-                    aria-label={`Open ${folder.label}`}
-                    title={folder.label}
-                    onClick={() => openDesktopFolder(folder)}
-                    className="group grid justify-items-center gap-2 rounded-xl text-center outline-none transition hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40"
-                  >
-                    <span className="relative block h-12 w-16 sm:h-14 sm:w-[4.5rem]">
-                      <span className="absolute left-0 top-0 h-4 w-8 rounded-t-lg bg-[#03a6e8] shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]" />
-                      <span className="absolute inset-x-0 bottom-0 grid h-[82%] place-items-center rounded-[0.55rem] bg-gradient-to-b from-[#19baf4] to-[#178bd7] text-white shadow-[0_10px_18px_rgba(7,91,145,0.22),inset_0_1px_0_rgba(255,255,255,0.55)]">
-                        <Icon size={25} strokeWidth={1.8} />
-                      </span>
-                    </span>
-                    <span className={`text-[12px] font-semibold leading-tight md:text-[13px] ${desktopDarkMode ? 'text-white/88' : 'text-[#16100c]'}`}>
-                      {folder.label}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="pointer-events-none absolute left-[19%] top-[24%] z-10 max-w-[34rem]">
-              <h1 className={`font-serif text-[3.7rem] font-semibold leading-none tracking-normal md:text-[4.8rem] xl:text-[5.6rem] ${desktopDarkMode ? 'text-[#fff6ed]' : 'text-[#1c0f08]'}`}>
-                Wijdane<span className="text-[#f06b18]">.</span>
-              </h1>
-              <p className={`mt-6 text-2xl font-medium leading-snug md:text-[1.7rem] ${desktopDarkMode ? 'text-white/88' : 'text-[#15100d]'}`}>
-                Computer Science Student
-                <br />
-                <span className="text-[#f06b18]">&amp;</span> Full-Stack Developer
-              </p>
-              <span className="mt-5 block h-0.5 w-12 rounded-full bg-[#f06b18]" />
-              <p className={`mt-7 max-w-xs text-lg font-medium leading-7 ${desktopDarkMode ? 'text-white/76' : 'text-[#34251d]'}`}>
-                Building smart and useful
-                <br />
-                digital solutions.
-              </p>
-              <div className="mt-7 grid max-w-[27rem] grid-cols-3 gap-3">
-                {heroSkillPills.map((pill) => {
-                  const Icon = pill.Icon;
+            <div
+              className="relative z-10 grid h-full min-h-0 px-6 pb-[7.5rem] pt-14 md:px-8 lg:gap-6 xl:gap-10 xl:px-10"
+              style={{
+                gridTemplateColumns: 'clamp(120px, 10.4vw, 160px) minmax(0, 1fr) clamp(320px, 30vw, 420px)',
+                gridTemplateRows: '1fr',
+              }}
+            >
+              <div className="z-20 flex min-w-0 flex-col justify-between py-4">
+                {folderHotspots.map((folder) => {
+                  const Icon = folder.Icon;
 
                   return (
-                    <span
-                      key={pill.label}
-                      className={`inline-flex h-11 items-center justify-center gap-2 rounded-2xl border px-4 text-sm font-semibold shadow-[0_9px_20px_rgba(73,38,18,0.08)] backdrop-blur-xl ${
-                        desktopDarkMode ? 'border-white/10 bg-white/8 text-white/86' : 'border-[#eed0bd]/80 bg-white/40 text-[#1d130d]'
-                      }`}
+                    <button
+                      key={folder.hash}
+                      type="button"
+                      aria-label={`Open ${folder.label}`}
+                      title={folder.label}
+                      onClick={() => openDesktopFolder(folder)}
+                      className="group grid justify-items-center gap-2 rounded-xl text-center outline-none transition hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40"
                     >
-                      <Icon size={20} className="text-[#f06b18]" strokeWidth={2.1} />
-                      {pill.label}
-                    </span>
+                      <span className="relative block h-12 w-16 sm:h-14 sm:w-[4.5rem]">
+                        <span className="absolute left-0 top-0 h-4 w-8 rounded-t-lg bg-[#03a6e8] shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]" />
+                        <span className="absolute inset-x-0 bottom-0 grid h-[82%] place-items-center rounded-[0.55rem] bg-gradient-to-b from-[#19baf4] to-[#178bd7] text-white shadow-[0_10px_18px_rgba(7,91,145,0.22),inset_0_1px_0_rgba(255,255,255,0.55)]">
+                          <Icon size={25} strokeWidth={1.8} />
+                        </span>
+                      </span>
+                      <span className={`text-[12px] font-semibold leading-tight md:text-[13px] ${desktopDarkMode ? 'text-white/88' : 'text-[#16100c]'}`}>
+                        {folder.label}
+                      </span>
+                    </button>
                   );
                 })}
               </div>
-              <div
-                className={`mt-8 inline-flex h-14 items-center gap-5 rounded-2xl border px-6 text-lg font-medium shadow-[0_12px_30px_rgba(73,38,18,0.08)] backdrop-blur-xl ${
-                  desktopDarkMode ? 'border-white/10 bg-white/8 text-white/86' : 'border-[#e9c9b5]/75 bg-white/32 text-[#21130c]'
-                }`}
-              >
-                <span className="font-serif text-5xl leading-none text-[#f06b18]">“</span>
-                Code. Learn. Build.
-              </div>
-            </div>
 
-            <div className="pointer-events-none absolute right-[1.5%] top-[12%] z-10 h-[86%] w-[43%]">
-              <div className={`absolute bottom-[7%] right-[3%] h-[68%] w-[88%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/34'}`} />
-              <div className={`absolute bottom-[9%] right-[0%] h-[70%] w-[108%] rounded-full border ${desktopDarkMode ? 'border-white/12' : 'border-white/65'}`} />
-              <div className={`absolute bottom-[22%] right-[7%] h-[46%] w-[92%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/70'}`} />
-              <Image
-                src={`${BASE_PATH}/assets/about-normal.png`}
-                alt="Wijdane Lamsadi portrait"
-                fill
-                sizes="(min-width: 1024px) 42vw, 70vw"
-                priority
-                className="object-contain object-right-bottom"
-              />
-            </div>
+              <div className="pointer-events-none z-10 flex min-w-0 max-w-[32rem] flex-col justify-center self-center">
+                <h1 className={`font-serif text-[clamp(3.2rem,5vw,5.45rem)] font-semibold leading-none tracking-normal ${desktopDarkMode ? 'text-[#fff6ed]' : 'text-[#1c0f08]'}`}>
+                  Wijdane<span className="text-[#f06b18]">.</span>
+                </h1>
+                <p className={`mt-6 text-2xl font-medium leading-snug md:text-[1.7rem] ${desktopDarkMode ? 'text-white/88' : 'text-[#15100d]'}`}>
+                  Computer Science Student
+                  <br />
+                  <span className="text-[#f06b18]">&amp;</span> Full-Stack Developer
+                </p>
+                <span className="mt-5 block h-0.5 w-12 rounded-full bg-[#f06b18]" />
+                <p className={`mt-7 max-w-xs text-lg font-medium leading-7 ${desktopDarkMode ? 'text-white/76' : 'text-[#34251d]'}`}>
+                  Building smart and useful
+                  <br />
+                  digital solutions.
+                </p>
+                <div className="mt-7 grid max-w-[27rem] grid-cols-3 gap-3">
+                  {heroSkillPills.map((pill) => {
+                    const Icon = pill.Icon;
 
-            <div className={`pointer-events-none absolute left-[52%] top-[13%] h-[15%] w-[14%] rounded-2xl border ${desktopDarkMode ? 'border-orange-200/12 bg-white/[0.03]' : 'border-[#e8b995]/70 bg-white/16'}`}>
-              <div className="absolute left-4 top-4 flex gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#e5b18f]" />
-                <span className="h-2 w-2 rounded-full bg-[#e5b18f]" />
-                <span className="h-2 w-2 rounded-full bg-[#e5b18f]" />
+                    return (
+                      <span
+                        key={pill.label}
+                        className={`inline-flex h-11 items-center justify-center gap-2 rounded-2xl border px-4 text-sm font-semibold shadow-[0_9px_20px_rgba(73,38,18,0.08)] backdrop-blur-xl ${
+                          desktopDarkMode ? 'border-white/10 bg-white/8 text-white/86' : 'border-[#eed0bd]/80 bg-white/40 text-[#1d130d]'
+                        }`}
+                      >
+                        <Icon size={20} className="text-[#f06b18]" strokeWidth={2.1} />
+                        {pill.label}
+                      </span>
+                    );
+                  })}
+                </div>
+                <div
+                  className={`mt-8 inline-flex h-14 w-fit items-center gap-5 rounded-2xl border px-6 text-lg font-medium shadow-[0_12px_30px_rgba(73,38,18,0.08)] backdrop-blur-xl ${
+                    desktopDarkMode ? 'border-white/10 bg-white/8 text-white/86' : 'border-[#e9c9b5]/75 bg-white/32 text-[#21130c]'
+                  }`}
+                >
+                  <span className="font-serif text-5xl leading-none text-[#f06b18]">“</span>
+                  Code. Learn. Build.
+                </div>
               </div>
-              <div className="absolute left-7 top-[42%] flex gap-3 text-[#f06b18]/55">
-                <Code2 size={31} strokeWidth={1.6} />
-                <span className="mt-2 h-1 w-14 rounded-full bg-current opacity-35" />
-              </div>
-              <div className="absolute bottom-5 left-8 space-y-2 opacity-35">
-                <span className="block h-1 w-20 rounded-full bg-[#d99a70]" />
-                <span className="block h-1 w-28 rounded-full bg-[#d99a70]" />
-                <span className="block h-1 w-16 rounded-full bg-[#d99a70]" />
-              </div>
-            </div>
 
-            <div className="pointer-events-none absolute right-[15%] top-[12%] grid grid-cols-6 gap-2 opacity-75">
-              {Array.from({ length: 24 }).map((_, index) => (
-                <span key={index} className="h-0.5 w-0.5 rounded-full bg-[#f06b18]" />
-              ))}
+              <div className="pointer-events-none relative z-10 flex h-full min-w-0 self-end justify-end overflow-visible">
+                <div className={`absolute bottom-[14%] right-[-8%] h-[58%] w-[116%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/24'}`} />
+                <div className={`absolute bottom-[18%] right-[-10%] h-[64%] w-[124%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/60'}`} />
+                <Image
+                  src={`${BASE_PATH}/assets/about-normal.png`}
+                  alt="Wijdane Lamsadi portrait"
+                  width={420}
+                  height={560}
+                  sizes="(min-width: 1280px) 420px, 30vw"
+                  priority
+                  className="relative z-10 mt-auto h-auto w-[clamp(320px,30vw,420px)] translate-x-6 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)]"
+                  style={{
+                    WebkitMaskImage:
+                      'radial-gradient(ellipse 54% 78% at 56% 58%, #000 58%, rgba(0,0,0,0.78) 69%, rgba(0,0,0,0.28) 80%, transparent 91%)',
+                    maskImage:
+                      'radial-gradient(ellipse 54% 78% at 56% 58%, #000 58%, rgba(0,0,0,0.78) 69%, rgba(0,0,0,0.28) 80%, transparent 91%)',
+                  }}
+                />
+              </div>
             </div>
-            <div className="pointer-events-none absolute left-[55%] top-[40%] grid grid-cols-5 gap-2 opacity-75">
-              {Array.from({ length: 20 }).map((_, index) => (
-                <span key={index} className="h-0.5 w-0.5 rounded-full bg-[#f06b18]" />
-              ))}
-            </div>
-            <div className={`pointer-events-none absolute right-[5.4%] top-[18%] grid h-16 w-16 place-items-center rounded-2xl border text-[#f06b18] ${desktopDarkMode ? 'border-orange-200/12 bg-white/[0.03]' : 'border-[#e8b995]/70 bg-white/16'}`}>
-              <span className="font-mono text-4xl">{'{}'}</span>
-            </div>
-            <Database className="pointer-events-none absolute bottom-[22%] right-[3.8%] text-[#d99a70]/70" size={64} strokeWidth={1.25} />
 
             <div
               aria-label="Desktop dock"
