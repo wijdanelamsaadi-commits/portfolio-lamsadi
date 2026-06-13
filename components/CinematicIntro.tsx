@@ -1480,9 +1480,9 @@ export default function CinematicIntro() {
             </div>
 
             <div
-              className="relative z-10 grid h-full min-h-0 px-7 pb-[10.5rem] pt-14 md:px-9 lg:gap-5 xl:gap-6 xl:px-12"
+              className="relative z-10 grid h-full min-h-0 px-7 pb-[9rem] pt-14 md:px-9 lg:gap-4 xl:gap-5 xl:px-12"
               style={{
-                gridTemplateColumns: '170px minmax(0, 1fr) 520px',
+                gridTemplateColumns: '170px minmax(0, 1fr) 620px',
                 gridTemplateRows: '1fr',
               }}
             >
@@ -1556,16 +1556,16 @@ export default function CinematicIntro() {
               </div>
 
               <div className="pointer-events-none relative z-10 flex h-full min-w-0 self-end justify-end overflow-visible">
-                <div className={`absolute bottom-[12%] right-[-2%] h-[63%] w-[108%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/24'}`} />
-                <div className={`absolute bottom-[16%] right-[-3%] h-[69%] w-[116%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/60'}`} />
+                <div className={`absolute bottom-[9%] right-[-3%] h-[70%] w-[106%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/24'}`} />
+                <div className={`absolute bottom-[13%] right-[-4%] h-[76%] w-[112%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/60'}`} />
                 <Image
                   src={`${BASE_PATH}/assets/about-normal.png`}
                   alt="Wijdane Lamsadi portrait"
-                  width={520}
-                  height={693}
-                  sizes="520px"
+                  width={620}
+                  height={827}
+                  sizes="620px"
                   priority
-                  className="relative z-10 mb-12 mt-auto h-auto max-h-[calc(100%-5.5rem)] w-[520px] -translate-x-4 -translate-y-16 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)] 2xl:translate-y-0"
+                  className="relative z-10 mb-7 mt-auto h-auto max-h-[calc(100%-12.5rem)] w-[620px] translate-x-2 -translate-y-48 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)] 2xl:max-h-[calc(100%-4.5rem)] 2xl:translate-y-2"
                   style={{
                     WebkitMaskImage:
                       'radial-gradient(ellipse 54% 78% at 56% 58%, #000 58%, rgba(0,0,0,0.78) 69%, rgba(0,0,0,0.28) 80%, transparent 91%)',
