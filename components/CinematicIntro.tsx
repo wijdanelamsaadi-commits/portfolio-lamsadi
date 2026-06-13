@@ -1480,9 +1480,9 @@ export default function CinematicIntro() {
             </div>
 
             <div
-              className="relative z-10 grid h-full min-h-0 px-7 pb-[7.5rem] pt-14 md:px-9 lg:gap-7 xl:gap-8 xl:px-12"
+              className="relative z-10 grid h-full min-h-0 px-7 pb-[10.5rem] pt-14 md:px-9 lg:gap-5 xl:gap-6 xl:px-12"
               style={{
-                gridTemplateColumns: '170px minmax(0, 1fr) 430px',
+                gridTemplateColumns: '170px minmax(0, 1fr) 520px',
                 gridTemplateRows: '1fr',
               }}
             >
@@ -1556,16 +1556,16 @@ export default function CinematicIntro() {
               </div>
 
               <div className="pointer-events-none relative z-10 flex h-full min-w-0 self-end justify-end overflow-visible">
-                <div className={`absolute bottom-[14%] right-[-8%] h-[58%] w-[116%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/24'}`} />
-                <div className={`absolute bottom-[18%] right-[-10%] h-[64%] w-[124%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/60'}`} />
+                <div className={`absolute bottom-[12%] right-[-2%] h-[63%] w-[108%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/24'}`} />
+                <div className={`absolute bottom-[16%] right-[-3%] h-[69%] w-[116%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/60'}`} />
                 <Image
                   src={`${BASE_PATH}/assets/about-normal.png`}
                   alt="Wijdane Lamsadi portrait"
-                  width={430}
-                  height={573}
-                  sizes="430px"
+                  width={520}
+                  height={693}
+                  sizes="520px"
                   priority
-                  className="relative z-10 mt-auto h-auto w-[430px] -translate-x-12 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)]"
+                  className="relative z-10 mb-12 mt-auto h-auto max-h-[calc(100%-5.5rem)] w-[520px] -translate-x-4 -translate-y-16 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)] 2xl:translate-y-0"
                   style={{
                     WebkitMaskImage:
                       'radial-gradient(ellipse 54% 78% at 56% 58%, #000 58%, rgba(0,0,0,0.78) 69%, rgba(0,0,0,0.28) 80%, transparent 91%)',
