@@ -1342,14 +1342,14 @@ export default function CinematicIntro() {
           style={{ x: reverseParallaxX, y: reverseParallaxY }}
         >
           <div
-            className="relative overflow-hidden"
-            style={{ width: 'min(96vw, 138vh)', aspectRatio: '3 / 2' }}
+            className="relative w-[min(96vw,138vh)] overflow-hidden lg:w-[94vw] lg:max-w-none"
+            style={{ aspectRatio: '3 / 2' }}
           >
             <Image
               src={`${BASE_PATH}/assets/portfolio-desktop.png`}
               alt="Wijdane Lamsadi portfolio desktop interface"
               fill
-              sizes="(max-aspect-ratio: 3/2) 96vw, 138vh"
+              sizes="(min-width: 1024px) 94vw, (max-aspect-ratio: 3/2) 96vw, 138vh"
               priority
               className="object-contain"
             />
