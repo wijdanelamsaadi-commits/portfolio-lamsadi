@@ -13,27 +13,38 @@ import {
 import { useEffect, useMemo, useState } from 'react';
 import {
   Activity,
+  Apple,
   ArrowLeft,
+  BarChart3,
+  Battery,
   Bot,
   Brain,
+  Briefcase,
   Car,
   ClipboardCheck,
   Cloud,
   Code2,
+  Cpu,
   Database,
   ExternalLink,
   Film,
   Gem,
   Github,
+  GraduationCap,
   Landmark,
   Linkedin,
   Mail,
   MessageCircle,
+  Palette,
+  Search,
   type LucideIcon,
   Monitor,
   School,
   ShieldCheck,
   Smartphone,
+  Trash2,
+  User,
+  Wifi,
   Wrench,
   X,
 } from 'lucide-react';
@@ -43,11 +54,30 @@ const DESKTOP_REVEAL_MS = 6100;
 const BASE_PATH = '/portfolio-lamsadi';
 
 const folderHotspots = [
-  { label: 'About Me', hash: '#about', top: '10.4%', opensAbout: true },
-  { label: 'Skills', hash: '#skills', top: '25.2%', opensSkills: true },
-  { label: 'Projects', hash: '#projects', top: '39.2%', opensProjects: true },
-  { label: 'Experience', hash: '#experience', top: '53.6%' },
-  { label: 'Contact', hash: '#contact', top: '67.8%' },
+  { label: 'About Me', hash: '#about', Icon: User, opensAbout: true },
+  { label: 'Skills', hash: '#skills', Icon: Code2, opensSkills: true },
+  { label: 'Projects', hash: '#projects', Icon: Briefcase, opensProjects: true },
+  { label: 'Experience', hash: '#experience', Icon: GraduationCap },
+  { label: 'Contact', hash: '#contact', Icon: Mail },
+];
+
+const heroSkillPills = [
+  { label: 'C#', Icon: Code2 },
+  { label: 'ASP.NET', Icon: Activity },
+  { label: 'SQL Server', Icon: Database },
+  { label: 'React', Icon: Cpu },
+  { label: 'Power BI', Icon: BarChart3 },
+  { label: 'AI & ML', Icon: Brain },
+];
+
+const dockItems = [
+  { label: 'Finder', Icon: Monitor, tone: 'from-[#21b9f2] to-[#eaf8ff]' },
+  { label: 'VS Code', Icon: Code2, tone: 'from-white to-[#e8f4ff]' },
+  { label: 'Database', Icon: Database, tone: 'from-white to-[#fff1ee]' },
+  { label: 'Power BI', Icon: BarChart3, tone: 'from-white to-[#fff4d8]' },
+  { label: 'Figma', Icon: Palette, tone: 'from-white to-[#fff2ed]' },
+  { label: 'Mail', Icon: Mail, tone: 'from-[#0088ff] to-[#e8f7ff]' },
+  { label: 'Trash', Icon: Trash2, tone: 'from-white to-[#f2f2f2]' },
 ];
 
 const contactCards = [
@@ -1204,6 +1234,7 @@ export default function CinematicIntro() {
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [experienceOpen, setExperienceOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+  const [desktopDarkMode, setDesktopDarkMode] = useState(false);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
@@ -1279,6 +1310,43 @@ export default function CinematicIntro() {
     pointerY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
   };
 
+  const openDesktopFolder = (folder: (typeof folderHotspots)[number]) => {
+    if (folder.opensAbout) {
+      setAboutOpen(true);
+      return;
+    }
+
+    if (folder.opensSkills) {
+      setSkillsOpen(true);
+      return;
+    }
+
+    if (folder.opensProjects) {
+      setProjectsOpen(true);
+      return;
+    }
+
+    if (folder.hash === '#experience') {
+      window.location.hash = '#experience';
+      setAboutOpen(false);
+      setSkillsOpen(false);
+      setProjectsOpen(false);
+      setExperienceOpen(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (folder.hash === '#contact') {
+      setAboutOpen(false);
+      setSkillsOpen(false);
+      setProjectsOpen(false);
+      setExperienceOpen(false);
+      setContactOpen(true);
+      window.location.hash = '#contact';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <main
       className="relative h-screen w-screen overflow-hidden bg-[#050505] text-white"
@@ -1338,100 +1406,199 @@ export default function CinematicIntro() {
         }}
       >
         <motion.div
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0 flex items-center justify-center px-3 sm:px-5"
           style={{ x: reverseParallaxX, y: reverseParallaxY }}
         >
           <div
-            className="relative max-w-none overflow-hidden"
+            className={`relative max-w-none overflow-hidden rounded-[1.4rem] shadow-[0_24px_80px_rgba(85,42,18,0.18)] ring-1 ring-black/5 transition-colors duration-300 ${
+              desktopDarkMode ? 'bg-[#17110f] text-[#fff7ef]' : 'bg-[#f8e5d7] text-[#130c08]'
+            }`}
             style={{
-              width: 'min(96vw, calc((100vh - 48px) * 1.5))',
+              width: 'min(95vw, calc((100vh - 48px) * 1.5))',
               maxHeight: 'calc(100vh - 48px)',
               aspectRatio: '3 / 2',
             }}
           >
-            <Image
-              src={`${BASE_PATH}/assets/portfolio-desktop.png`}
-              alt="Wijdane Lamsadi portfolio desktop interface"
-              fill
-              sizes="96vw"
-              priority
-              className="object-contain"
+            <div
+              className={`absolute inset-0 transition-colors duration-300 ${
+                desktopDarkMode
+                  ? 'bg-[radial-gradient(circle_at_82%_52%,rgba(255,122,32,0.15),transparent_26rem),radial-gradient(circle_at_20%_25%,rgba(255,196,151,0.12),transparent_24rem),linear-gradient(135deg,#1e1714,#0f0c0b)]'
+                  : 'bg-[radial-gradient(circle_at_83%_54%,rgba(222,169,126,0.38),transparent_28rem),radial-gradient(circle_at_44%_40%,rgba(255,255,255,0.58),transparent_27rem),linear-gradient(135deg,#fff3e9,#f6d8c4)]'
+              }`}
             />
 
-            {folderHotspots.map((folder) => (
-              <button
-                key={folder.hash}
-                type="button"
-                aria-label={`Open ${folder.label}`}
-                title={folder.label}
-                className="absolute left-[3.1%] z-10 h-[7.4%] w-[5.9%] rounded-2xl outline-none transition focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40"
-                style={{ top: folder.top }}
-                onClick={() => {
-                  if (folder.opensAbout) {
-                    setAboutOpen(true);
-                    return;
-                  }
+            <div
+              className={`absolute inset-x-0 top-0 z-30 flex h-[3.7%] min-h-7 items-center justify-between px-[3.2%] text-[13px] font-semibold shadow-[0_1px_18px_rgba(94,50,22,0.08)] backdrop-blur-2xl transition-colors duration-300 ${
+                desktopDarkMode ? 'bg-white/8 text-white/86' : 'bg-white/35 text-black/86'
+              }`}
+            >
+              <div className="flex items-center gap-4">
+                <Apple size={15} fill="currentColor" strokeWidth={2.2} />
+                <span>Finder</span>
+                <span>File</span>
+                <span>Edit</span>
+                <span>View</span>
+                <span>Go</span>
+                <span className="hidden md:inline">Window</span>
+                <span className="hidden md:inline">Help</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  aria-label={desktopDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                  title={desktopDarkMode ? 'Light mode' : 'Dark mode'}
+                  onClick={() => setDesktopDarkMode((enabled) => !enabled)}
+                  className={`grid h-7 w-12 place-items-center rounded-full border text-sm shadow-[0_8px_18px_rgba(74,35,14,0.12)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b1a] ${
+                    desktopDarkMode ? 'border-white/15 bg-white/12' : 'border-white/70 bg-white/55'
+                  }`}
+                >
+                  {desktopDarkMode ? '☀️' : '🌙'}
+                </button>
+                <Wifi size={15} strokeWidth={2.4} />
+                <Search size={15} strokeWidth={2.4} />
+                <Battery size={17} strokeWidth={2.4} />
+                <span className="hidden sm:inline">{today}</span>
+              </div>
+            </div>
 
-                  if (folder.opensSkills) {
-                    setSkillsOpen(true);
-                    return;
-                  }
+            <div className="absolute left-[3.3%] top-[11.2%] z-20 flex h-[65%] w-[8.2%] flex-col justify-between">
+              {folderHotspots.map((folder) => {
+                const Icon = folder.Icon;
 
-                  if (folder.opensProjects) {
-                    setProjectsOpen(true);
-                    return;
-                  }
+                return (
+                  <button
+                    key={folder.hash}
+                    type="button"
+                    aria-label={`Open ${folder.label}`}
+                    title={folder.label}
+                    onClick={() => openDesktopFolder(folder)}
+                    className="group grid justify-items-center gap-2 rounded-xl text-center outline-none transition hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40"
+                  >
+                    <span className="relative block h-12 w-16 sm:h-14 sm:w-[4.5rem]">
+                      <span className="absolute left-0 top-0 h-4 w-8 rounded-t-lg bg-[#03a6e8] shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]" />
+                      <span className="absolute inset-x-0 bottom-0 grid h-[82%] place-items-center rounded-[0.55rem] bg-gradient-to-b from-[#19baf4] to-[#178bd7] text-white shadow-[0_10px_18px_rgba(7,91,145,0.22),inset_0_1px_0_rgba(255,255,255,0.55)]">
+                        <Icon size={25} strokeWidth={1.8} />
+                      </span>
+                    </span>
+                    <span className={`text-[12px] font-semibold leading-tight md:text-[13px] ${desktopDarkMode ? 'text-white/88' : 'text-[#16100c]'}`}>
+                      {folder.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
 
-                  if (folder.hash === '#experience') {
-                    window.location.hash = '#experience';
-                    setAboutOpen(false);
-                    setSkillsOpen(false);
-                    setProjectsOpen(false);
-                    setExperienceOpen(true);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return;
-                  }
+            <div className="pointer-events-none absolute left-[19%] top-[24%] z-10 max-w-[34rem]">
+              <h1 className={`font-serif text-[3.7rem] font-semibold leading-none tracking-normal md:text-[4.8rem] xl:text-[5.6rem] ${desktopDarkMode ? 'text-[#fff6ed]' : 'text-[#1c0f08]'}`}>
+                Wijdane<span className="text-[#f06b18]">.</span>
+              </h1>
+              <p className={`mt-6 text-2xl font-medium leading-snug md:text-[1.7rem] ${desktopDarkMode ? 'text-white/88' : 'text-[#15100d]'}`}>
+                Computer Science Student
+                <br />
+                <span className="text-[#f06b18]">&amp;</span> Full-Stack Developer
+              </p>
+              <span className="mt-5 block h-0.5 w-12 rounded-full bg-[#f06b18]" />
+              <p className={`mt-7 max-w-xs text-lg font-medium leading-7 ${desktopDarkMode ? 'text-white/76' : 'text-[#34251d]'}`}>
+                Building smart and useful
+                <br />
+                digital solutions.
+              </p>
+              <div className="mt-7 grid max-w-[27rem] grid-cols-3 gap-3">
+                {heroSkillPills.map((pill) => {
+                  const Icon = pill.Icon;
 
-                  if (folder.hash === '#contact') {
-                    setAboutOpen(false);
-                    setSkillsOpen(false);
-                    setProjectsOpen(false);
-                    setExperienceOpen(false);
-                    setContactOpen(true);
-                    window.location.hash = '#contact';
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return;
-                  }
+                  return (
+                    <span
+                      key={pill.label}
+                      className={`inline-flex h-11 items-center justify-center gap-2 rounded-2xl border px-4 text-sm font-semibold shadow-[0_9px_20px_rgba(73,38,18,0.08)] backdrop-blur-xl ${
+                        desktopDarkMode ? 'border-white/10 bg-white/8 text-white/86' : 'border-[#eed0bd]/80 bg-white/40 text-[#1d130d]'
+                      }`}
+                    >
+                      <Icon size={20} className="text-[#f06b18]" strokeWidth={2.1} />
+                      {pill.label}
+                    </span>
+                  );
+                })}
+              </div>
+              <div
+                className={`mt-8 inline-flex h-14 items-center gap-5 rounded-2xl border px-6 text-lg font-medium shadow-[0_12px_30px_rgba(73,38,18,0.08)] backdrop-blur-xl ${
+                  desktopDarkMode ? 'border-white/10 bg-white/8 text-white/86' : 'border-[#e9c9b5]/75 bg-white/32 text-[#21130c]'
+                }`}
+              >
+                <span className="font-serif text-5xl leading-none text-[#f06b18]">“</span>
+                Code. Learn. Build.
+              </div>
+            </div>
 
-                  window.location.hash = folder.hash;
-                }}
+            <div className="pointer-events-none absolute right-[1.5%] top-[12%] z-10 h-[86%] w-[43%]">
+              <div className={`absolute bottom-[7%] right-[3%] h-[68%] w-[88%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/34'}`} />
+              <div className={`absolute bottom-[9%] right-[0%] h-[70%] w-[108%] rounded-full border ${desktopDarkMode ? 'border-white/12' : 'border-white/65'}`} />
+              <div className={`absolute bottom-[22%] right-[7%] h-[46%] w-[92%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/70'}`} />
+              <Image
+                src={`${BASE_PATH}/assets/about-normal.png`}
+                alt="Wijdane Lamsadi portrait"
+                fill
+                sizes="(min-width: 1024px) 42vw, 70vw"
+                priority
+                className="object-contain object-right-bottom"
               />
-            ))}
+            </div>
+
+            <div className={`pointer-events-none absolute left-[52%] top-[13%] h-[15%] w-[14%] rounded-2xl border ${desktopDarkMode ? 'border-orange-200/12 bg-white/[0.03]' : 'border-[#e8b995]/70 bg-white/16'}`}>
+              <div className="absolute left-4 top-4 flex gap-2">
+                <span className="h-2 w-2 rounded-full bg-[#e5b18f]" />
+                <span className="h-2 w-2 rounded-full bg-[#e5b18f]" />
+                <span className="h-2 w-2 rounded-full bg-[#e5b18f]" />
+              </div>
+              <div className="absolute left-7 top-[42%] flex gap-3 text-[#f06b18]/55">
+                <Code2 size={31} strokeWidth={1.6} />
+                <span className="mt-2 h-1 w-14 rounded-full bg-current opacity-35" />
+              </div>
+              <div className="absolute bottom-5 left-8 space-y-2 opacity-35">
+                <span className="block h-1 w-20 rounded-full bg-[#d99a70]" />
+                <span className="block h-1 w-28 rounded-full bg-[#d99a70]" />
+                <span className="block h-1 w-16 rounded-full bg-[#d99a70]" />
+              </div>
+            </div>
+
+            <div className="pointer-events-none absolute right-[15%] top-[12%] grid grid-cols-6 gap-2 opacity-75">
+              {Array.from({ length: 24 }).map((_, index) => (
+                <span key={index} className="h-0.5 w-0.5 rounded-full bg-[#f06b18]" />
+              ))}
+            </div>
+            <div className="pointer-events-none absolute left-[55%] top-[40%] grid grid-cols-5 gap-2 opacity-75">
+              {Array.from({ length: 20 }).map((_, index) => (
+                <span key={index} className="h-0.5 w-0.5 rounded-full bg-[#f06b18]" />
+              ))}
+            </div>
+            <div className={`pointer-events-none absolute right-[5.4%] top-[18%] grid h-16 w-16 place-items-center rounded-2xl border text-[#f06b18] ${desktopDarkMode ? 'border-orange-200/12 bg-white/[0.03]' : 'border-[#e8b995]/70 bg-white/16'}`}>
+              <span className="font-mono text-4xl">{'{}'}</span>
+            </div>
+            <Database className="pointer-events-none absolute bottom-[22%] right-[3.8%] text-[#d99a70]/70" size={64} strokeWidth={1.25} />
+
+            <div
+              aria-label="Desktop dock"
+              className={`absolute bottom-[2.6%] left-1/2 z-20 flex -translate-x-1/2 items-end gap-5 rounded-[1.35rem] border px-7 py-3 shadow-[0_18px_42px_rgba(66,34,16,0.16)] backdrop-blur-2xl ${
+                desktopDarkMode ? 'border-white/10 bg-white/11' : 'border-white/55 bg-white/38'
+              }`}
+            >
+              {dockItems.map((item) => {
+                const Icon = item.Icon;
+
+                return (
+                  <div key={item.label} className="grid justify-items-center gap-1">
+                    <span className={`grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${item.tone} text-[#087cc4] shadow-[0_8px_18px_rgba(72,36,14,0.14)]`}>
+                      <Icon size={28} strokeWidth={2.15} className={item.label === 'Trash' ? 'text-[#8a8a8a]' : item.label === 'Figma' ? 'text-[#f06b18]' : 'text-current'} />
+                    </span>
+                    <span className={`h-1 w-1 rounded-full ${item.label === 'Trash' ? 'bg-transparent' : desktopDarkMode ? 'bg-white/75' : 'bg-black/75'}`} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </motion.div>
 
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(255,255,255,0)_18%,rgba(70,28,8,0.08)_100%)]" />
-
-        {enteredDesktop && (
-          <motion.div
-            key={introComplete ? 'desktop-bar-complete' : 'desktop-bar-enter'}
-            className="absolute left-0 right-0 top-0 flex h-9 items-center justify-between bg-white/40 px-4 text-[13px] font-semibold text-black/80 shadow-[0_1px_18px_rgba(94,50,22,0.12)] backdrop-blur-2xl sm:px-8 sm:text-sm"
-            initial={introComplete ? false : { y: -36, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            style={introComplete ? { opacity: 1, transform: 'translateY(0px)' } : undefined}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="flex items-center gap-5">
-              <span className="text-base">W</span>
-              <span>Portfolio</span>
-              <span className="hidden sm:inline">Intro</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <Monitor size={16} strokeWidth={2.4} />
-              <span>{today}</span>
-            </div>
-          </motion.div>
-        )}
       </motion.section>
 
       <motion.div
