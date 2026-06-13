@@ -747,10 +747,9 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
         aria-label="Back to desktop"
         title="Back"
         onClick={onBack}
-        className="absolute left-4 top-4 z-40 inline-flex h-11 items-center gap-2 rounded-2xl border border-white/80 bg-white/72 px-4 text-xs font-black text-[#ff6b00] shadow-[0_12px_28px_rgba(73,38,18,0.14)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b00]"
+        className="absolute left-5 top-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-orange-200/80 bg-white/78 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18]"
       >
         <ArrowLeft size={21} strokeWidth={2.4} />
-        <span>Back</span>
       </button>
 
       <div className="absolute right-4 top-4 z-40 flex items-center gap-2">
