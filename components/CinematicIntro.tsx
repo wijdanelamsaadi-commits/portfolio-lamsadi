@@ -833,19 +833,17 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
               animate={{ scale: [1, 1.08, 1], opacity: [0.72, 1, 0.72] }}
               transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
             />
-            <div className="relative grid h-52 w-52 place-items-center rounded-full border border-white/80 bg-white/70 shadow-[0_0_60px_rgba(255,122,0,0.26),inset_0_0_38px_rgba(255,255,255,0.92)] backdrop-blur-2xl lg:h-60 lg:w-60">
-              <div className="absolute inset-5 rounded-full bg-[radial-gradient(circle_at_44%_38%,rgba(255,255,255,0.95),rgba(255,204,162,0.28)_45%,rgba(255,122,0,0.06)_72%,transparent_100%)] blur-[1px]" />
-              <div
-                className="relative select-none text-[7.5rem] leading-none drop-shadow-[0_14px_24px_rgba(255,122,0,0.22)] lg:text-[9rem]"
-                style={{
-                  filter: 'saturate(1.08) contrast(1.03) drop-shadow(0 0 18px rgba(255, 122, 0, 0.28))',
-                  textShadow: '0 2px 0 rgba(255,255,255,0.75)',
-                }}
-                aria-hidden="true"
-              >
-                🧠
-              </div>
-              <div className="absolute grid h-12 w-12 place-items-center rounded-xl border border-[#ffb366] bg-[#ff7a00] text-base font-black text-white shadow-[0_0_28px_rgba(255,122,0,0.6)]">
+            <div className="relative grid h-[18.75rem] w-[18.75rem] place-items-center">
+              <div className="absolute inset-6 rounded-full bg-[radial-gradient(circle,rgba(255,122,0,0.24),rgba(255,122,0,0.09)_50%,transparent_74%)] blur-2xl" />
+              <Image
+                src={`${BASE_PATH}/assets/ai-brain.png`}
+                alt="AI Brain"
+                width={300}
+                height={300}
+                priority
+                className="relative z-10 object-contain select-none pointer-events-none"
+              />
+              <div className="absolute z-20 grid h-12 w-12 place-items-center rounded-xl border border-[#ffb366] bg-[#ff7a00] text-base font-black text-white shadow-[0_0_28px_rgba(255,122,0,0.6)]">
                 AI
               </div>
             </div>
