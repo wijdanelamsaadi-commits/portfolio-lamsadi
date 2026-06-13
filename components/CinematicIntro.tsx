@@ -1235,6 +1235,7 @@ export default function CinematicIntro() {
   const [experienceOpen, setExperienceOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [desktopDarkMode, setDesktopDarkMode] = useState(false);
+  const [viewportSize, setViewportSize] = useState({ width: 1440, height: 960 });
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
@@ -1264,6 +1265,17 @@ export default function CinematicIntro() {
     const timeout = window.setTimeout(() => setIntroComplete(true), INTRO_DURATION_MS + 260);
     return () => window.clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    const syncViewport = () => {
+      setViewportSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    syncViewport();
+    window.addEventListener('resize', syncViewport);
+    return () => window.removeEventListener('resize', syncViewport);
+  }, []);
+
   useEffect(() => {
     const applyHash = (hash: string) => {
       if (!hash) return;
@@ -1303,6 +1315,9 @@ export default function CinematicIntro() {
       minute: '2-digit',
     }).format(new Date());
   }, []);
+  const desktopFrameWidth = Math.min(viewportSize.width * 0.95, 1500);
+  const desktopFrameHeight = desktopFrameWidth / 1.5;
+  const desktopFitScale = Math.min(1, viewportSize.height / desktopFrameHeight);
 
   const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -1415,9 +1430,11 @@ export default function CinematicIntro() {
               desktopDarkMode ? 'bg-[#17110f] text-[#fff7ef]' : 'bg-[#f8e5d7] text-[#130c08]'
             }`}
             style={{
-              width: '95vw',
-              maxWidth: '1500px',
+              width: desktopFrameWidth,
+              height: desktopFrameHeight,
               aspectRatio: '3 / 2',
+              transform: `scale(${desktopFitScale})`,
+              transformOrigin: 'center',
             }}
           >
             <div
@@ -1463,7 +1480,7 @@ export default function CinematicIntro() {
             </div>
 
             <div
-              className="relative z-10 grid h-full min-h-0 px-7 pb-[7.5rem] pt-14 md:px-9 lg:gap-10 xl:gap-16 xl:px-12"
+              className="relative z-10 grid h-full min-h-0 px-7 pb-[7.5rem] pt-14 md:px-9 lg:gap-7 xl:gap-8 xl:px-12"
               style={{
                 gridTemplateColumns: '170px minmax(0, 1fr) 430px',
                 gridTemplateRows: '1fr',
@@ -1548,7 +1565,7 @@ export default function CinematicIntro() {
                   height={573}
                   sizes="430px"
                   priority
-                  className="relative z-10 mt-auto h-auto w-[430px] translate-x-5 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)]"
+                  className="relative z-10 mt-auto h-auto w-[430px] -translate-x-12 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)]"
                   style={{
                     WebkitMaskImage:
                       'radial-gradient(ellipse 54% 78% at 56% 58%, #000 58%, rgba(0,0,0,0.78) 69%, rgba(0,0,0,0.28) 80%, transparent 91%)',
