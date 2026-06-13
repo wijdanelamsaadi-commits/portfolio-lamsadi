@@ -1410,12 +1410,13 @@ export default function CinematicIntro() {
           style={{ x: reverseParallaxX, y: reverseParallaxY }}
         >
           <div
+            data-testid="desktop-hero-frame"
             className={`relative max-w-none overflow-hidden rounded-[1.4rem] shadow-[0_24px_80px_rgba(85,42,18,0.18)] ring-1 ring-black/5 transition-colors duration-300 ${
               desktopDarkMode ? 'bg-[#17110f] text-[#fff7ef]' : 'bg-[#f8e5d7] text-[#130c08]'
             }`}
             style={{
-              width: 'min(95vw, calc((100vh - 48px) * 1.5))',
-              maxHeight: 'calc(100vh - 48px)',
+              width: '95vw',
+              maxWidth: '1500px',
               aspectRatio: '3 / 2',
             }}
           >
@@ -1462,9 +1463,9 @@ export default function CinematicIntro() {
             </div>
 
             <div
-              className="relative z-10 grid h-full min-h-0 px-6 pb-[7.5rem] pt-14 md:px-8 lg:gap-6 xl:gap-10 xl:px-10"
+              className="relative z-10 grid h-full min-h-0 px-7 pb-[7.5rem] pt-14 md:px-9 lg:gap-10 xl:gap-16 xl:px-12"
               style={{
-                gridTemplateColumns: 'clamp(120px, 10.4vw, 160px) minmax(0, 1fr) clamp(320px, 30vw, 420px)',
+                gridTemplateColumns: '170px minmax(0, 1fr) 430px',
                 gridTemplateRows: '1fr',
               }}
             >
@@ -1543,11 +1544,11 @@ export default function CinematicIntro() {
                 <Image
                   src={`${BASE_PATH}/assets/about-normal.png`}
                   alt="Wijdane Lamsadi portrait"
-                  width={420}
-                  height={560}
-                  sizes="(min-width: 1280px) 420px, 30vw"
+                  width={430}
+                  height={573}
+                  sizes="430px"
                   priority
-                  className="relative z-10 mt-auto h-auto w-[clamp(320px,30vw,420px)] translate-x-6 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)]"
+                  className="relative z-10 mt-auto h-auto w-[430px] translate-x-5 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)]"
                   style={{
                     WebkitMaskImage:
                       'radial-gradient(ellipse 54% 78% at 56% 58%, #000 58%, rgba(0,0,0,0.78) 69%, rgba(0,0,0,0.28) 80%, transparent 91%)',
