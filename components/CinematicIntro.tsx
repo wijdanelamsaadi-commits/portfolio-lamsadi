@@ -1480,9 +1480,9 @@ export default function CinematicIntro() {
             </div>
 
             <div
-              className="relative z-10 grid h-full min-h-0 px-7 pb-[9rem] pt-14 md:px-9 lg:gap-4 xl:gap-5 xl:px-12"
+              className="relative z-10 grid h-full min-h-0 px-7 pb-[6.5rem] pt-14 md:px-9 lg:gap-3 xl:gap-4 xl:px-12"
               style={{
-                gridTemplateColumns: '170px minmax(0, 1fr) 620px',
+                gridTemplateColumns: '170px minmax(0, 1fr) 680px',
                 gridTemplateRows: '1fr',
               }}
             >
@@ -1556,16 +1556,16 @@ export default function CinematicIntro() {
               </div>
 
               <div className="pointer-events-none relative z-10 flex h-full min-w-0 self-end justify-end overflow-visible">
-                <div className={`absolute bottom-[9%] right-[-3%] h-[70%] w-[106%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/24'}`} />
-                <div className={`absolute bottom-[13%] right-[-4%] h-[76%] w-[112%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/60'}`} />
+                <div className={`absolute bottom-[8%] right-[-3%] h-[72%] w-[106%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/24'}`} />
+                <div className={`absolute bottom-[12%] right-[-4%] h-[78%] w-[112%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/60'}`} />
                 <Image
                   src={`${BASE_PATH}/assets/about-normal.png`}
                   alt="Wijdane Lamsadi portrait"
-                  width={620}
-                  height={827}
-                  sizes="620px"
+                  width={680}
+                  height={907}
+                  sizes="680px"
                   priority
-                  className="relative z-10 mb-7 mt-auto h-auto max-h-[calc(100%-12.5rem)] w-[620px] translate-x-2 -translate-y-48 self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)] 2xl:max-h-[calc(100%-4.5rem)] 2xl:translate-y-2"
+                  className="relative z-10 mb-32 mt-auto h-auto max-h-[660px] w-[680px] translate-x-4 -translate-y-[3.5rem] self-end object-contain drop-shadow-[0_24px_34px_rgba(66,32,14,0.16)] 2xl:mb-12 2xl:max-h-[calc(100%-4.5rem)] 2xl:-translate-y-24"
                   style={{
                     WebkitMaskImage:
                       'radial-gradient(ellipse 54% 78% at 56% 58%, #000 58%, rgba(0,0,0,0.78) 69%, rgba(0,0,0,0.28) 80%, transparent 91%)',
@@ -1578,7 +1578,7 @@ export default function CinematicIntro() {
 
             <div
               aria-label="Desktop dock"
-              className={`absolute bottom-[2.6%] left-1/2 z-20 flex -translate-x-1/2 items-end gap-5 rounded-[1.35rem] border px-7 py-3 shadow-[0_18px_42px_rgba(66,34,16,0.16)] backdrop-blur-2xl ${
+              className={`absolute bottom-[3.8%] left-1/2 z-20 flex -translate-x-1/2 items-end gap-5 rounded-[1.35rem] border px-7 py-3 shadow-[0_18px_42px_rgba(66,34,16,0.16)] backdrop-blur-2xl ${
                 desktopDarkMode ? 'border-white/10 bg-white/11' : 'border-white/55 bg-white/38'
               }`}
             >
