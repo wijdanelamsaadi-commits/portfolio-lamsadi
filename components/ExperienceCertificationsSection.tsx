@@ -10,11 +10,11 @@ export default function ExperienceCertificationsSection() {
   return (
     <section
       aria-labelledby="experience-certifications-title"
-      className="relative isolate overflow-hidden bg-[#fffdfb] px-4 py-10 text-[#111827] transition-colors duration-500 sm:px-6 sm:py-12 lg:px-10"
+      className="relative isolate overflow-hidden bg-[#fffdfb] px-4 py-10 text-[#111827] transition-colors duration-500 dark:bg-[#0B0B0F] dark:text-[#F5F5F5] sm:px-6 sm:py-12 lg:px-10"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-16 top-0 h-72 w-72 rounded-full bg-orange-100/55 blur-3xl" />
-        <div className="absolute right-0 top-8 h-64 w-64 rounded-full bg-orange-50/80 blur-3xl" />
+        <div className="absolute -left-16 top-0 h-72 w-72 rounded-full bg-orange-100/55 blur-3xl dark:bg-[#FF7A1A]/10" />
+        <div className="absolute right-0 top-8 h-64 w-64 rounded-full bg-orange-50/80 blur-3xl dark:bg-[#FF7A1A]/8" />
         <div className="absolute left-0 top-0 h-52 w-80 opacity-[0.07] [background-image:linear-gradient(135deg,#ff6b00_1px,transparent_1px)] [background-size:18px_18px]" />
         <div className="absolute right-10 top-8 hidden h-24 w-28 opacity-25 [background-image:radial-gradient(#ff6b00_1.4px,transparent_1.4px)] [background-size:16px_16px] lg:block" />
       </div>
@@ -27,19 +27,19 @@ export default function ExperienceCertificationsSection() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="inline-flex items-center gap-3 rounded-full border border-orange-200/80 bg-white/90 px-6 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-[#ff6b00] shadow-[0_12px_34px_rgba(255,107,0,0.10)] backdrop-blur">
+          <div className="inline-flex items-center gap-3 rounded-full border border-orange-200/80 bg-white/90 px-6 py-2.5 text-xs font-black uppercase tracking-[0.16em] text-[#ff6b00] shadow-[0_12px_34px_rgba(255,107,0,0.10)] backdrop-blur dark:border-white/10 dark:bg-[rgba(20,22,27,0.85)] dark:text-[#FF7A1A] dark:shadow-[0_0_28px_rgba(255,122,26,0.16)]">
             <Trophy size={18} strokeWidth={2.4} />
             My Journey
           </div>
 
           <h2
             id="experience-certifications-title"
-            className="mx-auto mt-4 max-w-[22rem] text-3xl font-black uppercase leading-tight tracking-normal text-[#111827] sm:max-w-none sm:text-5xl"
+            className="mx-auto mt-4 max-w-[22rem] text-3xl font-black uppercase leading-tight tracking-normal text-[#111827] dark:text-[#F5F5F5] sm:max-w-none sm:text-5xl"
           >
             <span className="text-[#ff6b00]">Experience</span> & Certifications
           </h2>
 
-          <p className="mx-auto mt-3 max-w-3xl text-base font-medium leading-7 text-slate-600">
+          <p className="mx-auto mt-3 max-w-3xl text-base font-medium leading-7 text-slate-600 dark:text-[#B5B5B5]">
             Mon parcours professionnel et mes certifications qui valident mes competences.
           </p>
 
@@ -58,7 +58,7 @@ export default function ExperienceCertificationsSection() {
         <AchievementCards />
 
         <motion.div
-          className="mx-auto mt-5 flex max-w-lg items-center justify-center gap-5 text-center text-[0.68rem] font-black uppercase tracking-[0.32em] text-slate-500"
+          className="mx-auto mt-5 flex max-w-lg items-center justify-center gap-5 text-center text-[0.68rem] font-black uppercase tracking-[0.32em] text-slate-500 dark:text-[#B5B5B5]"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

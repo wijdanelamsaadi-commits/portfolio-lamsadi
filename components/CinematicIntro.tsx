@@ -35,6 +35,7 @@ import {
   Linkedin,
   Mail,
   MessageCircle,
+  Moon,
   Palette,
   Search,
   type LucideIcon,
@@ -42,6 +43,7 @@ import {
   School,
   ShieldCheck,
   Smartphone,
+  Sun,
   Trash2,
   User,
   Wifi,
@@ -420,21 +422,21 @@ function AboutMeWindow({ onBack }: { onBack: () => void }) {
   return (
     <motion.section
       aria-label="About Me window"
-      className="absolute inset-0 z-40 overflow-hidden bg-[#f6dfcf] text-[#1a100b]"
+      className="absolute inset-0 z-40 overflow-hidden bg-[#f6dfcf] text-[#1a100b] transition-colors duration-500 dark:bg-[#0B0B0F] dark:text-[#F5F5F5]"
       initial={{ opacity: 0, scale: 0.965 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.985 }}
       transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(255,106,26,0.22),transparent_24rem),radial-gradient(circle_at_20%_80%,rgba(31,18,11,0.13),transparent_28rem)]" />
-      <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(rgba(255,106,26,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,106,26,0.08)_1px,transparent_1px)] [background-size:64px_64px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(255,106,26,0.22),transparent_24rem),radial-gradient(circle_at_20%_80%,rgba(31,18,11,0.13),transparent_28rem)] dark:bg-[radial-gradient(circle_at_78%_18%,rgba(255,122,26,0.20),transparent_24rem),radial-gradient(circle_at_20%_80%,rgba(255,122,26,0.08),transparent_28rem),linear-gradient(135deg,#0B0B0F,#14161B)]" />
+      <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(rgba(255,106,26,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,106,26,0.08)_1px,transparent_1px)] [background-size:64px_64px] dark:opacity-35" />
 
       <button
         type="button"
         aria-label="Back to desktop"
         title="Back"
         onClick={onBack}
-        className="absolute left-5 top-5 z-20 grid h-11 w-11 place-items-center rounded-full border border-[#e9ad87]/80 bg-white/45 text-[#1a100b] shadow-[0_14px_34px_rgba(67,28,8,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b1a]"
+        className="absolute left-5 top-5 z-20 grid h-11 w-11 place-items-center rounded-full border border-[#e9ad87]/80 bg-white/45 text-[#1a100b] shadow-[0_14px_34px_rgba(67,28,8,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b1a] dark:border-white/10 dark:bg-[rgba(20,22,27,0.85)] dark:text-[#F5F5F5] dark:shadow-[0_0_34px_rgba(255,122,26,0.18)] dark:hover:bg-[#1d2028]"
       >
         <ArrowLeft size={21} strokeWidth={2.4} />
       </button>
@@ -447,16 +449,16 @@ function AboutMeWindow({ onBack }: { onBack: () => void }) {
           transition={{ duration: 0.72, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.32em] text-[#f06418]">About Me</p>
-          <h1 className="text-5xl font-black leading-none text-[#1a100b] sm:text-6xl lg:text-7xl">Wijdane Lamsadi</h1>
-          <p className="mt-6 max-w-lg text-xl font-semibold leading-relaxed text-[#2d221b]">
+          <h1 className="text-5xl font-black leading-none text-[#1a100b] dark:text-[#F5F5F5] sm:text-6xl lg:text-7xl">Wijdane Lamsadi</h1>
+          <p className="mt-6 max-w-lg text-xl font-semibold leading-relaxed text-[#2d221b] dark:text-[#B5B5B5]">
             Engineering Student in Information Systems
           </p>
 
-          <div className="mt-7 inline-flex rounded-full border border-[#efb087]/80 bg-white/42 px-5 py-2 text-sm font-bold text-[#2a1710] shadow-[0_12px_28px_rgba(67,28,8,0.08)] backdrop-blur-xl">
+          <div className="mt-7 inline-flex rounded-full border border-[#efb087]/80 bg-white/42 px-5 py-2 text-sm font-bold text-[#2a1710] shadow-[0_12px_28px_rgba(67,28,8,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-[rgba(20,22,27,0.85)] dark:text-[#F5F5F5] dark:shadow-[0_0_26px_rgba(255,122,26,0.16)]">
             AI • Full Stack • Data
           </div>
 
-          <p className="mt-8 max-w-xl text-base font-medium leading-8 text-[#4c382e] sm:text-lg">
+          <p className="mt-8 max-w-xl text-base font-medium leading-8 text-[#4c382e] dark:text-[#B5B5B5] sm:text-lg">
             Wijdane Lamsadi, engineering student in Information Systems, passionate about AI, Full Stack
             Development and Data Analysis. I build smart digital solutions that combine clean design, useful
             features and intelligent systems.
@@ -598,9 +600,7 @@ const skillStats = ['65+ Technologies', '13 Projects Completed', '4 AWS Certific
 const logoSlugMap: Record<string, string> = {
   Android: 'android',
   'Android Studio': 'androidstudio',
-  AWS: 'amazonwebservices',
   Bootstrap: 'bootstrap',
-  CSS3: 'css3',
   Dart: 'dart',
   Docker: 'docker',
   Eclipse: 'eclipseide',
@@ -623,18 +623,15 @@ const logoSlugMap: Record<string, string> = {
   Pandas: 'pandas',
   PHP: 'php',
   PostgreSQL: 'postgresql',
-  'Power BI': 'powerbi',
   Python: 'python',
   React: 'react',
   'React Native': 'react',
   'Scikit-Learn': 'scikitlearn',
-  'SQL Server': 'microsoftsqlserver',
   SQLite: 'sqlite',
   Swagger: 'swagger',
   'Tailwind CSS': 'tailwindcss',
   TensorFlow: 'tensorflow',
   TypeScript: 'typescript',
-  'VS Code': 'visualstudiocode',
 };
 
 const fallbackBadgeColors: Record<string, string> = {
@@ -700,7 +697,7 @@ function SkillBadge({ label, index }: { label: string; index: number }) {
 
   return (
     <motion.span
-      className="relative z-20 inline-flex min-h-[1.08rem] items-center gap-1 rounded-md border border-[#f2dfd1] bg-white/92 px-1.5 py-[0.12rem] text-[7px] font-extrabold leading-none text-[#3c2a1f] shadow-[0_4px_12px_rgba(92,50,25,0.07)] backdrop-blur-xl sm:text-[7.7px] xl:px-1.5 xl:text-[8.1px]"
+      className="relative z-20 inline-flex min-h-[1.08rem] items-center gap-1 rounded-md border border-[#f2dfd1] bg-white/92 px-1.5 py-[0.12rem] text-[7px] font-extrabold leading-none text-[#3c2a1f] shadow-[0_4px_12px_rgba(92,50,25,0.07)] backdrop-blur-xl transition-colors dark:border-white/10 dark:bg-[#14161B]/90 dark:text-[#F5F5F5] dark:shadow-[0_4px_16px_rgba(0,0,0,0.32)] dark:hover:border-[#FF7A1A]/70 sm:text-[7.7px] xl:px-1.5 xl:text-[8.1px]"
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.32, delay: 0.16 + index * 0.012, ease: 'easeOut' }}
@@ -731,20 +728,20 @@ function SkillPanel({ group, index }: { group: SkillGroup; index: number }) {
 
   return (
     <motion.article
-      className={`isolate relative z-20 overflow-hidden rounded-[1.25rem] border border-white/70 bg-white/70 p-2 text-[#16110d] shadow-[0_18px_46px_rgba(80,47,28,0.12)] backdrop-blur-2xl lg:absolute ${group.position}`}
+      className={`isolate relative z-20 overflow-hidden rounded-[1.25rem] border border-white/70 bg-white/70 p-2 text-[#16110d] shadow-[0_18px_46px_rgba(80,47,28,0.12)] backdrop-blur-2xl transition-colors dark:border-white/10 dark:bg-[rgba(20,22,27,0.85)] dark:text-[#F5F5F5] dark:shadow-[0_18px_54px_rgba(0,0,0,0.45)] lg:absolute ${group.position}`}
       initial={{ opacity: 0, y: 20, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.48, delay: 0.14 + index * 0.055, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4, boxShadow: '0 24px 62px rgba(255, 107, 26, 0.18)' }}
     >
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_12%_10%,rgba(255,107,26,0.1),transparent_10rem),linear-gradient(135deg,rgba(255,255,255,0.8),rgba(255,255,255,0.24))]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_12%_10%,rgba(255,107,26,0.1),transparent_10rem),linear-gradient(135deg,rgba(255,255,255,0.8),rgba(255,255,255,0.24))] dark:bg-[radial-gradient(circle_at_12%_10%,rgba(255,122,26,0.18),transparent_10rem),linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.02))]" />
       <div className="relative z-20 flex items-center gap-2">
-        <div className="grid h-8 w-8 shrink-0 place-items-center rounded-xl border border-[#ffd3b6] bg-white text-[#ff6b00] shadow-[0_0_20px_rgba(255,107,26,0.22)] lg:h-9 lg:w-9">
+        <div className="grid h-8 w-8 shrink-0 place-items-center rounded-xl border border-[#ffd3b6] bg-white text-[#ff6b00] shadow-[0_0_20px_rgba(255,107,26,0.22)] dark:border-[#FF7A1A]/35 dark:bg-[#0B0B0F] dark:text-[#FF7A1A] dark:shadow-[0_0_26px_rgba(255,122,26,0.22)] lg:h-9 lg:w-9">
           <Icon size={20} strokeWidth={2.35} />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1">
-            <h2 className="text-[9.5px] font-black uppercase leading-tight tracking-normal text-[#16110d] lg:text-[10px] xl:text-[11px]">{group.title}</h2>
+            <h2 className="text-[9.5px] font-black uppercase leading-tight tracking-normal text-[#16110d] dark:text-[#F5F5F5] lg:text-[10px] xl:text-[11px]">{group.title}</h2>
             <p className="text-[7.5px] font-black leading-tight text-[#ff6b00] lg:text-[8px] xl:text-[8.5px]">{group.count}</p>
           </div>
         </div>
@@ -762,34 +759,34 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
   return (
     <motion.section
       aria-label="Skills app window"
-      className="absolute inset-0 z-40 overflow-hidden bg-[#fff7f0] text-[#15100d]"
+      className="absolute inset-0 z-40 overflow-hidden bg-[#fff7f0] text-[#15100d] transition-colors duration-500 dark:bg-[#0B0B0F] dark:text-[#F5F5F5]"
       initial={{ opacity: 0, scale: 0.965 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.985 }}
       transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_43%,rgba(255,107,26,0.17),transparent_18rem),radial-gradient(circle_at_14%_12%,rgba(255,176,117,0.2),transparent_22rem),radial-gradient(circle_at_88%_82%,rgba(255,209,176,0.3),transparent_20rem),linear-gradient(135deg,#fffaf6,#f8ece2)]" />
-      <div className="absolute inset-0 opacity-55 [background-image:linear-gradient(rgba(255,107,26,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,26,0.08)_1px,transparent_1px)] [background-size:42px_42px]" />
-      <div className="absolute inset-0 opacity-35 [background-image:radial-gradient(rgba(255,107,26,0.34)_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_43%,rgba(255,107,26,0.17),transparent_18rem),radial-gradient(circle_at_14%_12%,rgba(255,176,117,0.2),transparent_22rem),radial-gradient(circle_at_88%_82%,rgba(255,209,176,0.3),transparent_20rem),linear-gradient(135deg,#fffaf6,#f8ece2)] dark:bg-[radial-gradient(circle_at_50%_43%,rgba(255,122,26,0.22),transparent_18rem),radial-gradient(circle_at_14%_12%,rgba(255,122,26,0.12),transparent_22rem),radial-gradient(circle_at_88%_82%,rgba(255,122,26,0.10),transparent_20rem),linear-gradient(135deg,#0B0B0F,#14161B)]" />
+      <div className="absolute inset-0 opacity-55 [background-image:linear-gradient(rgba(255,107,26,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,26,0.08)_1px,transparent_1px)] [background-size:42px_42px] dark:opacity-25" />
+      <div className="absolute inset-0 opacity-35 [background-image:radial-gradient(rgba(255,107,26,0.34)_1px,transparent_1px)] [background-size:24px_24px] dark:opacity-20" />
 
       <button
         type="button"
         aria-label="Back to desktop"
         title="Back"
         onClick={onBack}
-        className="absolute left-5 top-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-orange-200/80 bg-white/78 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18]"
+        className="absolute left-5 top-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-orange-200/80 bg-white/78 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18] dark:border-white/10 dark:bg-[rgba(20,22,27,0.85)] dark:text-[#F5F5F5] dark:shadow-[0_0_34px_rgba(255,122,26,0.18)] dark:hover:bg-[#1d2028]"
       >
         <ArrowLeft size={21} strokeWidth={2.4} />
       </button>
 
       <div className="absolute right-4 top-4 z-40 flex items-center gap-2">
-        <span className="grid h-9 w-9 place-items-center rounded-xl border border-white/80 bg-white/70 text-[#ff6b00] shadow-[0_10px_24px_rgba(73,38,18,0.12)] backdrop-blur-xl">
+        <span className="grid h-9 w-9 place-items-center rounded-xl border border-white/80 bg-white/70 text-[#ff6b00] shadow-[0_10px_24px_rgba(73,38,18,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-[#14161B]/85 dark:text-[#FF7A1A]">
           <span className="h-0.5 w-3.5 rounded-full bg-current" />
         </span>
-        <span className="grid h-9 w-9 place-items-center rounded-xl border border-white/80 bg-white/70 text-[#ff6b00] shadow-[0_10px_24px_rgba(73,38,18,0.12)] backdrop-blur-xl">
+        <span className="grid h-9 w-9 place-items-center rounded-xl border border-white/80 bg-white/70 text-[#ff6b00] shadow-[0_10px_24px_rgba(73,38,18,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-[#14161B]/85 dark:text-[#FF7A1A]">
           <span className="h-3 w-3 rounded-[3px] border-2 border-current" />
         </span>
-        <span className="grid h-9 w-9 place-items-center rounded-xl border border-white/80 bg-white/70 text-[#ff6b00] shadow-[0_10px_24px_rgba(73,38,18,0.12)] backdrop-blur-xl">
+        <span className="grid h-9 w-9 place-items-center rounded-xl border border-white/80 bg-white/70 text-[#ff6b00] shadow-[0_10px_24px_rgba(73,38,18,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-[#14161B]/85 dark:text-[#FF7A1A]">
           <X size={16} strokeWidth={2.6} />
         </span>
       </div>
@@ -801,10 +798,10 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="text-3xl font-black leading-none tracking-normal text-[#120f0d] sm:text-4xl lg:text-[2.45rem]">
+          <h1 className="text-3xl font-black leading-none tracking-normal text-[#120f0d] dark:text-[#F5F5F5] sm:text-4xl lg:text-[2.45rem]">
             SKILLS <span className="text-[#ff6b00]">CONTROL CENTER</span>
           </h1>
-          <p className="mt-2 text-sm font-semibold text-[#6d5445]">Explore my technical universe</p>
+          <p className="mt-2 text-sm font-semibold text-[#6d5445] dark:text-[#B5B5B5]">Explore my technical universe</p>
           <div className="mx-auto mt-2 flex w-24 items-center justify-center">
             <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#ff6b00]" />
             <span className="mx-2 h-2 w-2 rounded-full bg-[#ff6b00] shadow-[0_0_12px_rgba(255,107,0,0.65)]" />
@@ -883,7 +880,7 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
               />
             </div>
             <div className="mt-[17rem] text-center lg:absolute lg:top-[19.3rem] lg:mt-0">
-              <h2 className="text-xl font-black text-[#17100b]">AI CORE</h2>
+              <h2 className="text-xl font-black text-[#17100b] dark:text-[#F5F5F5]">AI CORE</h2>
               <p className="mt-1 text-[10px] font-semibold text-[#6d5445]">Intelligence • Learning • Innovation</p>
               <div className="mx-auto mt-2 h-4 w-16 text-[#ff6b00]">
                 <svg viewBox="0 0 80 20" className="h-full w-full" aria-hidden="true">
@@ -899,13 +896,13 @@ function SkillsWindow({ onBack }: { onBack: () => void }) {
         </div>
 
         <motion.div
-          className="relative z-30 mt-5 grid gap-2 rounded-[1.25rem] border border-white/70 bg-white/62 p-3 text-center text-[11px] font-black text-[#513727] shadow-[0_16px_40px_rgba(73,38,18,0.11)] backdrop-blur-2xl sm:grid-cols-3 lg:absolute lg:bottom-3 lg:left-[21%] lg:mt-0 lg:w-[58%]"
+          className="relative z-30 mt-5 grid gap-2 rounded-[1.25rem] border border-white/70 bg-white/62 p-3 text-center text-[11px] font-black text-[#513727] shadow-[0_16px_40px_rgba(73,38,18,0.11)] backdrop-blur-2xl dark:border-white/10 dark:bg-[rgba(20,22,27,0.85)] dark:text-[#F5F5F5] dark:shadow-[0_18px_48px_rgba(0,0,0,0.42)] sm:grid-cols-3 lg:absolute lg:bottom-3 lg:left-[21%] lg:mt-0 lg:w-[58%]"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           {skillStats.map((stat) => (
-            <div key={stat} className="rounded-xl border border-[#ffe2cf] bg-white/62 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.88)]">
+            <div key={stat} className="rounded-xl border border-[#ffe2cf] bg-white/62 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.88)] dark:border-white/10 dark:bg-[#0B0B0F]/70 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
               {stat}
             </div>
           ))}
@@ -953,7 +950,7 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
 
   return (
     <motion.div
-      className="absolute inset-0 z-50 grid place-items-center bg-[#160c06]/64 px-5 backdrop-blur-md"
+      className="absolute inset-0 z-50 grid place-items-center bg-[#160c06]/64 px-5 backdrop-blur-md dark:bg-black/72"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -961,7 +958,7 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
       onClick={onClose}
     >
       <motion.article
-        className="relative w-full max-w-2xl rounded-[1rem] bg-[#fff4eb] p-6 text-[#1d1008] shadow-[0_30px_90px_rgba(26,12,4,0.44)]"
+        className="relative w-full max-w-2xl rounded-[1rem] border border-transparent bg-[#fff4eb] p-6 text-[#1d1008] shadow-[0_30px_90px_rgba(26,12,4,0.44)] dark:border-white/10 dark:bg-[rgba(20,22,27,0.95)] dark:text-[#F5F5F5] dark:shadow-[0_0_70px_rgba(255,122,26,0.20)]"
         initial={{ opacity: 0, y: 28, scale: 0.92 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 18, scale: 0.96 }}
@@ -973,7 +970,7 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
           aria-label="Close project details"
           title="Close"
           onClick={onClose}
-          className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full text-[#7b3b11] transition hover:bg-[#f1d5c2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18]"
+          className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full text-[#7b3b11] transition hover:bg-[#f1d5c2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18] dark:text-[#F5F5F5] dark:hover:bg-white/10"
         >
           <X size={18} />
         </button>
@@ -981,13 +978,13 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
         <div className="pr-8">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[#c65a05]">{project.category}</p>
           <h3 className="mt-2 text-3xl font-black leading-tight">{project.title}</h3>
-          <p className="mt-4 text-sm font-medium leading-6 text-[#4d3728]">{project.description}</p>
+          <p className="mt-4 text-sm font-medium leading-6 text-[#4d3728] dark:text-[#B5B5B5]">{project.description}</p>
 
           <div className="mt-5 flex flex-wrap gap-2">
             {project.tech.map((item) => (
               <span
                 key={item}
-                className="inline-flex items-center gap-1 rounded-full border border-[#edc0a0] bg-white/55 px-3 py-1.5 text-xs font-bold text-[#3d2414]"
+                className="inline-flex items-center gap-1 rounded-full border border-[#edc0a0] bg-white/55 px-3 py-1.5 text-xs font-bold text-[#3d2414] dark:border-white/10 dark:bg-[#0B0B0F]/75 dark:text-[#F5F5F5]"
               >
                 <Icon size={13} strokeWidth={2.1} className="text-[#c65a05]" />
                 {item}
@@ -997,7 +994,7 @@ function ProjectDetailsModal({ project, onClose }: { project: Project; onClose: 
 
           <div className="mt-5">
             <p className="text-sm font-black">Key Features</p>
-            <ul className="mt-2 space-y-2 text-sm font-medium text-[#4d3728]">
+            <ul className="mt-2 space-y-2 text-sm font-medium text-[#4d3728] dark:text-[#B5B5B5]">
               {project.features.map((feature) => (
                 <li key={feature} className="flex items-start gap-2">
                   <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#e96b16] shadow-[0_0_10px_rgba(233,107,22,0.8)]" />
@@ -1044,7 +1041,7 @@ function ProjectsMuseumWindow({ onBack }: { onBack: () => void }) {
   return (
     <motion.section
       aria-label="Projects museum window"
-      className="absolute inset-0 z-40 overflow-hidden bg-[#b98862] text-[#1d1008]"
+      className="absolute inset-0 z-40 overflow-hidden bg-[#b98862] text-[#1d1008] dark:bg-[#0B0B0F] dark:text-[#F5F5F5]"
       initial={{ opacity: 0, scale: 0.965 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.985 }}
@@ -1058,13 +1055,14 @@ function ProjectsMuseumWindow({ onBack }: { onBack: () => void }) {
         className="object-cover object-center"
         priority
       />
+      <div className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(circle_at_50%_38%,rgba(255,122,26,0.08),transparent_32rem),linear-gradient(180deg,rgba(11,11,15,0.22),rgba(11,11,15,0.54))] dark:block" />
 
       <button
         type="button"
         aria-label="Back to desktop"
         title="Back"
         onClick={onBack}
-        className="absolute left-5 top-5 z-30 grid h-11 w-11 place-items-center rounded-full border border-[#edc0a0]/80 bg-white/55 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.2)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white/78 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18]"
+        className="absolute left-5 top-5 z-30 grid h-11 w-11 place-items-center rounded-full border border-[#edc0a0]/80 bg-white/55 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.2)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white/78 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18] dark:border-white/10 dark:bg-[rgba(20,22,27,0.85)] dark:text-[#F5F5F5] dark:shadow-[0_0_34px_rgba(255,122,26,0.18)] dark:hover:bg-[#1d2028]"
       >
         <ArrowLeft size={21} strokeWidth={2.4} />
       </button>
@@ -1080,7 +1078,7 @@ function ProjectsMuseumWindow({ onBack }: { onBack: () => void }) {
               aria-label={`Open ${project.title} details`}
               title={project.title}
               onClick={() => setSelectedProject(project)}
-              className="absolute z-20 rounded-sm bg-[#f06b18]/0 outline-none transition hover:bg-[#f06b18]/10 focus-visible:bg-[#f06b18]/14 focus-visible:ring-2 focus-visible:ring-[#ff9b4a]"
+              className="absolute z-20 rounded-sm bg-[#f06b18]/0 outline-none transition hover:bg-[#f06b18]/10 hover:ring-2 hover:ring-[#FF7A1A]/70 focus-visible:bg-[#f06b18]/14 focus-visible:ring-2 focus-visible:ring-[#ff9b4a] dark:hover:bg-[#FF7A1A]/16 dark:hover:shadow-[0_0_26px_rgba(255,122,26,0.35)]"
               style={{
                 left: `${hotspot.frame.left}%`,
                 top: `${hotspot.frame.top}%`,
@@ -1093,7 +1091,7 @@ function ProjectsMuseumWindow({ onBack }: { onBack: () => void }) {
               aria-label={`View ${project.title} details`}
               title={`View ${project.title} details`}
               onClick={() => setSelectedProject(project)}
-              className="absolute z-20 rounded-lg bg-[#f06b18]/0 outline-none transition hover:bg-[#f06b18]/12 focus-visible:bg-[#f06b18]/18 focus-visible:ring-2 focus-visible:ring-[#ff9b4a]"
+              className="absolute z-20 rounded-lg bg-[#f06b18]/0 outline-none transition hover:bg-[#f06b18]/12 hover:ring-2 hover:ring-[#FF7A1A]/70 focus-visible:bg-[#f06b18]/18 focus-visible:ring-2 focus-visible:ring-[#ff9b4a] dark:hover:bg-[#FF7A1A]/18 dark:hover:shadow-[0_0_24px_rgba(255,122,26,0.35)]"
               style={{
                 left: `${hotspot.button.left}%`,
                 top: `${hotspot.button.top}%`,
@@ -1116,7 +1114,7 @@ function ExperienceWindow({ onBack }: { onBack: () => void }) {
   return (
     <motion.section
       aria-label="Experience and certifications window"
-      className="absolute inset-0 z-40 overflow-y-auto bg-[#fffdfb] text-[#111827]"
+      className="absolute inset-0 z-40 overflow-y-auto bg-[#fffdfb] text-[#111827] transition-colors duration-500 dark:bg-[#0B0B0F] dark:text-[#F5F5F5]"
       initial={{ opacity: 0, scale: 0.965 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.985 }}
@@ -1127,7 +1125,7 @@ function ExperienceWindow({ onBack }: { onBack: () => void }) {
         aria-label="Back to desktop"
         title="Back"
         onClick={onBack}
-        className="fixed left-5 top-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-orange-200/80 bg-white/78 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18]"
+        className="fixed left-5 top-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-orange-200/80 bg-white/78 text-[#8a4317] shadow-[0_16px_34px_rgba(86,42,16,0.16)] backdrop-blur-2xl transition hover:-translate-x-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f06b18] dark:border-white/10 dark:bg-[rgba(20,22,27,0.85)] dark:text-[#F5F5F5] dark:shadow-[0_0_34px_rgba(255,122,26,0.18)] dark:hover:bg-[#1d2028]"
       >
         <ArrowLeft size={21} strokeWidth={2.4} />
       </button>
@@ -1235,6 +1233,7 @@ export default function CinematicIntro() {
   const [experienceOpen, setExperienceOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [desktopDarkMode, setDesktopDarkMode] = useState(false);
+  const [themeReady, setThemeReady] = useState(false);
   const [viewportSize, setViewportSize] = useState({ width: 1440, height: 960 });
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -1265,6 +1264,18 @@ export default function CinematicIntro() {
     const timeout = window.setTimeout(() => setIntroComplete(true), INTRO_DURATION_MS + 260);
     return () => window.clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem('portfolio-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDesktopDarkMode(storedTheme ? storedTheme === 'dark' : prefersDark);
+    setThemeReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!themeReady) return;
+    window.localStorage.setItem('portfolio-theme', desktopDarkMode ? 'dark' : 'light');
+  }, [desktopDarkMode, themeReady]);
 
   useEffect(() => {
     const syncViewport = () => {
@@ -1364,7 +1375,7 @@ export default function CinematicIntro() {
 
   return (
     <main
-      className="relative h-screen w-screen overflow-hidden bg-[#050505] text-white"
+      className={`relative h-screen w-screen overflow-hidden bg-[#050505] text-white ${desktopDarkMode ? 'dark' : ''}`}
       onPointerMove={handlePointerMove}
       onPointerLeave={() => {
         pointerX.set(0);
@@ -1497,11 +1508,23 @@ export default function CinematicIntro() {
                       aria-label={`Open ${folder.label}`}
                       title={folder.label}
                       onClick={() => openDesktopFolder(folder)}
-                      className="group grid justify-items-center gap-2 rounded-xl text-center outline-none transition hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40"
+                      className={`group grid justify-items-center gap-2 rounded-xl p-1.5 text-center outline-none transition hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#ff6b1a] focus-visible:ring-offset-2 focus-visible:ring-offset-white/40 ${
+                        desktopDarkMode ? 'bg-white/[0.035] backdrop-blur-md focus-visible:ring-offset-[#0B0B0F]' : ''
+                      }`}
                     >
                       <span className="relative block h-12 w-16 sm:h-14 sm:w-[4.5rem]">
-                        <span className="absolute left-0 top-0 h-4 w-8 rounded-t-lg bg-[#03a6e8] shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]" />
-                        <span className="absolute inset-x-0 bottom-0 grid h-[82%] place-items-center rounded-[0.55rem] bg-gradient-to-b from-[#19baf4] to-[#178bd7] text-white shadow-[0_10px_18px_rgba(7,91,145,0.22),inset_0_1px_0_rgba(255,255,255,0.55)]">
+                        <span
+                          className={`absolute left-0 top-0 h-4 w-8 rounded-t-lg shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] ${
+                            desktopDarkMode ? 'bg-[#282c35] ring-1 ring-white/10' : 'bg-[#03a6e8]'
+                          }`}
+                        />
+                        <span
+                          className={`absolute inset-x-0 bottom-0 grid h-[82%] place-items-center rounded-[0.55rem] text-white shadow-[0_10px_18px_rgba(7,91,145,0.22),inset_0_1px_0_rgba(255,255,255,0.55)] ${
+                            desktopDarkMode
+                              ? 'border border-white/10 bg-[rgba(20,22,27,0.85)] text-[#FF7A1A] shadow-[0_0_24px_rgba(255,122,26,0.16),inset_0_1px_0_rgba(255,255,255,0.08)]'
+                              : 'bg-gradient-to-b from-[#19baf4] to-[#178bd7]'
+                          }`}
+                        >
                           <Icon size={25} strokeWidth={1.8} />
                         </span>
                       </span>
@@ -1556,7 +1579,8 @@ export default function CinematicIntro() {
               </div>
 
               <div className="pointer-events-none relative z-10 flex h-full min-w-0 self-end justify-end overflow-visible">
-                <div className={`absolute bottom-[8%] right-[-3%] h-[72%] w-[106%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/10' : 'bg-[#d7aa86]/24'}`} />
+                <div className={`absolute bottom-[8%] right-[-3%] h-[72%] w-[106%] rounded-full ${desktopDarkMode ? 'bg-[#ff7a1a]/16 blur-sm shadow-[0_0_90px_rgba(255,122,26,0.28)]' : 'bg-[#d7aa86]/24'}`} />
+                <div className={`absolute bottom-[19%] right-[13%] h-[54%] w-[60%] rounded-full ${desktopDarkMode ? 'bg-[#FF7A1A]/18 blur-3xl' : 'bg-transparent'}`} />
                 <div className={`absolute bottom-[12%] right-[-4%] h-[78%] w-[112%] rounded-full border ${desktopDarkMode ? 'border-white/10' : 'border-white/60'}`} />
                 <Image
                   src={`${BASE_PATH}/assets/about-normal.png`}
@@ -1582,12 +1606,38 @@ export default function CinematicIntro() {
                 desktopDarkMode ? 'border-white/10 bg-white/11' : 'border-white/55 bg-white/38'
               }`}
             >
+              <button
+                type="button"
+                aria-label={desktopDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                title={desktopDarkMode ? 'Light mode' : 'Dark mode'}
+                onClick={() => setDesktopDarkMode((enabled) => !enabled)}
+                className={`grid justify-items-center gap-1 rounded-2xl outline-none transition hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#ff6b1a] ${
+                  desktopDarkMode ? 'text-[#F5F5F5]' : 'text-[#16100c]'
+                }`}
+              >
+                <span
+                  className={`grid h-12 w-12 place-items-center rounded-2xl border shadow-[0_8px_18px_rgba(72,36,14,0.14)] transition ${
+                    desktopDarkMode
+                      ? 'border-[#FF7A1A]/35 bg-[#14161B]/90 text-[#FF7A1A] shadow-[0_0_28px_rgba(255,122,26,0.24)]'
+                      : 'border-white/70 bg-white/80 text-[#f06b18]'
+                  }`}
+                >
+                  {desktopDarkMode ? <Sun size={25} strokeWidth={2.2} /> : <Moon size={25} strokeWidth={2.2} />}
+                </span>
+                <span className={`h-1 w-1 rounded-full ${desktopDarkMode ? 'bg-[#FF7A1A]' : 'bg-black/75'}`} />
+              </button>
               {dockItems.map((item) => {
                 const Icon = item.Icon;
 
                 return (
                   <div key={item.label} className="grid justify-items-center gap-1">
-                    <span className={`grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${item.tone} text-[#087cc4] shadow-[0_8px_18px_rgba(72,36,14,0.14)]`}>
+                    <span
+                      className={`grid h-12 w-12 place-items-center rounded-2xl text-[#087cc4] shadow-[0_8px_18px_rgba(72,36,14,0.14)] ${
+                        desktopDarkMode
+                          ? 'border border-white/10 bg-[rgba(20,22,27,0.85)] text-[#FF7A1A] shadow-[0_0_22px_rgba(255,122,26,0.12)]'
+                          : `bg-gradient-to-br ${item.tone}`
+                      }`}
+                    >
                       <Icon size={28} strokeWidth={2.15} className={item.label === 'Trash' ? 'text-[#8a8a8a]' : item.label === 'Figma' ? 'text-[#f06b18]' : 'text-current'} />
                     </span>
                     <span className={`h-1 w-1 rounded-full ${item.label === 'Trash' ? 'bg-transparent' : desktopDarkMode ? 'bg-white/75' : 'bg-black/75'}`} />
