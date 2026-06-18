@@ -1234,6 +1234,7 @@ export default function CinematicIntro() {
   const [contactOpen, setContactOpen] = useState(false);
   const [desktopDarkMode, setDesktopDarkMode] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
+  const [today, setToday] = useState('');
   const [viewportSize, setViewportSize] = useState({ width: 1440, height: 960 });
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -1278,6 +1279,22 @@ export default function CinematicIntro() {
   }, [desktopDarkMode, themeReady]);
 
   useEffect(() => {
+    const updateClock = () => {
+      setToday(
+        new Intl.DateTimeFormat('en-US', {
+          weekday: 'short',
+          hour: 'numeric',
+          minute: '2-digit',
+        }).format(new Date()),
+      );
+    };
+
+    updateClock();
+    const interval = window.setInterval(updateClock, 60000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const syncViewport = () => {
       setViewportSize({ width: window.innerWidth, height: window.innerHeight });
     };
@@ -1318,13 +1335,6 @@ export default function CinematicIntro() {
     const onHashChange = () => applyHash(window.location.hash);
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
-  }, []);
-  const today = useMemo(() => {
-    return new Intl.DateTimeFormat('en-US', {
-      weekday: 'short',
-      hour: 'numeric',
-      minute: '2-digit',
-    }).format(new Date());
   }, []);
   const desktopFrameWidth = Math.min(viewportSize.width * 0.95, 1500);
   const desktopFrameHeight = desktopFrameWidth / 1.5;
