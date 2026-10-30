@@ -1,0 +1,524 @@
+:root {
+  --bg-primary: var(--cream-200);
+  --bg-secondary: var(--cream-100);
+  --surface: rgba(252, 250, 245, 0.84);
+  --surface-soft: rgba(111, 143, 123, 0.12);
+  --text-primary: var(--green-900);
+  --text-secondary: var(--muted);
+  --primary: var(--green-900);
+  --accent: var(--gold-500);
+  --accent-soft: rgba(201, 149, 91, 0.16);
+  --border: rgba(255, 255, 255, 0.72);
+  --input-bg: rgba(255, 255, 255, 0.64);
+  --nav-bg: rgba(252, 250, 245, 0.82);
+  --shadow: 0 1rem 2.5rem rgba(23, 79, 63, 0.08);
+}
+
+:root[data-theme="dark"] {
+  --bg-primary: #071c16;
+  --bg-secondary: #0b251d;
+  --surface: #102c23;
+  --surface-soft: #16352a;
+  --text-primary: #f5f1e8;
+  --text-secondary: #b8c2ba;
+  --primary: #f5f1e8;
+  --green: #1f5b47;
+  --accent: #d5a25f;
+  --accent-soft: rgba(213, 162, 95, 0.15);
+  --border: rgba(245, 241, 232, 0.12);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --nav-bg: rgba(8, 28, 22, 0.88);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  color-scheme: dark;
+}
+
+body,
+.home-page,
+.about-page,
+.experience-page,
+.projects-page,
+.certifications-page,
+.contact-page {
+  color: var(--text-primary);
+}
+
+body,
+.home-page,
+.about-page,
+.experience-page,
+.projects-page,
+.certifications-page,
+.contact-page,
+.site-logo span,
+.social-link,
+.theme-toggle,
+.download-cv,
+.nav-item,
+.nav-tooltip,
+.project-filter,
+.project-card,
+.project-button,
+.carousel-arrow,
+.certification-card,
+.certification-button,
+.experience-card,
+.experience-tech,
+.about-education-card,
+.about-challenge,
+.about-contact-button,
+.contact-form-card,
+.contact-input-shell,
+.contact-submit {
+  transition:
+    background-color 260ms ease,
+    color 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  color: var(--green-900);
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--gold-500);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+:root[data-theme="dark"] .language-toggle {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .language-toggle:hover,
+:root[data-theme="dark"] .language-toggle:focus-visible {
+  color: var(--accent);
+}
+
+:root[data-theme="dark"] body {
+  background: var(--bg-primary);
+  color: #f5f1e8;
+}
+
+:root[data-theme="light"] body,
+:root[data-theme="light"] .home-page,
+:root[data-theme="light"] .about-page,
+:root[data-theme="light"] .experience-page,
+:root[data-theme="light"] .projects-page,
+:root[data-theme="light"] .certifications-page,
+:root[data-theme="light"] .contact-page {
+  color: #174f3f;
+}
+
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .home-page,
+:root[data-theme="dark"] .about-page,
+:root[data-theme="dark"] .experience-page,
+:root[data-theme="dark"] .projects-page,
+:root[data-theme="dark"] .certifications-page,
+:root[data-theme="dark"] .contact-page {
+  color: #f5f1e8;
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] main.home-page {
+  color: #f5f1e8;
+}
+
+html[data-theme="light"] body,
+html[data-theme="light"] main.home-page {
+  color: #174f3f;
+}
+
+:root[data-theme="dark"] .home-page,
+:root[data-theme="dark"] .about-page,
+:root[data-theme="dark"] .experience-page,
+:root[data-theme="dark"] .projects-page,
+:root[data-theme="dark"] .certifications-page,
+:root[data-theme="dark"] .contact-page {
+  background:
+    radial-gradient(circle at 6% 4%, rgba(31, 91, 71, 0.32), transparent 18rem),
+    radial-gradient(circle at 78% 18%, rgba(213, 162, 95, 0.1), transparent 22rem),
+    radial-gradient(circle at 88% 72%, rgba(31, 91, 71, 0.22), transparent 20rem),
+    linear-gradient(135deg, var(--bg-primary), #061711 54%, #0a211a);
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .home-page {
+  color: #f5f1e8;
+}
+
+:root[data-theme="dark"] .site-logo span,
+:root[data-theme="dark"] .hero-name .first,
+:root[data-theme="dark"] .hero-title,
+:root[data-theme="dark"] .about-title,
+:root[data-theme="dark"] .about-copy strong,
+:root[data-theme="dark"] .about-name-card h2,
+:root[data-theme="dark"] .about-education-card h2,
+:root[data-theme="dark"] .about-challenge h2,
+:root[data-theme="dark"] .experience-title span,
+:root[data-theme="dark"] .experience-stat strong,
+:root[data-theme="dark"] .experience-card-head h2,
+:root[data-theme="dark"] .projects-title span,
+:root[data-theme="dark"] .project-title-row h2,
+:root[data-theme="dark"] .certifications-title span,
+:root[data-theme="dark"] .certifications-summary-item strong,
+:root[data-theme="dark"] .certification-info h2,
+:root[data-theme="dark"] .contact-title,
+:root[data-theme="dark"] .contact-form-header h2,
+:root[data-theme="dark"] .contact-field,
+:root[data-theme="dark"] .contact-info-copy strong {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .eyebrow,
+:root[data-theme="dark"] .hero-name .last,
+:root[data-theme="dark"] .projects-cta,
+:root[data-theme="dark"] .projects-cta text,
+:root[data-theme="dark"] .cta-arrow,
+:root[data-theme="dark"] .about-title span,
+:root[data-theme="dark"] .about-eyebrow,
+:root[data-theme="dark"] .about-education-card p,
+:root[data-theme="dark"] .experience-eyebrow,
+:root[data-theme="dark"] .experience-title,
+:root[data-theme="dark"] .experience-card-head p,
+:root[data-theme="dark"] .projects-eyebrow,
+:root[data-theme="dark"] .projects-title,
+:root[data-theme="dark"] .certifications-eyebrow,
+:root[data-theme="dark"] .certifications-title,
+:root[data-theme="dark"] .certification-provider,
+:root[data-theme="dark"] .contact-eyebrow,
+:root[data-theme="dark"] .contact-title span {
+  color: var(--accent);
+}
+
+:root[data-theme="dark"] .hero-description,
+:root[data-theme="dark"] .about-copy p,
+:root[data-theme="dark"] .about-education-card span,
+:root[data-theme="dark"] .about-challenge p,
+:root[data-theme="dark"] .experience-description,
+:root[data-theme="dark"] .experience-stat p,
+:root[data-theme="dark"] .experience-summary,
+:root[data-theme="dark"] .experience-missions,
+:root[data-theme="dark"] .projects-description,
+:root[data-theme="dark"] .project-body p,
+:root[data-theme="dark"] .certifications-description,
+:root[data-theme="dark"] .certifications-summary-item p,
+:root[data-theme="dark"] .certification-description,
+:root[data-theme="dark"] .certification-meta,
+:root[data-theme="dark"] .contact-description,
+:root[data-theme="dark"] .contact-description strong,
+:root[data-theme="dark"] .contact-info-copy span,
+:root[data-theme="dark"] .contact-form-header p,
+:root[data-theme="dark"] .contact-status {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="dark"] .about-description strong,
+:root[data-theme="dark"] .contact-description strong {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .side-navigation {
+  border-color: var(--border);
+  background: var(--nav-bg);
+  box-shadow: var(--shadow);
+}
+
+:root[data-theme="dark"] .nav-item,
+:root[data-theme="dark"] .social-link,
+:root[data-theme="dark"] .theme-toggle {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .nav-item:hover,
+:root[data-theme="dark"] .nav-item:focus-visible,
+:root[data-theme="dark"] .social-link:hover,
+:root[data-theme="dark"] .social-link:focus-visible,
+:root[data-theme="dark"] .theme-toggle:hover,
+:root[data-theme="dark"] .theme-toggle:focus-visible {
+  color: var(--accent);
+}
+
+:root[data-theme="dark"] .nav-item.active {
+  color: var(--text-primary);
+  background: rgba(213, 162, 95, 0.24);
+}
+
+:root[data-theme="dark"] .nav-tooltip {
+  color: var(--bg-primary);
+  background: var(--accent);
+}
+
+:root[data-theme="dark"] .download-cv {
+  border: 1px solid rgba(213, 162, 95, 0.72);
+  color: var(--text-primary);
+  background: rgba(8, 28, 22, 0.52);
+  box-shadow: 0 0.45rem 0 rgba(213, 162, 95, 0.72);
+}
+
+:root[data-theme="dark"] .download-cv:hover,
+:root[data-theme="dark"] .download-cv:focus-visible {
+  color: var(--bg-primary);
+  background: var(--accent);
+}
+
+:root[data-theme="dark"] .shape-main,
+:root[data-theme="dark"] .about-photo-shape-one,
+:root[data-theme="dark"] .experience-circle,
+:root[data-theme="dark"] .projects-circle,
+:root[data-theme="dark"] .certifications-circle,
+:root[data-theme="dark"] .contact-orbit-large {
+  background: rgba(31, 91, 71, 0.54);
+}
+
+:root[data-theme="dark"] .shape-secondary,
+:root[data-theme="dark"] .about-photo-shape-two,
+:root[data-theme="dark"] .contact-orbit-small {
+  background: rgba(41, 112, 82, 0.38);
+}
+
+:root[data-theme="dark"] .shape-orbit,
+:root[data-theme="dark"] .cta-ring {
+  border-color: rgba(213, 162, 95, 0.52);
+  stroke: rgba(213, 162, 95, 0.52);
+}
+
+:root[data-theme="dark"] .shape-orbit::before {
+  border-color: rgba(245, 241, 232, 0.34);
+}
+
+:root[data-theme="dark"] .paint-splash,
+:root[data-theme="dark"] .experience-brush,
+:root[data-theme="dark"] .projects-brush,
+:root[data-theme="dark"] .certifications-brush,
+:root[data-theme="dark"] .contact-leaf-line {
+  opacity: 0.34;
+}
+
+:root[data-theme="dark"] .watercolor-left,
+:root[data-theme="dark"] .about-watercolor-left,
+:root[data-theme="dark"] .experience-watercolor-left,
+:root[data-theme="dark"] .experience-watercolor-bottom,
+:root[data-theme="dark"] .projects-watercolor-left,
+:root[data-theme="dark"] .projects-watercolor-bottom,
+:root[data-theme="dark"] .certifications-watercolor-left,
+:root[data-theme="dark"] .certifications-watercolor-bottom {
+  opacity: 0.32;
+}
+
+:root[data-theme="dark"] .network,
+:root[data-theme="dark"] .about-lines,
+:root[data-theme="dark"] .experience-network,
+:root[data-theme="dark"] .projects-network,
+:root[data-theme="dark"] .certifications-network {
+  opacity: 0.42;
+}
+
+:root[data-theme="dark"] .network line,
+:root[data-theme="dark"] .network path,
+:root[data-theme="dark"] .about-lines path,
+:root[data-theme="dark"] .experience-network path,
+:root[data-theme="dark"] .experience-network line,
+:root[data-theme="dark"] .projects-network path,
+:root[data-theme="dark"] .projects-network line,
+:root[data-theme="dark"] .certifications-network path,
+:root[data-theme="dark"] .certifications-network line {
+  stroke: rgba(213, 162, 95, 0.42);
+}
+
+:root[data-theme="dark"] .network circle,
+:root[data-theme="dark"] .experience-network circle,
+:root[data-theme="dark"] .projects-network circle,
+:root[data-theme="dark"] .certifications-network circle,
+:root[data-theme="dark"] .floating-dot,
+:root[data-theme="dark"] .about-dot,
+:root[data-theme="dark"] .experience-missions li::before,
+:root[data-theme="dark"] .timeline-dot {
+  background: var(--accent);
+  fill: var(--accent);
+}
+
+:root[data-theme="dark"] .about-name-card,
+:root[data-theme="dark"] .about-education-card,
+:root[data-theme="dark"] .about-challenge,
+:root[data-theme="dark"] .experience-stats,
+:root[data-theme="dark"] .experience-date strong,
+:root[data-theme="dark"] .experience-card,
+:root[data-theme="dark"] .project-filter,
+:root[data-theme="dark"] .project-card,
+:root[data-theme="dark"] .carousel-arrow,
+:root[data-theme="dark"] .certifications-summary,
+:root[data-theme="dark"] .certification-card,
+:root[data-theme="dark"] .contact-form-card,
+:root[data-theme="dark"] .contact-info-icon,
+:root[data-theme="dark"] .contact-form-icon {
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  box-shadow: var(--shadow);
+}
+
+:root[data-theme="dark"] .about-name-card p,
+:root[data-theme="dark"] .experience-date,
+:root[data-theme="dark"] .experience-date span {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="dark"] .about-name-card i {
+  background: var(--accent);
+}
+
+:root[data-theme="dark"] .about-challenge-icon,
+:root[data-theme="dark"] .experience-stat > span,
+:root[data-theme="dark"] .certifications-summary-item > span,
+:root[data-theme="dark"] .contact-info-icon,
+:root[data-theme="dark"] .contact-form-icon {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+:root[data-theme="dark"] .about-contact-button,
+:root[data-theme="dark"] .project-button.secondary,
+:root[data-theme="dark"] .certification-button {
+  border-color: rgba(213, 162, 95, 0.58);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="dark"] .about-contact-button:hover,
+:root[data-theme="dark"] .about-contact-button:focus-visible,
+:root[data-theme="dark"] .project-button.secondary:hover,
+:root[data-theme="dark"] .project-button.secondary:focus-visible,
+:root[data-theme="dark"] .certification-button:hover,
+:root[data-theme="dark"] .certification-button:focus-visible {
+  color: var(--bg-primary);
+  background: var(--accent);
+}
+
+:root[data-theme="dark"] .experience-timeline::before {
+  background: rgba(213, 162, 95, 0.34);
+}
+
+:root[data-theme="dark"] .timeline-dot {
+  border-color: rgba(245, 241, 232, 0.24);
+  box-shadow: 0 0.25rem 0.7rem rgba(213, 162, 95, 0.22);
+}
+
+:root[data-theme="dark"] .experience-logo-box {
+  background: rgba(245, 241, 232, 0.88);
+  box-shadow: inset 0 0 0 1px rgba(245, 241, 232, 0.12);
+}
+
+:root[data-theme="dark"] .experience-location,
+:root[data-theme="dark"] .project-title-row span,
+:root[data-theme="dark"] .experience-tech,
+:root[data-theme="dark"] .project-tech {
+  border-color: rgba(213, 162, 95, 0.16);
+  color: var(--text-primary);
+  background: rgba(31, 91, 71, 0.42);
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .experience-tech-list {
+  border-top-color: rgba(245, 241, 232, 0.1);
+}
+
+:root[data-theme="dark"] .project-filter.active,
+:root[data-theme="dark"] .project-button.primary {
+  color: var(--bg-primary);
+  background: var(--accent);
+  box-shadow: 0 0.55rem 1.25rem rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"] .project-filter:hover,
+:root[data-theme="dark"] .project-filter:focus-visible,
+:root[data-theme="dark"] .project-card:hover,
+:root[data-theme="dark"] .certification-card:hover {
+  border-color: rgba(213, 162, 95, 0.34);
+  box-shadow: 0 1.2rem 2.8rem rgba(0, 0, 0, 0.24);
+}
+
+:root[data-theme="dark"] .project-image {
+  border-bottom-color: rgba(213, 162, 95, 0.18);
+  background-color: rgba(31, 91, 71, 0.26);
+}
+
+:root[data-theme="dark"] .carousel-dot {
+  background: rgba(245, 241, 232, 0.22);
+}
+
+:root[data-theme="dark"] .carousel-dot.active {
+  background: var(--accent);
+}
+
+:root[data-theme="dark"] .contact-input-shell {
+  border-color: rgba(245, 241, 232, 0.1);
+  color: var(--text-secondary);
+  background: var(--input-bg);
+}
+
+:root[data-theme="dark"] .contact-input-shell:focus-within {
+  border-color: rgba(213, 162, 95, 0.58);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(213, 162, 95, 0.1);
+}
+
+:root[data-theme="dark"] .contact-input-shell input,
+:root[data-theme="dark"] .contact-input-shell select,
+:root[data-theme="dark"] .contact-input-shell textarea {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .contact-input-shell input::placeholder,
+:root[data-theme="dark"] .contact-input-shell textarea::placeholder {
+  color: rgba(184, 194, 186, 0.62);
+}
+
+:root[data-theme="dark"] .contact-select-shell select {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .contact-select-shell option {
+  color: var(--text-primary);
+  background: var(--surface);
+}
+
+:root[data-theme="dark"] .contact-error {
+  color: #f0a18d;
+}
+
+:root[data-theme="dark"] .contact-submit {
+  color: var(--bg-primary);
+  background: var(--accent);
+  box-shadow: 0 1rem 1.9rem rgba(0, 0, 0, 0.22);
+}
+
+:root[data-theme="dark"] .contact-submit:hover,
+:root[data-theme="dark"] .contact-submit:focus-visible {
+  box-shadow: 0 1.2rem 2.2rem rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme="dark"] .contact-dots {
+  background-image: radial-gradient(circle, rgba(213, 162, 95, 0.5) 1.7px, transparent 1.7px);
+}
+
+@media (max-width: 640px) {
+  :root[data-theme="dark"] .home-page {
+    background:
+      radial-gradient(circle at 8% 3%, rgba(31, 91, 71, 0.34), transparent 15rem),
+      radial-gradient(circle at 74% 60%, rgba(213, 162, 95, 0.1), transparent 13rem),
+      var(--bg-primary);
+  }
+}
