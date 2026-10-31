@@ -7,6 +7,7 @@ import SiteHeader from "../components/SiteHeader";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const ease = [0.22, 1, 0.36, 1];
+const formEndpoint = "https://formspree.io/f/mdeelpyj";
 
 const initialValues = {
   name: "",
@@ -35,27 +36,59 @@ export default function Contact() {
   const { t } = useLanguage();
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateValue = (event) => {
     const { name, value } = event.target;
     setValues((current) => ({ ...current, [name]: value }));
     setErrors((current) => ({ ...current, [name]: "" }));
-    setStatus("");
+    setStatus(null);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (isSubmitting) return;
 
     const nextErrors = validate(values, t.contact.errors);
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length > 0) {
-      setStatus("");
+      setStatus(null);
       return;
     }
 
-    setStatus(t.contact.status);
+    setIsSubmitting(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch(formEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          email: values.email.trim(),
+          subject: values.subject,
+          message: values.message.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Formspree returned ${response.status}`);
+      }
+
+      setValues(initialValues);
+      setErrors({});
+      setStatus({ type: "success", message: t.contact.statusSuccess });
+    } catch {
+      setStatus({ type: "error", message: t.contact.statusError });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactLinks = [
@@ -187,13 +220,13 @@ export default function Contact() {
           </label>
 
           {status ? (
-            <p className="contact-status" role="status">
-              {status}
+            <p className={`contact-status ${status.type}`} role={status.type === "error" ? "alert" : "status"} aria-live="polite">
+              {status.message}
             </p>
           ) : null}
 
-          <button className="contact-submit" type="submit">
-            <span>{t.contact.submit}</span>
+          <button className="contact-submit" type="submit" disabled={isSubmitting} aria-busy={isSubmitting}>
+            <span>{isSubmitting ? t.contact.submitting : t.contact.submit}</span>
             <ArrowRight size={25} aria-hidden="true" />
           </button>
         </motion.form>

@@ -116,6 +116,7 @@ const translations = {
       message: "Message",
       messagePlaceholder: "Votre message...",
       submit: "Envoyer le message",
+      submitting: "Envoi en cours...",
       errors: {
         name: "Le nom complet est requis.",
         emailRequired: "L’email est requis.",
@@ -123,7 +124,8 @@ const translations = {
         subject: "Veuillez choisir un sujet.",
         message: "Le message est requis.",
       },
-      status: "Le formulaire est prêt, mais l’envoi automatique nécessite encore une intégration.",
+      statusSuccess: "Votre message a bien été envoyé. Merci !",
+      statusError: "L’envoi a échoué. Veuillez réessayer dans quelques instants.",
     },
   },
   en: {
@@ -240,6 +242,7 @@ const translations = {
       message: "Message",
       messagePlaceholder: "Your message...",
       submit: "Send Message",
+      submitting: "Sending...",
       errors: {
         name: "Full name is required.",
         emailRequired: "Email is required.",
@@ -247,7 +250,8 @@ const translations = {
         subject: "Please choose a subject.",
         message: "Message is required.",
       },
-      status: "The form is ready, but automatic sending still requires an integration.",
+      statusSuccess: "Your message was sent successfully. Thank you!",
+      statusError: "The message could not be sent. Please try again in a moment.",
     },
   },
 };

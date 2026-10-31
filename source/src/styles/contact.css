@@ -341,6 +341,10 @@ a.contact-info-item:focus-visible {
   line-height: 1.35;
 }
 
+.contact-status.error {
+  color: #9e3f2f;
+}
+
 .contact-submit {
   display: inline-flex;
   align-items: center;
@@ -365,6 +369,13 @@ a.contact-info-item:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 1.2rem 2.2rem rgba(10, 65, 54, 0.27);
   outline: none;
+}
+
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+  box-shadow: 0 0.7rem 1.4rem rgba(10, 65, 54, 0.16);
 }
 
 @media (max-width: 1180px) {

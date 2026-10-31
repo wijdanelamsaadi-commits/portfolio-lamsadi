@@ -499,6 +499,10 @@ html[data-theme="light"] main.home-page {
   color: #f0a18d;
 }
 
+:root[data-theme="dark"] .contact-status.error {
+  color: #f0a18d;
+}
+
 :root[data-theme="dark"] .contact-submit {
   color: var(--bg-primary);
   background: var(--accent);
