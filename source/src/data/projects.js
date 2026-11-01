@@ -2,6 +2,7 @@ import aureliaCover from "../assets/projects/aurelia-cover.png";
 import chatbotIaCover from "../assets/projects/chatbot-ia-cover.png";
 import cineaiCover from "../assets/projects/cineai-cover.png";
 import darAtlasCover from "../assets/projects/dar-atlas-cover.png";
+import edumentorAiCover from "../assets/projects/edumentor-ai-cover.png";
 import gestionBesoinsCover from "../assets/projects/gestion-besoins-cover.png";
 import gestionEcoleCover from "../assets/projects/gestion-ecole-cover.png";
 import gmaoOcpCover from "../assets/projects/gmao-ocp-cover.png";
@@ -44,6 +45,7 @@ const logoMap = {
   Python: ["python", "3776AB"],
   QR: null,
   React: ["react", "61DAFB"],
+  "React.js": ["react", "61DAFB"],
   "REST API": null,
   "Responsive UI": null,
   "Scikit-learn": ["scikitlearn", "F7931E"],
@@ -60,6 +62,22 @@ function tech(name) {
 }
 
 const projects = [
+  {
+    id: "edumentor-ai",
+    title: "EduMentor AI",
+    wrapTitle: true,
+    category: { fr: "Intelligence Artificielle", en: "Artificial Intelligence" },
+    filter: "ai-data",
+    description: {
+      fr: "Plateforme pédagogique adaptative basée sur l’IA pour personnaliser l’apprentissage, analyser les performances et proposer des parcours de remédiation avec un chatbot RAG.",
+      en: "An AI-powered adaptive learning platform that personalizes learning, analyzes performance and provides tailored remediation with a RAG chatbot.",
+    },
+    technologies: ["React.js", "Python", "FastAPI", "Scikit-learn", "RAG"].map(tech),
+    image: edumentorAiCover,
+    imageFit: "contain",
+    demo: "https://www.linkedin.com/feed/update/urn:li:activity:7514366806476709888/",
+    demoKind: "linkedin",
+  },
   {
     id: "talents-associate-platform",
     title: "Plateforme de gestion des talents – Talents Associate Group",

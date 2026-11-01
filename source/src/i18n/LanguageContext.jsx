@@ -6,6 +6,7 @@ const translations = {
     nav: {
       home: "Accueil",
       about: "À propos",
+      skills: "Compétences",
       experience: "Expérience",
       projects: "Projets",
       certifications: "Certifications",
@@ -132,6 +133,7 @@ const translations = {
     nav: {
       home: "Home",
       about: "About Me",
+      skills: "Skills",
       experience: "Experience",
       projects: "Projects",
       certifications: "Certifications",

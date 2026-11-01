@@ -1,4 +1,4 @@
-import { Award, BriefcaseBusiness, House, LayoutGrid, Mail, User } from "lucide-react";
+import { Award, BriefcaseBusiness, Code2, House, LayoutGrid, Mail, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -7,6 +7,7 @@ const navItems = [
   { label: "About Me", href: "#about", icon: User, id: "about" },
   { label: "Experience", href: "#experience", icon: BriefcaseBusiness, id: "experience" },
   { label: "Projects", href: "#projects", icon: LayoutGrid, id: "projects" },
+  { label: "Skills", href: "#skills", icon: Code2, id: "skills" },
   { label: "Certifications", href: "#certifications", icon: Award, id: "certifications" },
   { label: "Contact", href: "#contact", icon: Mail, id: "contact" },
 ];

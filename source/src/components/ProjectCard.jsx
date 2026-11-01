@@ -44,7 +44,7 @@ export default function ProjectCard({ project }) {
     <motion.article className="project-card" layout whileHover={{ y: -4 }} transition={{ duration: 0.2, ease: "easeOut" }}>
       <div className="project-image" style={imageStyle(project)} role="img" aria-label={`${project.title} ${t.projects.screenshot}`} />
       <div className="project-body">
-        <div className="project-title-row">
+        <div className="project-title-row" style={project.wrapTitle ? { flexWrap: "wrap" } : undefined}>
           <h2>{project.title}</h2>
           <span>{project.category}</span>
         </div>

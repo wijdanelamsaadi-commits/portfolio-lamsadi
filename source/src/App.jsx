@@ -13,6 +13,7 @@ import "./styles/experience.css";
 import "./styles/home.css";
 import "./styles/projects.css";
 import "./styles/skills.css";
+import "./styles/skills-legacy.css";
 import "./styles/theme.css";
 
 function getCurrentSection() {

@@ -1,0 +1,1424 @@
+:where(#skills-legacy) *, :where(#skills-legacy) ::before, :where(#skills-legacy) ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+:where(#skills-legacy) ::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}/*
+! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+*//*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+:where(#skills-legacy) *,
+:where(#skills-legacy) ::before,
+:where(#skills-legacy) ::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+:where(#skills-legacy) ::before,
+:where(#skills-legacy) ::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+:where(#skills-legacy) html,
+:where(#skills-legacy) :host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+:where(#skills-legacy) body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+:where(#skills-legacy) hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+:where(#skills-legacy) abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+:where(#skills-legacy) h1,
+:where(#skills-legacy) h2,
+:where(#skills-legacy) h3,
+:where(#skills-legacy) h4,
+:where(#skills-legacy) h5,
+:where(#skills-legacy) h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+:where(#skills-legacy) a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+:where(#skills-legacy) b,
+:where(#skills-legacy) strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+:where(#skills-legacy) code,
+:where(#skills-legacy) kbd,
+:where(#skills-legacy) samp,
+:where(#skills-legacy) pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+:where(#skills-legacy) small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+:where(#skills-legacy) sub,
+:where(#skills-legacy) sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+:where(#skills-legacy) sub {
+  bottom: -0.25em;
+}
+
+:where(#skills-legacy) sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+:where(#skills-legacy) table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+:where(#skills-legacy) button,
+:where(#skills-legacy) input,
+:where(#skills-legacy) optgroup,
+:where(#skills-legacy) select,
+:where(#skills-legacy) textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+:where(#skills-legacy) button,
+:where(#skills-legacy) select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+:where(#skills-legacy) button,
+:where(#skills-legacy) input:where([type='button']),
+:where(#skills-legacy) input:where([type='reset']),
+:where(#skills-legacy) input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:where(#skills-legacy) :-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:where(#skills-legacy) :-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+:where(#skills-legacy) progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+:where(#skills-legacy) ::-webkit-inner-spin-button,
+:where(#skills-legacy) ::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+:where(#skills-legacy) [type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+:where(#skills-legacy) ::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+:where(#skills-legacy) ::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+:where(#skills-legacy) summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+:where(#skills-legacy) blockquote,
+:where(#skills-legacy) dl,
+:where(#skills-legacy) dd,
+:where(#skills-legacy) h1,
+:where(#skills-legacy) h2,
+:where(#skills-legacy) h3,
+:where(#skills-legacy) h4,
+:where(#skills-legacy) h5,
+:where(#skills-legacy) h6,
+:where(#skills-legacy) hr,
+:where(#skills-legacy) figure,
+:where(#skills-legacy) p,
+:where(#skills-legacy) pre {
+  margin: 0;
+}
+
+:where(#skills-legacy) fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+:where(#skills-legacy) legend {
+  padding: 0;
+}
+
+:where(#skills-legacy) ol,
+:where(#skills-legacy) ul,
+:where(#skills-legacy) menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+:where(#skills-legacy) dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+:where(#skills-legacy) textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+:where(#skills-legacy) input::placeholder,
+:where(#skills-legacy) textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+:where(#skills-legacy) button,
+:where(#skills-legacy) [role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:where(#skills-legacy) :disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+:where(#skills-legacy) img,
+:where(#skills-legacy) svg,
+:where(#skills-legacy) video,
+:where(#skills-legacy) canvas,
+:where(#skills-legacy) audio,
+:where(#skills-legacy) iframe,
+:where(#skills-legacy) embed,
+:where(#skills-legacy) object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+:where(#skills-legacy) img,
+:where(#skills-legacy) video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+:where(#skills-legacy) [hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+:where(#skills-legacy) .pointer-events-none {
+  pointer-events: none;
+}
+:where(#skills-legacy) .absolute {
+  position: absolute;
+}
+:where(#skills-legacy) .relative {
+  position: relative;
+}
+:where(#skills-legacy) .inset-0 {
+  inset: 0px;
+}
+:where(#skills-legacy) .inset-8 {
+  inset: 2rem;
+}
+:where(#skills-legacy) .left-5 {
+  left: 1.25rem;
+}
+:where(#skills-legacy) .right-4 {
+  right: 1rem;
+}
+:where(#skills-legacy) .top-4 {
+  top: 1rem;
+}
+:where(#skills-legacy) .top-5 {
+  top: 1.25rem;
+}
+:where(#skills-legacy) .isolate {
+  isolation: isolate;
+}
+:where(#skills-legacy) .z-0 {
+  z-index: 0;
+}
+:where(#skills-legacy) .z-10 {
+  z-index: 10;
+}
+:where(#skills-legacy) .z-20 {
+  z-index: 20;
+}
+:where(#skills-legacy) .z-30 {
+  z-index: 30;
+}
+:where(#skills-legacy) .z-40 {
+  z-index: 40;
+}
+:where(#skills-legacy) .z-50 {
+  z-index: 50;
+}
+:where(#skills-legacy) .order-first {
+  order: -9999;
+}
+:where(#skills-legacy) .mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+:where(#skills-legacy) .mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+:where(#skills-legacy) .mt-1 {
+  margin-top: 0.25rem;
+}
+:where(#skills-legacy) .mt-1\.5 {
+  margin-top: 0.375rem;
+}
+:where(#skills-legacy) .mt-2 {
+  margin-top: 0.5rem;
+}
+:where(#skills-legacy) .mt-5 {
+  margin-top: 1.25rem;
+}
+:where(#skills-legacy) .mt-7 {
+  margin-top: 1.75rem;
+}
+:where(#skills-legacy) .mt-\[17rem\] {
+  margin-top: 17rem;
+}
+:where(#skills-legacy) .flex {
+  display: flex;
+}
+:where(#skills-legacy) .inline-flex {
+  display: inline-flex;
+}
+:where(#skills-legacy) .grid {
+  display: grid;
+}
+:where(#skills-legacy) .hidden {
+  display: none;
+}
+:where(#skills-legacy) .h-0\.5 {
+  height: 0.125rem;
+}
+:where(#skills-legacy) .h-11 {
+  height: 2.75rem;
+}
+:where(#skills-legacy) .h-2 {
+  height: 0.5rem;
+}
+:where(#skills-legacy) .h-2\.5 {
+  height: 0.625rem;
+}
+:where(#skills-legacy) .h-3 {
+  height: 0.75rem;
+}
+:where(#skills-legacy) .h-4 {
+  height: 1rem;
+}
+:where(#skills-legacy) .h-48 {
+  height: 12rem;
+}
+:where(#skills-legacy) .h-52 {
+  height: 13rem;
+}
+:where(#skills-legacy) .h-60 {
+  height: 15rem;
+}
+:where(#skills-legacy) .h-72 {
+  height: 18rem;
+}
+:where(#skills-legacy) .h-8 {
+  height: 2rem;
+}
+:where(#skills-legacy) .h-9 {
+  height: 2.25rem;
+}
+:where(#skills-legacy) .h-\[18\.75rem\] {
+  height: 18.75rem;
+}
+:where(#skills-legacy) .h-auto {
+  height: auto;
+}
+:where(#skills-legacy) .h-full {
+  height: 100%;
+}
+:where(#skills-legacy) .h-px {
+  height: 1px;
+}
+:where(#skills-legacy) .min-h-72 {
+  min-height: 18rem;
+}
+:where(#skills-legacy) .min-h-\[1\.08rem\] {
+  min-height: 1.08rem;
+}
+:where(#skills-legacy) .w-11 {
+  width: 2.75rem;
+}
+:where(#skills-legacy) .w-16 {
+  width: 4rem;
+}
+:where(#skills-legacy) .w-2 {
+  width: 0.5rem;
+}
+:where(#skills-legacy) .w-2\.5 {
+  width: 0.625rem;
+}
+:where(#skills-legacy) .w-24 {
+  width: 6rem;
+}
+:where(#skills-legacy) .w-3 {
+  width: 0.75rem;
+}
+:where(#skills-legacy) .w-3\.5 {
+  width: 0.875rem;
+}
+:where(#skills-legacy) .w-48 {
+  width: 12rem;
+}
+:where(#skills-legacy) .w-52 {
+  width: 13rem;
+}
+:where(#skills-legacy) .w-60 {
+  width: 15rem;
+}
+:where(#skills-legacy) .w-72 {
+  width: 18rem;
+}
+:where(#skills-legacy) .w-8 {
+  width: 2rem;
+}
+:where(#skills-legacy) .w-9 {
+  width: 2.25rem;
+}
+:where(#skills-legacy) .w-\[18\.75rem\] {
+  width: 18.75rem;
+}
+:where(#skills-legacy) .w-fit {
+  width: fit-content;
+}
+:where(#skills-legacy) .w-full {
+  width: 100%;
+}
+:where(#skills-legacy) .min-w-0 {
+  min-width: 0px;
+}
+:where(#skills-legacy) .max-w-6xl {
+  max-width: 72rem;
+}
+:where(#skills-legacy) .max-w-\[26rem\] {
+  max-width: 26rem;
+}
+:where(#skills-legacy) .max-w-none {
+  max-width: none;
+}
+:where(#skills-legacy) .flex-1 {
+  flex: 1 1 0%;
+}
+:where(#skills-legacy) .shrink-0 {
+  flex-shrink: 0;
+}
+:where(#skills-legacy) .select-none {
+  user-select: none;
+}
+:where(#skills-legacy) .flex-wrap {
+  flex-wrap: wrap;
+}
+:where(#skills-legacy) .place-items-center {
+  place-items: center;
+}
+:where(#skills-legacy) .content-start {
+  align-content: flex-start;
+}
+:where(#skills-legacy) .items-center {
+  align-items: center;
+}
+:where(#skills-legacy) .items-baseline {
+  align-items: baseline;
+}
+:where(#skills-legacy) .justify-center {
+  justify-content: center;
+}
+:where(#skills-legacy) .justify-between {
+  justify-content: space-between;
+}
+:where(#skills-legacy) .gap-1 {
+  gap: 0.25rem;
+}
+:where(#skills-legacy) .gap-2 {
+  gap: 0.5rem;
+}
+:where(#skills-legacy) .gap-3 {
+  gap: 0.75rem;
+}
+:where(#skills-legacy) .gap-x-2 {
+  column-gap: 0.5rem;
+}
+:where(#skills-legacy) .gap-y-1 {
+  row-gap: 0.25rem;
+}
+:where(#skills-legacy) .overflow-hidden {
+  overflow: hidden;
+}
+:where(#skills-legacy) .overflow-y-auto {
+  overflow-y: auto;
+}
+:where(#skills-legacy) .rounded-\[0\.22rem\] {
+  border-radius: 0.22rem;
+}
+:where(#skills-legacy) .rounded-\[1\.25rem\] {
+  border-radius: 1.25rem;
+}
+:where(#skills-legacy) .rounded-\[2rem\] {
+  border-radius: 2rem;
+}
+:where(#skills-legacy) .rounded-\[3px\] {
+  border-radius: 3px;
+}
+:where(#skills-legacy) .rounded-full {
+  border-radius: 9999px;
+}
+:where(#skills-legacy) .rounded-md {
+  border-radius: 0.375rem;
+}
+:where(#skills-legacy) .rounded-xl {
+  border-radius: 0.75rem;
+}
+:where(#skills-legacy) .border {
+  border-width: 1px;
+}
+:where(#skills-legacy) .border-2 {
+  border-width: 2px;
+}
+:where(#skills-legacy) .border-dashed {
+  border-style: dashed;
+}
+:where(#skills-legacy) .border-\[\#f2dfd1\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(242 223 209 / var(--tw-border-opacity, 1));
+}
+:where(#skills-legacy) .border-\[\#ffb45f\]\/35 {
+  border-color: rgb(255 180 95 / 0.35);
+}
+:where(#skills-legacy) .border-\[\#ffb45f\]\/60 {
+  border-color: rgb(255 180 95 / 0.6);
+}
+:where(#skills-legacy) .border-\[\#ffd3a4\]\/55 {
+  border-color: rgb(255 211 164 / 0.55);
+}
+:where(#skills-legacy) .border-\[\#ffd3b6\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 211 182 / var(--tw-border-opacity, 1));
+}
+:where(#skills-legacy) .border-\[\#ffe2cf\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 226 207 / var(--tw-border-opacity, 1));
+}
+:where(#skills-legacy) .border-current {
+  border-color: currentColor;
+}
+:where(#skills-legacy) .border-orange-200\/80 {
+  border-color: rgb(254 215 170 / 0.8);
+}
+:where(#skills-legacy) .border-white\/70 {
+  border-color: rgb(255 255 255 / 0.7);
+}
+:where(#skills-legacy) .border-white\/80 {
+  border-color: rgb(255 255 255 / 0.8);
+}
+:where(#skills-legacy) .bg-\[\#ff6b00\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 107 0 / var(--tw-bg-opacity, 1));
+}
+:where(#skills-legacy) .bg-\[\#fff7f0\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 247 240 / var(--tw-bg-opacity, 1));
+}
+:where(#skills-legacy) .bg-current {
+  background-color: currentColor;
+}
+:where(#skills-legacy) .bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+:where(#skills-legacy) .bg-white\/70 {
+  background-color: rgb(255 255 255 / 0.7);
+}
+:where(#skills-legacy) .bg-\[radial-gradient\(circle\2c rgba\(255\2c 122\2c 0\2c 0\.22\)\2c rgba\(255\2c 122\2c 0\2c 0\.06\)_48\%\2c transparent_72\%\)\] {
+  background-image: radial-gradient(circle,rgba(255,122,0,0.22),rgba(255,122,0,0.06) 48%,transparent 72%);
+}
+:where(#skills-legacy) .bg-\[radial-gradient\(circle\2c rgba\(255\2c 122\2c 0\2c 0\.24\)\2c rgba\(255\2c 122\2c 0\2c 0\.09\)_50\%\2c transparent_74\%\)\] {
+  background-image: radial-gradient(circle,rgba(255,122,0,0.24),rgba(255,122,0,0.09) 50%,transparent 74%);
+}
+:where(#skills-legacy) .bg-\[radial-gradient\(circle_at_12\%_10\%\2c rgba\(255\2c 107\2c 26\2c 0\.1\)\2c transparent_10rem\)\2c linear-gradient\(135deg\2c rgba\(255\2c 255\2c 255\2c 0\.8\)\2c rgba\(255\2c 255\2c 255\2c 0\.24\)\)\] {
+  background-image: radial-gradient(circle at 12% 10%,rgba(255,107,26,0.1),transparent 10rem),linear-gradient(135deg,rgba(255,255,255,0.8),rgba(255,255,255,0.24));
+}
+:where(#skills-legacy) .bg-\[radial-gradient\(circle_at_50\%_43\%\2c rgba\(255\2c 107\2c 26\2c 0\.17\)\2c transparent_18rem\)\2c radial-gradient\(circle_at_14\%_12\%\2c rgba\(255\2c 176\2c 117\2c 0\.2\)\2c transparent_22rem\)\2c radial-gradient\(circle_at_88\%_82\%\2c rgba\(255\2c 209\2c 176\2c 0\.3\)\2c transparent_20rem\)\2c linear-gradient\(135deg\2c \#fffaf6\2c \#f8ece2\)\] {
+  background-image: radial-gradient(circle at 50% 43%,rgba(255,107,26,0.17),transparent 18rem),radial-gradient(circle at 14% 12%,rgba(255,176,117,0.2),transparent 22rem),radial-gradient(circle at 88% 82%,rgba(255,209,176,0.3),transparent 20rem),linear-gradient(135deg,#fffaf6,#f8ece2);
+}
+:where(#skills-legacy) .bg-gradient-to-l {
+  background-image: linear-gradient(to left, var(--tw-gradient-stops));
+}
+:where(#skills-legacy) .bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+:where(#skills-legacy) .from-transparent {
+  --tw-gradient-from: transparent var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+:where(#skills-legacy) .to-\[\#ff6b00\] {
+  --tw-gradient-to: #ff6b00 var(--tw-gradient-to-position);
+}
+:where(#skills-legacy) .object-contain {
+  object-fit: contain;
+}
+:where(#skills-legacy) .p-2 {
+  padding: 0.5rem;
+}
+:where(#skills-legacy) .p-3 {
+  padding: 0.75rem;
+}
+:where(#skills-legacy) .px-1\.5 {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+}
+:where(#skills-legacy) .px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+:where(#skills-legacy) .px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+:where(#skills-legacy) .py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+:where(#skills-legacy) .py-\[0\.12rem\] {
+  padding-top: 0.12rem;
+  padding-bottom: 0.12rem;
+}
+:where(#skills-legacy) .pb-5 {
+  padding-bottom: 1.25rem;
+}
+:where(#skills-legacy) .pt-16 {
+  padding-top: 4rem;
+}
+:where(#skills-legacy) .text-center {
+  text-align: center;
+}
+:where(#skills-legacy) .text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+:where(#skills-legacy) .text-\[10px\] {
+  font-size: 10px;
+}
+:where(#skills-legacy) .text-\[11px\] {
+  font-size: 11px;
+}
+:where(#skills-legacy) .text-\[5\.2px\] {
+  font-size: 5.2px;
+}
+:where(#skills-legacy) .text-\[7\.5px\] {
+  font-size: 7.5px;
+}
+:where(#skills-legacy) .text-\[7px\] {
+  font-size: 7px;
+}
+:where(#skills-legacy) .text-\[9\.5px\] {
+  font-size: 9.5px;
+}
+:where(#skills-legacy) .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+:where(#skills-legacy) .text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+:where(#skills-legacy) .font-black {
+  font-weight: 900;
+}
+:where(#skills-legacy) .font-extrabold {
+  font-weight: 800;
+}
+:where(#skills-legacy) .font-semibold {
+  font-weight: 600;
+}
+:where(#skills-legacy) .uppercase {
+  text-transform: uppercase;
+}
+:where(#skills-legacy) .leading-none {
+  line-height: 1;
+}
+:where(#skills-legacy) .leading-tight {
+  line-height: 1.25;
+}
+:where(#skills-legacy) .tracking-normal {
+  letter-spacing: 0em;
+}
+:where(#skills-legacy) .text-\[\#120f0d\] {
+  --tw-text-opacity: 1;
+  color: rgb(18 15 13 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-\[\#15100d\] {
+  --tw-text-opacity: 1;
+  color: rgb(21 16 13 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-\[\#16110d\] {
+  --tw-text-opacity: 1;
+  color: rgb(22 17 13 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-\[\#17100b\] {
+  --tw-text-opacity: 1;
+  color: rgb(23 16 11 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-\[\#3c2a1f\] {
+  --tw-text-opacity: 1;
+  color: rgb(60 42 31 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-\[\#513727\] {
+  --tw-text-opacity: 1;
+  color: rgb(81 55 39 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-\[\#6d5445\] {
+  --tw-text-opacity: 1;
+  color: rgb(109 84 69 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-\[\#8a4317\] {
+  --tw-text-opacity: 1;
+  color: rgb(138 67 23 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-\[\#ff6b00\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 107 0 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .opacity-35 {
+  opacity: 0.35;
+}
+:where(#skills-legacy) .opacity-55 {
+  opacity: 0.55;
+}
+:where(#skills-legacy) .shadow-\[0_0_12px_rgba\(255\2c 107\2c 0\2c 0\.65\)\] {
+  --tw-shadow: 0 0 12px rgba(255,107,0,0.65);
+  --tw-shadow-colored: 0 0 12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[0_0_20px_rgba\(255\2c 107\2c 26\2c 0\.22\)\] {
+  --tw-shadow: 0 0 20px rgba(255,107,26,0.22);
+  --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[0_0_44px_rgba\(255\2c 140\2c 50\2c 0\.2\)\2c inset_0_0_34px_rgba\(255\2c 122\2c 0\2c 0\.08\)\] {
+  --tw-shadow: 0 0 44px rgba(255,140,50,0.2),inset 0 0 34px rgba(255,122,0,0.08);
+  --tw-shadow-colored: 0 0 44px var(--tw-shadow-color), inset 0 0 34px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[0_0_58px_rgba\(255\2c 122\2c 0\2c 0\.22\)\] {
+  --tw-shadow: 0 0 58px rgba(255,122,0,0.22);
+  --tw-shadow-colored: 0 0 58px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[0_10px_24px_rgba\(73\2c 38\2c 18\2c 0\.12\)\] {
+  --tw-shadow: 0 10px 24px rgba(73,38,18,0.12);
+  --tw-shadow-colored: 0 10px 24px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[0_16px_34px_rgba\(86\2c 42\2c 16\2c 0\.16\)\] {
+  --tw-shadow: 0 16px 34px rgba(86,42,16,0.16);
+  --tw-shadow-colored: 0 16px 34px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[0_16px_40px_rgba\(73\2c 38\2c 18\2c 0\.11\)\] {
+  --tw-shadow: 0 16px 40px rgba(73,38,18,0.11);
+  --tw-shadow-colored: 0 16px 40px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[0_18px_46px_rgba\(80\2c 47\2c 28\2c 0\.12\)\] {
+  --tw-shadow: 0 18px 46px rgba(80,47,28,0.12);
+  --tw-shadow-colored: 0 18px 46px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[0_4px_12px_rgba\(92\2c 50\2c 25\2c 0\.07\)\] {
+  --tw-shadow: 0 4px 12px rgba(92,50,25,0.07);
+  --tw-shadow-colored: 0 4px 12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[inset_0_0_36px_rgba\(255\2c 122\2c 0\2c 0\.16\)\] {
+  --tw-shadow: inset 0 0 36px rgba(255,122,0,0.16);
+  --tw-shadow-colored: inset 0 0 36px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .shadow-\[inset_0_1px_0_rgba\(255\2c 255\2c 255\2c 0\.88\)\] {
+  --tw-shadow: inset 0 1px 0 rgba(255,255,255,0.88);
+  --tw-shadow-colored: inset 0 1px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+:where(#skills-legacy) .blur-2xl {
+  --tw-blur: blur(40px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+:where(#skills-legacy) .blur-sm {
+  --tw-blur: blur(4px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+:where(#skills-legacy) .filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+:where(#skills-legacy) .backdrop-blur-2xl {
+  --tw-backdrop-blur: blur(40px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+:where(#skills-legacy) .backdrop-blur-xl {
+  --tw-backdrop-blur: blur(24px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+:where(#skills-legacy) .transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+:where(#skills-legacy) .transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+:where(#skills-legacy) .duration-500 {
+  transition-duration: 500ms;
+}
+:where(#skills-legacy) .\[background-image\:linear-gradient\(rgba\(255\2c 107\2c 26\2c 0\.08\)_1px\2c transparent_1px\)\2c linear-gradient\(90deg\2c rgba\(255\2c 107\2c 26\2c 0\.08\)_1px\2c transparent_1px\)\] {
+  background-image: linear-gradient(rgba(255,107,26,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,26,0.08) 1px,transparent 1px);
+}
+:where(#skills-legacy) .\[background-image\:radial-gradient\(rgba\(255\2c 107\2c 26\2c 0\.34\)_1px\2c transparent_1px\)\] {
+  background-image: radial-gradient(rgba(255,107,26,0.34) 1px,transparent 1px);
+}
+:where(#skills-legacy) .\[background-size\:24px_24px\] {
+  background-size: 24px 24px;
+}
+:where(#skills-legacy) .\[background-size\:42px_42px\] {
+  background-size: 42px 42px;
+}
+:where(#skills-legacy) .hover\:-translate-x-1:hover {
+  --tw-translate-x: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+:where(#skills-legacy) .hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+:where(#skills-legacy) .focus-visible\:outline-none:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+:where(#skills-legacy) .focus-visible\:ring-2:focus-visible {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+:where(#skills-legacy) .focus-visible\:ring-\[\#f06b18\]:focus-visible {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(240 107 24 / var(--tw-ring-opacity, 1));
+}
+@media (min-width: 640px) {
+
+  :where(#skills-legacy) .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  :where(#skills-legacy) .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  :where(#skills-legacy) .sm\:text-\[7\.7px\] {
+    font-size: 7.7px;
+  }
+}
+@media (min-width: 1280px) {
+
+  :where(#skills-legacy) .lg\:absolute {
+    position: absolute;
+  }
+
+  :where(#skills-legacy) .lg\:inset-10 {
+    inset: 2.5rem;
+  }
+
+  :where(#skills-legacy) .lg\:inset-x-0 {
+    left: 0px;
+    right: 0px;
+  }
+
+  :where(#skills-legacy) .lg\:bottom-3 {
+    bottom: 0.75rem;
+  }
+
+  :where(#skills-legacy) .lg\:left-\[21\%\] {
+    left: 21%;
+  }
+
+  :where(#skills-legacy) .lg\:left-\[3\%\] {
+    left: 3%;
+  }
+
+  :where(#skills-legacy) .lg\:left-\[35\%\] {
+    left: 35%;
+  }
+
+  :where(#skills-legacy) .lg\:left-\[36\.5\%\] {
+    left: 36.5%;
+  }
+
+  :where(#skills-legacy) .lg\:right-\[3\%\] {
+    right: 3%;
+  }
+
+  :where(#skills-legacy) .lg\:top-0 {
+    top: 0px;
+  }
+
+  :where(#skills-legacy) .lg\:top-\[15\%\] {
+    top: 15%;
+  }
+
+  :where(#skills-legacy) .lg\:top-\[19\.3rem\] {
+    top: 19.3rem;
+  }
+
+  :where(#skills-legacy) .lg\:top-\[36\%\] {
+    top: 36%;
+  }
+
+  :where(#skills-legacy) .lg\:top-\[58\%\] {
+    top: 58%;
+  }
+
+  :where(#skills-legacy) .lg\:top-\[65\%\] {
+    top: 65%;
+  }
+
+  :where(#skills-legacy) .lg\:top-\[9\%\] {
+    top: 9%;
+  }
+
+  :where(#skills-legacy) .lg\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  :where(#skills-legacy) .lg\:mt-0 {
+    margin-top: 0px;
+  }
+
+  :where(#skills-legacy) .lg\:block {
+    display: block;
+  }
+
+  :where(#skills-legacy) .lg\:h-9 {
+    height: 2.25rem;
+  }
+
+  :where(#skills-legacy) .lg\:h-\[15\%\] {
+    height: 15%;
+  }
+
+  :where(#skills-legacy) .lg\:h-\[18\%\] {
+    height: 18%;
+  }
+
+  :where(#skills-legacy) .lg\:h-\[21rem\] {
+    height: 21rem;
+  }
+
+  :where(#skills-legacy) .lg\:h-\[24\%\] {
+    height: 24%;
+  }
+
+  :where(#skills-legacy) .lg\:h-\[24rem\] {
+    height: 24rem;
+  }
+
+  :where(#skills-legacy) .lg\:h-\[25\.5rem\] {
+    height: 25.5rem;
+  }
+
+  :where(#skills-legacy) .lg\:h-\[27rem\] {
+    height: 27rem;
+  }
+
+  :where(#skills-legacy) .lg\:h-full {
+    height: 100%;
+  }
+
+  :where(#skills-legacy) .lg\:min-h-0 {
+    min-height: 0px;
+  }
+
+  :where(#skills-legacy) .lg\:w-9 {
+    width: 2.25rem;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[21rem\] {
+    width: 21rem;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[24rem\] {
+    width: 24rem;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[25\.5rem\] {
+    width: 25.5rem;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[27\%\] {
+    width: 27%;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[27rem\] {
+    width: 27rem;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[30\%\] {
+    width: 30%;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[31\.5\%\] {
+    width: 31.5%;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[33\%\] {
+    width: 33%;
+  }
+
+  :where(#skills-legacy) .lg\:w-\[58\%\] {
+    width: 58%;
+  }
+
+  :where(#skills-legacy) .lg\:max-w-none {
+    max-width: none;
+  }
+
+  :where(#skills-legacy) .lg\:overflow-hidden {
+    overflow: hidden;
+  }
+
+  :where(#skills-legacy) .lg\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  :where(#skills-legacy) .lg\:pb-4 {
+    padding-bottom: 1rem;
+  }
+
+  :where(#skills-legacy) .lg\:pt-5 {
+    padding-top: 1.25rem;
+  }
+
+  :where(#skills-legacy) .lg\:text-\[10px\] {
+    font-size: 10px;
+  }
+
+  :where(#skills-legacy) .lg\:text-\[2\.45rem\] {
+    font-size: 2.45rem;
+  }
+
+  :where(#skills-legacy) .lg\:text-\[8px\] {
+    font-size: 8px;
+  }
+
+  :where(#skills-legacy) .xl\:px-1\.5 {
+    padding-left: 0.375rem;
+    padding-right: 0.375rem;
+  }
+
+  :where(#skills-legacy) .xl\:text-\[11px\] {
+    font-size: 11px;
+  }
+
+  :where(#skills-legacy) .xl\:text-\[8\.1px\] {
+    font-size: 8.1px;
+  }
+
+  :where(#skills-legacy) .xl\:text-\[8\.5px\] {
+    font-size: 8.5px;
+  }
+}
+:where(#skills-legacy) .dark\:border-\[\#FF7A1A\]\/35:where([data-theme="dark"], [data-theme="dark"] *) {
+  border-color: rgb(255 122 26 / 0.35);
+}
+:where(#skills-legacy) .dark\:border-white\/10:where([data-theme="dark"], [data-theme="dark"] *) {
+  border-color: rgb(255 255 255 / 0.1);
+}
+:where(#skills-legacy) .dark\:bg-\[\#0B0B0F\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(11 11 15 / var(--tw-bg-opacity, 1));
+}
+:where(#skills-legacy) .dark\:bg-\[\#0B0B0F\]\/70:where([data-theme="dark"], [data-theme="dark"] *) {
+  background-color: rgb(11 11 15 / 0.7);
+}
+:where(#skills-legacy) .dark\:bg-\[\#14161B\]\/85:where([data-theme="dark"], [data-theme="dark"] *) {
+  background-color: rgb(20 22 27 / 0.85);
+}
+:where(#skills-legacy) .dark\:bg-\[\#14161B\]\/90:where([data-theme="dark"], [data-theme="dark"] *) {
+  background-color: rgb(20 22 27 / 0.9);
+}
+:where(#skills-legacy) .dark\:bg-\[rgba\(20\2c 22\2c 27\2c 0\.85\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  background-color: rgba(20,22,27,0.85);
+}
+:where(#skills-legacy) .dark\:bg-\[radial-gradient\(circle_at_12\%_10\%\2c rgba\(255\2c 122\2c 26\2c 0\.18\)\2c transparent_10rem\)\2c linear-gradient\(135deg\2c rgba\(255\2c 255\2c 255\2c 0\.055\)\2c rgba\(255\2c 255\2c 255\2c 0\.02\)\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  background-image: radial-gradient(circle at 12% 10%,rgba(255,122,26,0.18),transparent 10rem),linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.02));
+}
+:where(#skills-legacy) .dark\:bg-\[radial-gradient\(circle_at_50\%_43\%\2c rgba\(255\2c 122\2c 26\2c 0\.22\)\2c transparent_18rem\)\2c radial-gradient\(circle_at_14\%_12\%\2c rgba\(255\2c 122\2c 26\2c 0\.12\)\2c transparent_22rem\)\2c radial-gradient\(circle_at_88\%_82\%\2c rgba\(255\2c 122\2c 26\2c 0\.10\)\2c transparent_20rem\)\2c linear-gradient\(135deg\2c \#0B0B0F\2c \#14161B\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  background-image: radial-gradient(circle at 50% 43%,rgba(255,122,26,0.22),transparent 18rem),radial-gradient(circle at 14% 12%,rgba(255,122,26,0.12),transparent 22rem),radial-gradient(circle at 88% 82%,rgba(255,122,26,0.10),transparent 20rem),linear-gradient(135deg,#0B0B0F,#14161B);
+}
+:where(#skills-legacy) .dark\:text-\[\#B5B5B5\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-text-opacity: 1;
+  color: rgb(181 181 181 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .dark\:text-\[\#F5F5F5\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .dark\:text-\[\#FF7A1A\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-text-opacity: 1;
+  color: rgb(255 122 26 / var(--tw-text-opacity, 1));
+}
+:where(#skills-legacy) .dark\:opacity-20:where([data-theme="dark"], [data-theme="dark"] *) {
+  opacity: 0.2;
+}
+:where(#skills-legacy) .dark\:opacity-25:where([data-theme="dark"], [data-theme="dark"] *) {
+  opacity: 0.25;
+}
+:where(#skills-legacy) .dark\:shadow-\[0_0_26px_rgba\(255\2c 122\2c 26\2c 0\.22\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-shadow: 0 0 26px rgba(255,122,26,0.22);
+  --tw-shadow-colored: 0 0 26px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .dark\:shadow-\[0_0_34px_rgba\(255\2c 122\2c 26\2c 0\.18\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-shadow: 0 0 34px rgba(255,122,26,0.18);
+  --tw-shadow-colored: 0 0 34px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .dark\:shadow-\[0_18px_48px_rgba\(0\2c 0\2c 0\2c 0\.42\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-shadow: 0 18px 48px rgba(0,0,0,0.42);
+  --tw-shadow-colored: 0 18px 48px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .dark\:shadow-\[0_18px_54px_rgba\(0\2c 0\2c 0\2c 0\.45\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-shadow: 0 18px 54px rgba(0,0,0,0.45);
+  --tw-shadow-colored: 0 18px 54px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .dark\:shadow-\[0_4px_16px_rgba\(0\2c 0\2c 0\2c 0\.32\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-shadow: 0 4px 16px rgba(0,0,0,0.32);
+  --tw-shadow-colored: 0 4px 16px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .dark\:shadow-\[inset_0_1px_0_rgba\(255\2c 255\2c 255\2c 0\.05\)\]:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  --tw-shadow-colored: inset 0 1px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+:where(#skills-legacy) .dark\:hover\:border-\[\#FF7A1A\]\/70:hover:where([data-theme="dark"], [data-theme="dark"] *) {
+  border-color: rgb(255 122 26 / 0.7);
+}
+:where(#skills-legacy) .dark\:hover\:bg-\[\#1d2028\]:hover:where([data-theme="dark"], [data-theme="dark"] *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 32 40 / var(--tw-bg-opacity, 1));
+}

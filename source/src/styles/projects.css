@@ -467,4 +467,14 @@
     width: 100%;
     white-space: normal;
   }
+
+  .carousel-arrow {
+    flex-shrink: 0;
+  }
+
+  .carousel-dots {
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
